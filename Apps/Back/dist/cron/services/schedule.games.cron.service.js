@@ -12,13 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MlbSchedulerService = void 0;
 const common_1 = require("@nestjs/common");
 const schedule_1 = require("@nestjs/schedule");
-const mlb_service_api_1 = require("../integration/mlb.service.api");
+const mlb_service_api_1 = require("../../integration/mlb.service.api");
 let MlbSchedulerService = class MlbSchedulerService {
     mlbServiceApi;
     constructor(mlbServiceApi) {
         this.mlbServiceApi = mlbServiceApi;
     }
-    // run every minute (at 0 seconds)
     async handleDailyScheduleFetch() {
         await this.mlbServiceApi.fetchDailyScheduleGames();
     }

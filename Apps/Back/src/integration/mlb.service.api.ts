@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
 import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
-import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
-
+import { Logger } from '@nestjs/common';
 @Injectable()
 export class MlbServiceApi {
   constructor(private readonly scheduleGamesApp: ScheduleGamesApp) {}
@@ -13,12 +11,46 @@ export class MlbServiceApi {
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
     const day = today.getDate().toString().padStart(2, '0');
 
+    const games = await this.scheduleGamesApp.getScheduleGamesFromApi(
+      year,
+      month,
+      day,
+    );
 
-    console.log('running cron job to fetch daily schedule games');
+    if (!games || !games.games?.length) {
+      Logger.warn('No games found for today');
+      return;
+    }
 
-    console.log(year, month, day)
+    const existingGames = await this.scheduleGamesApp[
+      'scheduleService'
+    ].getScheduleGames(games.date, games.date);
 
-    //await this.scheduleGamesApp.getScheduleGamesFromApi(year, month, day);
+    if (existingGames.length) {
+      existingGames.forEach((existingList) => {
+        games.games.forEach((newGame) => {
+          existingList.games.forEach((existingGame) => {
+            if (
+              newGame.id === existingGame.id &&
+              newGame.ps_round === existingGame.ps_round
+            ) {
+              Logger.warn(
+                `Game with id ${newGame.id} already exists for date ${games.date}`,
+              );
+            } else {
+              this.scheduleGamesApp['scheduleService'].createScheduleGames([
+                games,
+              ]);
+              Logger.log(
+                `Storing new game with id ${newGame.id} for date ${games.date}`,
+              );
+            }
+          });
+        });
+      });
+    } else {
+      this.scheduleGamesApp['scheduleService'].createScheduleGames([games]);
+      Logger.log(`Storing games for new date ${games.date}`);
+    }
   }
-
 }

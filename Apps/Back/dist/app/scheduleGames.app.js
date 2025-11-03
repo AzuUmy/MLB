@@ -38,12 +38,13 @@ let ScheduleGamesApp = class ScheduleGamesApp {
     }
     async getScheduleGamesFromApi(year, month, day) {
         try {
-            const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/${year}/${month}/${day}/schedule${api_1.format}/api_key=${api_1.token}`);
+            const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${year}/${month}/${day}/schedule.${api_1.format}?api_key=${api_1.token}`);
             const data = (await response.json());
-            this.scheduleService.createScheduleGames([data]);
+            return data;
         }
         catch (error) {
             common_2.Logger.error('Error fetching schedule games from API:', error);
+            return undefined;
         }
     }
 };

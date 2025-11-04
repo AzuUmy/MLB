@@ -13,6 +13,7 @@ exports.MlbServiceApi = void 0;
 const common_1 = require("@nestjs/common");
 const scheduleGames_app_1 = require("../app/scheduleGames.app");
 const common_2 = require("@nestjs/common");
+const date_1 = require("../helper/date");
 let MlbServiceApi = class MlbServiceApi {
     scheduleGamesApp;
     constructor(scheduleGamesApp) {
@@ -23,34 +24,45 @@ let MlbServiceApi = class MlbServiceApi {
         const year = today.getFullYear().toString();
         const month = (today.getMonth() + 1).toString().padStart(2, '0');
         const day = today.getDate().toString().padStart(2, '0');
-        const games = await this.scheduleGamesApp.getScheduleGamesFromApi(year, month, day);
+        const games = await this.scheduleGamesApp.getScheduleGamesFromApi('2025', '10', '01');
         if (!games || !games.games?.length) {
             common_2.Logger.warn('No games found for today');
             return;
         }
         const existingGames = await this.scheduleGamesApp['scheduleService'].getScheduleGames(games.date, games.date);
-        if (existingGames.length) {
-            existingGames.forEach((existingList) => {
-                games.games.forEach((newGame) => {
-                    existingList.games.forEach((existingGame) => {
-                        if (newGame.id === existingGame.id &&
-                            newGame.ps_round === existingGame.ps_round) {
-                            common_2.Logger.warn(`Game with id ${newGame.id} already exists for date ${games.date}`);
-                        }
-                        else {
-                            this.scheduleGamesApp['scheduleService'].createScheduleGames([
-                                games,
-                            ]);
-                            common_2.Logger.log(`Storing new game with id ${newGame.id} for date ${games.date}`);
-                        }
-                    });
-                });
+        const matchingGames = [];
+        games.games.forEach((game) => {
+            matchingGames.push({
+                id: game.id,
+                serie: game.ps_round,
+                date: games.date,
             });
+        });
+        const hasDuplicates = existingGames.some((existingGame) => existingGame.games.some((game) => matchingGames.some((matching) => matching.id === game.id &&
+            matching.serie === game.ps_round &&
+            matching.date === games.date)));
+        if (hasDuplicates) {
+            common_2.Logger.warn('Games for today already exist in the database');
+            return;
         }
-        else {
-            this.scheduleGamesApp['scheduleService'].createScheduleGames([games]);
-            common_2.Logger.log(`Storing games for new date ${games.date}`);
-        }
+        const newScheduleGame = [];
+        const newGame = [];
+        games.games.forEach((game) => {
+            const ts = (0, date_1.toTimestamp)(game.scheduled);
+            newGame.push({
+                ...game,
+                scheduled: ts !== null ? ts.toString() : game.scheduled,
+            });
+        });
+        newScheduleGame.push({
+            league: games.league,
+            date: games.date,
+            games: newGame,
+            _comment: games._comment,
+        });
+        common_2.Logger.log(newScheduleGame);
+        await this.scheduleGamesApp['scheduleService'].createScheduleGames(newScheduleGame);
+        common_2.Logger.log("Successfully fetched and stored today's schedule games");
     }
 };
 exports.MlbServiceApi = MlbServiceApi;

@@ -18,6 +18,7 @@ let MlbSchedulerService = class MlbSchedulerService {
     constructor(mlbServiceApi) {
         this.mlbServiceApi = mlbServiceApi;
     }
+    // run every minute (at 0 seconds)
     async handleDailyScheduleFetch() {
         await this.mlbServiceApi.fetchDailyScheduleGames();
     }

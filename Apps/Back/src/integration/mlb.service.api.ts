@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
 import { Logger } from '@nestjs/common';
+import { Games, ScheduleGames } from '@my-mlb/shared/Types/gamesMLBTypes';
+import { toTimestamp } from 'src/helper/date';
 @Injectable()
 export class MlbServiceApi {
   constructor(private readonly scheduleGamesApp: ScheduleGamesApp) {}
@@ -26,31 +28,56 @@ export class MlbServiceApi {
       'scheduleService'
     ].getScheduleGames(games.date, games.date);
 
-    if (existingGames.length) {
-      existingGames.forEach((existingList) => {
-        games.games.forEach((newGame) => {
-          existingList.games.forEach((existingGame) => {
-            if (
-              newGame.id === existingGame.id &&
-              newGame.ps_round === existingGame.ps_round
-            ) {
-              Logger.warn(
-                `Game with id ${newGame.id} already exists for date ${games.date}`,
-              );
-            } else {
-              this.scheduleGamesApp['scheduleService'].createScheduleGames([
-                games,
-              ]);
-              Logger.log(
-                `Storing new game with id ${newGame.id} for date ${games.date}`,
-              );
-            }
-          });
-        });
+    const matchingGames: { id: string; serie: string; date: string }[] = [];
+
+    games.games.forEach((game) => {
+      matchingGames.push({
+        id: game.id,
+        serie: game.ps_round,
+        date: games.date,
       });
-    } else {
-      this.scheduleGamesApp['scheduleService'].createScheduleGames([games]);
-      Logger.log(`Storing games for new date ${games.date}`);
+    });
+
+    const hasDuplicates = existingGames.some((existingGame) =>
+      existingGame.games.some((game) =>
+        matchingGames.some(
+          (matching) =>
+            matching.id === game.id &&
+            matching.serie === game.ps_round &&
+            matching.date === games.date,
+        ),
+      ),
+    );
+
+    if (hasDuplicates) {
+      Logger.warn('Games for today already exist in the database');
+      return;
     }
+
+    const newScheduleGame: ScheduleGames[] = [];
+    const newGame: Games[] = [];
+
+    games.games.forEach((game) => {
+      const ts = toTimestamp(game.scheduled);
+
+      newGame.push({
+        ...game,
+        scheduled: ts !== null ? ts.toString() : game.scheduled,
+      });
+    });
+
+    newScheduleGame.push({
+      league: games.league,
+      date: games.date,
+      games: newGame,
+      _comment: games._comment,
+    });
+
+    Logger.log(newScheduleGame);
+
+    await this.scheduleGamesApp['scheduleService'].createScheduleGames(
+      newScheduleGame,
+    );
+    Logger.log("Successfully fetched and stored today's schedule games");
   }
 }

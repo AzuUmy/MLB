@@ -73,8 +73,6 @@ export class MlbServiceApi {
       _comment: games._comment,
     });
 
-    Logger.log(newScheduleGame);
-
     await this.scheduleGamesApp['scheduleService'].createScheduleGames(
       newScheduleGame,
     );

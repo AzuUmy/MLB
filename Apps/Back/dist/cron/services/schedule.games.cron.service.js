@@ -18,8 +18,11 @@ let MlbSchedulerService = class MlbSchedulerService {
     constructor(mlbServiceApi) {
         this.mlbServiceApi = mlbServiceApi;
     }
-    // run every minute (at 0 seconds)
+    onModuleInit() {
+        common_1.Logger.log('MlbSchedulerService initialized');
+    }
     async handleDailyScheduleFetch() {
+        common_1.Logger.log('Cron triggered: handleDailyScheduleFetch');
         await this.mlbServiceApi.fetchDailyScheduleGames();
     }
 };

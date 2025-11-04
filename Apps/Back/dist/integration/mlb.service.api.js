@@ -24,7 +24,7 @@ let MlbServiceApi = class MlbServiceApi {
         const year = today.getFullYear().toString();
         const month = (today.getMonth() + 1).toString().padStart(2, '0');
         const day = today.getDate().toString().padStart(2, '0');
-        const games = await this.scheduleGamesApp.getScheduleGamesFromApi('2025', '10', '01');
+        const games = await this.scheduleGamesApp.getScheduleGamesFromApi('2025', '11', '01');
         if (!games || !games.games?.length) {
             common_2.Logger.warn('No games found for today');
             return;
@@ -60,7 +60,6 @@ let MlbServiceApi = class MlbServiceApi {
             games: newGame,
             _comment: games._comment,
         });
-        common_2.Logger.log(newScheduleGame);
         await this.scheduleGamesApp['scheduleService'].createScheduleGames(newScheduleGame);
         common_2.Logger.log("Successfully fetched and stored today's schedule games");
     }

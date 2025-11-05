@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ScheduleGamesDocument = gql`
-  query ScheduleGames($startDate: String!, $endDate: String!, $Year: String!) {
-    scheduleGames(startDate: $startDate, endDate: $endDate, Year: $Year) {
+  query ScheduleGames($startDate: String!, $endDate: String!) {
+    scheduleGames(startDate: $startDate, endDate: $endDate) {
       series
       games {
         id

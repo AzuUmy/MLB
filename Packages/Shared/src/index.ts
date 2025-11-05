@@ -1,4 +1,4 @@
-import { Games } from "./Types/gamesMLBTypes"
+export * from "./Types/gamesMLBTypes";
 
 export type Location = {
     lat: string

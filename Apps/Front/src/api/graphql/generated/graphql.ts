@@ -54,13 +54,13 @@ export type League = {
 
 export type Query = {
   __typename?: 'Query';
+  Teams: Array<Teams>;
   hello: Scalars['String']['output'];
   scheduleGames: Array<ScheduleGamesSeries>;
 };
 
 
 export type QueryScheduleGamesArgs = {
-  Year: Scalars['String']['input'];
   endDate: Scalars['String']['input'];
   startDate: Scalars['String']['input'];
 };
@@ -80,6 +80,14 @@ export type Team = {
   name: Scalars['String']['output'];
   seed: Scalars['Int']['output'];
   win: Scalars['Int']['output'];
+};
+
+export type Teams = {
+  __typename?: 'Teams';
+  abbr?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  market?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
 };
 
 export type Venue = {
@@ -102,7 +110,6 @@ export type Venue = {
 export type ScheduleGamesQueryVariables = Exact<{
   startDate: Scalars['String']['input'];
   endDate: Scalars['String']['input'];
-  Year: Scalars['String']['input'];
 }>;
 
 

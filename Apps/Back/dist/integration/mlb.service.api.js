@@ -24,7 +24,7 @@ let MlbServiceApi = class MlbServiceApi {
         const year = today.getFullYear().toString();
         const month = (today.getMonth() + 1).toString().padStart(2, '0');
         const day = today.getDate().toString().padStart(2, '0');
-        const games = await this.scheduleGamesApp.getScheduleGamesFromApi('2025', '11', '01');
+        const games = await this.scheduleGamesApp.getScheduleGamesFromApi(year, month, day);
         if (!games || !games.games?.length) {
             common_2.Logger.warn('No games found for today');
             return;

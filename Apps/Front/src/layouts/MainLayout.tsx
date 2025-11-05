@@ -1,7 +1,7 @@
 import { useState } from "react";
-import BottomBar from "../components/nav/Navigation";
-import { NavigationTop } from "../components/nav/Navigation-top";
-import { SideMenu } from "../components/nav/SideMenu";
+import BottomBar from "../components/Nav/Navigation";
+import { NavigationTop } from "../components/Nav/Navigation-top";
+import { SideMenu } from "../components/Nav/SideMenu";
 
 type MainLayoutProps = {
   children: React.ReactNode;

@@ -28,7 +28,7 @@ let MlbSchedulerService = class MlbSchedulerService {
 };
 exports.MlbSchedulerService = MlbSchedulerService;
 __decorate([
-    (0, schedule_1.Cron)('0 * * * * *', { timeZone: 'UTC' }),
+    (0, schedule_1.Cron)('0 0 0 * * *', { timeZone: 'UTC' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)

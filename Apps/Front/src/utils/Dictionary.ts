@@ -1,8 +1,9 @@
 export const Series = {
-  WC: "Wild Card Series",
-  ALDS: "American League Division Series",
-  NLDS: "National League Division Series",
-  ALCS: "American League Championship Series",
-  NLCS: "National League Championship Series",
+  ALWC: "AL Wild Card Series",
+  NLWC: "NL Wild Card Series",
+  ALDS: "AL Division Series",
+  NLDS: "NL Division Series",
+  ALCS: "AL Championship Series",
+  NLCS: "NL Championship Series",
   WS: "World Series",
 };

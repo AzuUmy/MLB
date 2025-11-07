@@ -22,7 +22,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden mb-36">
       {(openSideMenu || closing) && (
         <SideMenu closing={closing} setOpenSideMenu={handleClose} />
       )}

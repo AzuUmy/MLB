@@ -20,8 +20,8 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
       <div>
         {allScheduleGames?.length ? (
           allScheduleGames.map((series) => (
-            <div className="border-2  border-grey-500 rounded-2xl p-3  mb-3 font-bold">
-              <h2 className="text-left">
+            <div className="border-2  border-grey-500 rounded-2xl p-5  mb-3 font-bold">
+              <h2 className="text-left text-lg">
                 {Series[series.series as keyof typeof Series] ?? series.series}
               </h2>
 

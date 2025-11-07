@@ -13,8 +13,8 @@ export default function BottomBar() {
   const location = useLocation();
   return (
     <div
-      className="fixed bottom-10 left-1/2 transform -translate-x-1/2 
-                    bg-blue-950 bg-opacity-50 shadow-lg p-4 rounded-full"
+      className="fixed  bottom-10 left-1/2 transform -translate-x-1/2 
+                    bg-blue-950 bg-opacity-40 shadow-lg p-4 rounded-full backdrop-blur-sm "
     >
       <div className="flex gap-2">
         <div

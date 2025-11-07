@@ -78,3 +78,8 @@ export type Broadcasts = {
   locale: string;
   channel: string;
 };
+
+export type ScheduleGamesSeries = {
+  series: string;
+  games: Games[];
+};

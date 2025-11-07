@@ -27,29 +27,46 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
 
               <div>
                 {series.games.map((games) => (
-                  <div className="flex flex-row gap-2 items-center text-left">
-                    <div>
-                      {
-                        <div className="flex flex-row items-center">
-                          <div className="w-5 scale-50 mr-10">
-                            {getLogo(games.away.abbr)}
-                          </div>
-                          <div>{games.away.abbr}</div>
-                        </div>
-                      }
-                    </div>
-                    <span className="text-base ml-4 font-base bg-slate-200 rounded-full w-6 h-6 flex items-center justify-center">
-                      @
+                  <div>
+                    <span className="text-xs flex justify-start mt-2">
+                      {new Date(Number(games.scheduled)).toLocaleString(
+                        "en-US",
+                        {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "2-digit",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true,
+                          timeZone: "UTC",
+                        }
+                      ).replace(/,/g, " |")}
                     </span>{" "}
-                    <div>
-                      {
-                        <div className="flex flex-row items-center">
-                          <div className="w-5 scale-50 mr-10">
-                            {getLogo(games.home.abbr)}
+                    <div className="flex flex-row gap-2 items-center text-left">
+                      <div>
+                        {
+                          <div className="flex flex-row items-center">
+                            <div className="w-5 scale-50 mr-10">
+                              {getLogo(games.away.abbr)}
+                            </div>
+                            <div>{games.away.abbr}</div>
                           </div>
-                          <div>{games.home.abbr}</div>
-                        </div>
-                      }
+                        }
+                      </div>
+                      <span className="text-base ml-4 font-base bg-slate-200 rounded-full w-6 h-6 flex items-center justify-center">
+                        @
+                      </span>{" "}
+                      <div>
+                        {
+                          <div className="flex flex-row items-center">
+                            <div className="w-5 scale-50 mr-10">
+                              {getLogo(games.home.abbr)}
+                            </div>
+                            <div>{games.home.abbr}</div>
+                          </div>
+                        }
+                      </div>
                     </div>
                   </div>
                 ))}

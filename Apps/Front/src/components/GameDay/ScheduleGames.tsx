@@ -28,7 +28,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
 
               <div>
                 {series.games.map((games) => (
-                  <div className="border-b-[0.5px] border-slate-500 last:border-b-0">
+                  <div>
                     <div className="flex items-end mt-2 gap-1">
                       <span className="text-xs flex justify-start mt-2">
                         {
@@ -55,7 +55,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
                       <div>
                         {
                           <div className="flex flex-row items-center">
-                            <div className="w-5 scale-50 mr-10">
+                            <div className="w-1 h-10 scale-[0.30] mr-7 mb-[16.5px]">
                               {getLogo(games.away.abbr)}
                             </div>
                             <div>{games.away.abbr}</div>
@@ -68,7 +68,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
                       <div>
                         {
                           <div className="flex flex-row items-center">
-                            <div className="w-5 scale-50 mr-10">
+                            <div className="w-1 h-10 scale-[0.30] mr-7 mb-[16.5px]">
                               {getLogo(games.home.abbr)}
                             </div>
                             <div>{games.home.abbr}</div>

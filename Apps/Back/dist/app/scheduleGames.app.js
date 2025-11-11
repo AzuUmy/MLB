@@ -21,20 +21,65 @@ let ScheduleGamesApp = class ScheduleGamesApp {
     }
     async getScheduleGamesSeries(startDate, endDate) {
         const scheduleGames = await this.scheduleService.getScheduleGames(startDate, endDate);
-        const scheduleGamesSeries = [];
-        scheduleGames.forEach((schedule) => {
-            const series = schedule.games.map((e) => e.ps_round);
-            const games = schedule.games;
-            series.forEach((serie) => {
-                if (!scheduleGamesSeries.map((e) => e.series).includes(serie)) {
-                    scheduleGamesSeries.push({
+        const seriesMap = new Map();
+        for (const schedule of scheduleGames) {
+            for (const game of schedule.games) {
+                const serie = game.ps_round;
+                const home = game.home.abbr;
+                const away = game.away.abbr;
+                const matchupKey = [home, away].sort().join('_') + '_' + serie;
+                if (!seriesMap.has(matchupKey)) {
+                    seriesMap.set(matchupKey, {
                         series: serie,
-                        games: games,
+                        games: [],
                     });
                 }
-            });
-        });
-        return scheduleGamesSeries;
+                seriesMap.get(matchupKey).games.push(game);
+            }
+        }
+        const scheduleGamesSeries = Array.from(seriesMap.values());
+        const parseSeries = (series) => {
+            const league = series.startsWith('AL')
+                ? 'AL'
+                : series.startsWith('NL')
+                    ? 'NL'
+                    : null;
+            const stage = league ? series.slice(league.length) : series;
+            return { league, stage };
+        };
+        const stageGroups = {};
+        for (const s of scheduleGamesSeries) {
+            const { league, stage } = parseSeries(s.series);
+            if (!stageGroups[stage]) {
+                stageGroups[stage] = { AL: [], NL: [], other: [] };
+            }
+            if (league === 'AL')
+                stageGroups[stage].AL.push(s);
+            else if (league === 'NL')
+                stageGroups[stage].NL.push(s);
+            else
+                stageGroups[stage].other.push(s);
+        }
+        const stageOrder = ['WC', 'DS', 'CS', 'WS'];
+        const result = [];
+        for (const stage of stageOrder) {
+            const group = stageGroups[stage];
+            if (!group)
+                continue;
+            if (stage === 'WS') {
+                result.push(...group.AL, ...group.NL, ...group.other);
+                continue;
+            }
+            const max = Math.max(group.AL.length, group.NL.length);
+            for (let i = 0; i < max; i++) {
+                if (i < group.AL.length)
+                    result.push(group.AL[i]);
+                if (i < group.NL.length)
+                    result.push(group.NL[i]);
+            }
+            result.push(...group.other);
+        }
+        return result;
     }
     async getScheduleGamesFromApi(year, month, day) {
         try {

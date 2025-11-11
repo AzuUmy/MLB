@@ -1,6 +1,7 @@
 import { Series } from "../../utils/Dictionary";
 import * as MLBLogos from "react-mlb-logos";
 import type { ScheduleGamesSeries } from "@my-mlb/shared";
+import { GamesSharp } from "@mui/icons-material";
 
 type allScheduleGamesProps = {
   allScheduleGames?: ScheduleGamesSeries[] | undefined;
@@ -20,29 +21,36 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
       <div>
         {allScheduleGames?.length ? (
           allScheduleGames.map((series) => (
-            <div className="border-2  border-grey-500 rounded-2xl p-5  mb-3 font-bold">
+            <div className="border-2 border-grey-500 rounded-2xl p-5  mb-3 font-bold ">
               <h2 className="text-left text-lg">
                 {Series[series.series as keyof typeof Series] ?? series.series}
               </h2>
 
               <div>
                 {series.games.map((games) => (
-                  <div>
-                    <span className="text-xs flex justify-start mt-2">
-                      {new Date(Number(games.scheduled)).toLocaleString(
-                        "en-US",
+                  <div className="border-b-[0.5px] border-slate-500 last:border-b-0">
+                    <div className="flex items-end mt-2 gap-1">
+                      <span className="text-xs flex justify-start mt-2">
                         {
-                          weekday: "long",
-                          year: "numeric",
-                          month: "long",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          hour12: true,
-                          timeZone: "UTC",
-                        }
-                      ).replace(/,/g, " |")}
-                    </span>{" "}
+                        new Date(Number(games.scheduled))
+                          .toLocaleString("en-US", {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "2-digit",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                            timeZone: "UTC",
+                          })
+                          .replace(/,/g, " |").concat(" ").concat("|")
+                          }
+                      </span>
+                      <span className="text-xs">
+                        {'GM'.concat(" ").concat(games.ps_game)}
+                      </span>
+                    </div>
+
                     <div className="flex flex-row gap-2 items-center text-left">
                       <div>
                         {
@@ -56,7 +64,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
                       </div>
                       <span className="text-base ml-4 font-base bg-slate-200 rounded-full w-6 h-6 flex items-center justify-center">
                         @
-                      </span>{" "}
+                      </span>
                       <div>
                         {
                           <div className="flex flex-row items-center">

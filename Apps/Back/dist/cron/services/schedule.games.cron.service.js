@@ -19,7 +19,7 @@ let MlbSchedulerService = class MlbSchedulerService {
         this.mlbServiceApi = mlbServiceApi;
     }
     onModuleInit() {
-        common_1.Logger.log('MlbSchedulerService initialized');
+        common_1.Logger.log('MLB SchedulerService initialized');
     }
     async handleDailyScheduleFetch() {
         common_1.Logger.log('Cron triggered: handleDailyScheduleFetch');

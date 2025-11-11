@@ -14,8 +14,8 @@ export function Games() {
     ScheduleGamesQueryVariables
   >(ScheduleGamesDocument, {
     variables: {
-      startDate: "2025-10-01",
-      endDate: "2025-10-29",
+      startDate: "2025-01-01",
+      endDate: "2025-11-01",
     },
   });
 

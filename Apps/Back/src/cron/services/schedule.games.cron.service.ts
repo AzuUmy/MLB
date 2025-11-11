@@ -7,7 +7,7 @@ export class MlbSchedulerService {
   constructor(private readonly mlbServiceApi: MlbServiceApi) {}
 
   onModuleInit() {
-    Logger.log('MlbSchedulerService initialized');
+    Logger.log('MLB SchedulerService initialized');
   }
 
   @Cron('0 0 0 * * *', { timeZone: 'UTC' })

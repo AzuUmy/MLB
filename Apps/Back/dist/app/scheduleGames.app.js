@@ -38,6 +38,9 @@ let ScheduleGamesApp = class ScheduleGamesApp {
             }
         }
         const scheduleGamesSeries = Array.from(seriesMap.values());
+        for (const s of scheduleGamesSeries) {
+            s.games.sort((a, b) => Number(a.ps_game ?? 0) - Number(b.ps_game ?? 0));
+        }
         const parseSeries = (series) => {
             const league = series.startsWith('AL')
                 ? 'AL'

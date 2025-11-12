@@ -1,7 +1,6 @@
 import { Series } from "../../utils/Dictionary";
 import * as MLBLogos from "react-mlb-logos";
 import type { ScheduleGamesSeries } from "@my-mlb/shared";
-import { GamesSharp } from "@mui/icons-material";
 
 type allScheduleGamesProps = {
   allScheduleGames?: ScheduleGamesSeries[] | undefined;
@@ -12,7 +11,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
     if (!abbr) return null;
     const LogoComponent = (MLBLogos as any)[abbr.toUpperCase()];
     return typeof LogoComponent === "function" ? (
-      <LogoComponent width={1} height={1} />
+      <LogoComponent />
     ) : null;
   };
 
@@ -62,7 +61,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
                           </div>
                         }
                       </div>
-                      <span className="text-base ml-4 font-base bg-slate-200 rounded-full w-6 h-6 flex items-center justify-center">
+                      <span className="text-base ml-3 mr-2 font-base bg-slate-200 rounded-full w-6 h-6 flex items-center justify-center">
                         @
                       </span>
                       <div>

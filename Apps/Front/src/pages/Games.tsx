@@ -7,6 +7,7 @@ import type {
 import { ScheduleGamesDocument } from "../api/graphql/queries/scheduleGamesQuery";
 import type { ScheduleGamesSeries } from "@my-mlb/shared";
 import { ScheduleGames } from "../components/GameDay/ScheduleGames";
+import { useState } from "react";
 
 export function Games() {
   const { data, loading, error } = useQuery<
@@ -19,12 +20,63 @@ export function Games() {
     },
   });
 
+  const [season, setSeason] = useState<string>("postseason");
+
+  function shceduleSeason() {
+    switch (season) {
+      case "postseason":
+        return (
+          <div>
+            <GameDay gameToday={data?.scheduleGames as ScheduleGamesSeries[]} />
+            <ScheduleGames
+              allScheduleGames={data?.scheduleGames as ScheduleGamesSeries[]}
+            />
+          </div>
+        );
+
+      case "regular-season":
+        return <div>Regular Season</div>;
+
+      case "spring-training":
+        return <div>spring training</div>;
+    }
+  }
+
   return (
     <div>
-      <GameDay gameToday={data?.scheduleGames as ScheduleGamesSeries[]} />
-      <ScheduleGames
-        allScheduleGames={data?.scheduleGames as ScheduleGamesSeries[]}
-      />
+      <div className="text-sm flex items-end gap-3 w-[100%] overflow-auto overflow-y-hidden mb-5 pb-2 ">
+        <h1
+          onClick={() => setSeason("postseason")}
+          className={`w-full whitespace-nowrap text-[30px] font-semibold ${
+            season === "postseason"
+              ? "text-blue-800 text-5xl transition-all duration-1000 ease-out"
+              : "text-black"
+          }`}
+        >
+          Postseason
+        </h1>
+        <h1
+          onClick={() => setSeason("regular-season")}
+          className={`w-full whitespace-nowrap text-[30px] font-semibold ${
+            season === "regular-season"
+              ? "text-blue-800 text-5xl transition-all duration-1000 ease-out"
+              : "text-black"
+          }`}
+        >
+          Regular Season
+        </h1>
+        <h1
+          onClick={() => setSeason("spring-training")}
+          className={`w-full whitespace-nowrap text-[30px] font-semibold ${
+            season === "spring-training"
+              ? "text-blue-800 text-5xl transition-all duration-1000 ease-out"
+              : "text-black"
+          }`}
+        >
+          Spring Training
+        </h1>
+      </div>
+      <div>{shceduleSeason()}</div>
     </div>
   );
 }

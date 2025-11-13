@@ -8,6 +8,7 @@ import { ScheduleGamesDocument } from "../api/graphql/queries/scheduleGamesQuery
 import type { ScheduleGamesSeries } from "@my-mlb/shared";
 import { ScheduleGames } from "../components/GameDay/ScheduleGames";
 import { useState } from "react";
+import { Context as GamesDetails } from "../modals/Context";
 
 export function Games() {
   const { data, loading, error } = useQuery<
@@ -21,6 +22,10 @@ export function Games() {
   });
 
   const [season, setSeason] = useState<string>("postseason");
+  const [triggerContex, setTriggerContex] = useState<boolean>(false);
+
+  const handleOpenContext = () => setTriggerContex(true);
+  const handleCloseContext = () => setTriggerContex(false);
 
   function shceduleSeason() {
     switch (season) {
@@ -30,6 +35,11 @@ export function Games() {
             <GameDay gameToday={data?.scheduleGames as ScheduleGamesSeries[]} />
             <ScheduleGames
               allScheduleGames={data?.scheduleGames as ScheduleGamesSeries[]}
+              onGameClick={handleOpenContext}
+            />
+            <GamesDetails
+              showContext={triggerContex}
+              onClose={handleCloseContext}
             />
           </div>
         );
@@ -47,9 +57,9 @@ export function Games() {
       <div className="text-sm flex items-end gap-3 w-[100%] overflow-auto overflow-y-hidden mb-5 pb-2 ">
         <h1
           onClick={() => setSeason("postseason")}
-          className={`w-full whitespace-nowrap text-[30px] font-semibold ${
+          className={`w-full whitespace-nowrap text-[25px] font-semibold ${
             season === "postseason"
-              ? "text-blue-800 text-5xl transition-all duration-1000 ease-out"
+              ? "text-blue-800 text-[2.2rem] transition-all duration-[0.3s] ease-out"
               : "text-black"
           }`}
         >
@@ -57,9 +67,9 @@ export function Games() {
         </h1>
         <h1
           onClick={() => setSeason("regular-season")}
-          className={`w-full whitespace-nowrap text-[30px] font-semibold ${
+          className={`w-full whitespace-nowrap text-[25px] font-semibold ${
             season === "regular-season"
-              ? "text-blue-800 text-5xl transition-all duration-1000 ease-out"
+              ? "text-blue-800 text-[2.2rem] transition-all duration-[0.3s] ease-out"
               : "text-black"
           }`}
         >
@@ -67,9 +77,9 @@ export function Games() {
         </h1>
         <h1
           onClick={() => setSeason("spring-training")}
-          className={`w-full whitespace-nowrap text-[30px] font-semibold ${
+          className={`w-full whitespace-nowrap text-[25px] font-semibold ${
             season === "spring-training"
-              ? "text-blue-800 text-5xl transition-all duration-1000 ease-out"
+              ? "text-blue-800 text-[2.2rem] transition-all duration-[0.3s] ease-out"
               : "text-black"
           }`}
         >

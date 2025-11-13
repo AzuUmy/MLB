@@ -4,15 +4,17 @@ import type { ScheduleGamesSeries } from "@my-mlb/shared";
 
 type allScheduleGamesProps = {
   allScheduleGames?: ScheduleGamesSeries[] | undefined;
+  onGameClick?: () => void;
 };
 
-export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
+export function ScheduleGames({
+  allScheduleGames,
+  onGameClick,
+}: allScheduleGamesProps) {
   const getLogo = (abbr: string | undefined | null) => {
     if (!abbr) return null;
     const LogoComponent = (MLBLogos as any)[abbr.toUpperCase()];
-    return typeof LogoComponent === "function" ? (
-      <LogoComponent />
-    ) : null;
+    return typeof LogoComponent === "function" ? <LogoComponent /> : null;
   };
 
   return (
@@ -30,8 +32,7 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
                   <div>
                     <div className="flex items-end mt-2 gap-1">
                       <span className="text-xs flex justify-start mt-2">
-                        {
-                        new Date(Number(games.scheduled))
+                        {new Date(Number(games.scheduled))
                           .toLocaleString("en-US", {
                             weekday: "long",
                             year: "numeric",
@@ -42,15 +43,16 @@ export function ScheduleGames({ allScheduleGames }: allScheduleGamesProps) {
                             hour12: true,
                             timeZone: "UTC",
                           })
-                          .replace(/,/g, " |").concat(" ").concat("|")
-                          }
+                          .replace(/,/g, " |")
+                          .concat(" ")
+                          .concat("|")}
                       </span>
                       <span className="text-xs">
-                        {'GM'.concat(" ").concat(games.ps_game)}
+                        {"GM".concat(" ").concat(games.ps_game)}
                       </span>
                     </div>
 
-                    <div className="flex flex-row gap-2 items-center text-left">
+                    <div onClick={onGameClick} className="flex flex-row gap-2 items-center text-left">
                       <div>
                         {
                           <div className="flex flex-row items-center">

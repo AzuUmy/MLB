@@ -26,7 +26,7 @@ export function GameDay({ gameToday }: GamesTodayProps) {
     if (!abbr) return null;
     const LogoComponent = (MLBLogos as any)[abbr.toUpperCase()];
     return typeof LogoComponent === "function" ? (
-      <LogoComponent className="w-8 h-8" />
+      <LogoComponent />
     ) : null;
   };
 

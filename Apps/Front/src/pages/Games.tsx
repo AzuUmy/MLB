@@ -40,6 +40,7 @@ export function Games() {
             <GamesDetails
               showContext={triggerContex}
               onClose={handleCloseContext}
+              header="Details"
             />
           </div>
         );

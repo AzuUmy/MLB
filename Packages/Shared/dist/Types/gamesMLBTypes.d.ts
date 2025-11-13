@@ -69,7 +69,7 @@ export type Broadcasts = {
     network: string;
     type: string;
     locale: string;
-    channel: string;
+    channel?: string;
 };
 export type ScheduleGamesSeries = {
     series: string;

@@ -5,10 +5,11 @@ import type {
   ScheduleGamesQueryVariables,
 } from "../api/graphql/generated/graphql";
 import { ScheduleGamesDocument } from "../api/graphql/queries/scheduleGamesQuery";
-import type { ScheduleGamesSeries } from "@my-mlb/shared";
+import type { ScheduleGamesSeries, Games } from "@my-mlb/shared";
 import { ScheduleGames } from "../components/GameDay/ScheduleGames";
 import { useState } from "react";
 import { Context as GamesDetails } from "../modals/Context";
+import { GamesDetailsModal } from "../modals/GameDetailsModal";
 
 export function Games() {
   const { data, loading, error } = useQuery<
@@ -27,6 +28,13 @@ export function Games() {
   const handleOpenContext = () => setTriggerContex(true);
   const handleCloseContext = () => setTriggerContex(false);
 
+  const [details, setDetails] = useState<Games>();
+
+  const handleGameClick = (game: Games) => {
+    setDetails(game);
+    handleOpenContext();
+  };
+
   function shceduleSeason() {
     switch (season) {
       case "postseason":
@@ -35,13 +43,15 @@ export function Games() {
             <GameDay gameToday={data?.scheduleGames as ScheduleGamesSeries[]} />
             <ScheduleGames
               allScheduleGames={data?.scheduleGames as ScheduleGamesSeries[]}
-              onGameClick={handleOpenContext}
+              onGameClick={handleGameClick}
             />
             <GamesDetails
               showContext={triggerContex}
               onClose={handleCloseContext}
               header="Details"
-            />
+            >
+              {<GamesDetailsModal details={details} />}
+            </GamesDetails>
           </div>
         );
 

@@ -4,9 +4,15 @@ type contextProps = {
   showContext: boolean;
   onClose?: () => void;
   header?: string;
+  children?: React.ReactNode;
 };
 
-export function Context({ showContext, header, onClose }: contextProps) {
+export function Context({
+  showContext,
+  header,
+  onClose,
+  children,
+}: contextProps) {
   const [mounted, setMounted] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
 
@@ -39,6 +45,7 @@ export function Context({ showContext, header, onClose }: contextProps) {
         }`}
       >
         <h2>{header}</h2>
+        <div>{children}</div>
       </div>
     </div>
   );

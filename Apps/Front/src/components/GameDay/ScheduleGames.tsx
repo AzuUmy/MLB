@@ -1,10 +1,10 @@
 import { Series } from "../../utils/Dictionary";
 import * as MLBLogos from "react-mlb-logos";
-import type { ScheduleGamesSeries } from "@my-mlb/shared";
+import type { ScheduleGamesSeries, Games } from "@my-mlb/shared";
 
 type allScheduleGamesProps = {
   allScheduleGames?: ScheduleGamesSeries[] | undefined;
-  onGameClick?: () => void;
+  onGameClick?: (games: Games ) => void;
 };
 
 export function ScheduleGames({
@@ -52,7 +52,7 @@ export function ScheduleGames({
                       </span>
                     </div>
 
-                    <div onClick={onGameClick} className="flex flex-row gap-2 items-center text-left">
+                    <div onClick={() => onGameClick?.(games)} className="flex flex-row gap-2 items-center text-left">
                       <div>
                         {
                           <div className="flex flex-row items-center">

@@ -70,7 +70,7 @@ export function Games() {
           onClick={() => setSeason("postseason")}
           className={`w-full whitespace-nowrap text-[25px] font-semibold ${
             season === "postseason"
-              ? "text-blue-800 text-[2.2rem] transition-all duration-[0.3s] ease-out"
+              ? "text-blue-800 text-[2.5rem] transition-all duration-[0.3s] ease-out"
               : "text-black"
           }`}
         >
@@ -80,7 +80,7 @@ export function Games() {
           onClick={() => setSeason("regular-season")}
           className={`w-full whitespace-nowrap text-[25px] font-semibold ${
             season === "regular-season"
-              ? "text-blue-800 text-[2.2rem] transition-all duration-[0.3s] ease-out"
+              ? "text-blue-800 text-[2.5rem] transition-all duration-[0.3s] ease-out"
               : "text-black"
           }`}
         >
@@ -90,7 +90,7 @@ export function Games() {
           onClick={() => setSeason("spring-training")}
           className={`w-full whitespace-nowrap text-[25px] font-semibold ${
             season === "spring-training"
-              ? "text-blue-800 text-[2.2rem] transition-all duration-[0.3s] ease-out"
+              ? "text-blue-800 text-[2.5rem] transition-all duration-[0.3s] ease-out"
               : "text-black"
           }`}
         >

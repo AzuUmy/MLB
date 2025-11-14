@@ -8,8 +8,7 @@ export class MlbBoxScoreGamesServiceApi {
   async getBoxScoreGamesFromApi(id: string[]): Promise<any[] | undefined> {
     try {
       const gameBoxScore: boxScoreGames[] = [];
-
-      const result = await Promise.all(
+      await Promise.all(
         id.map(async (gamesId) => {
           const response = await fetch(
             `${apiUrl}/${locale}/games/${gamesId}/boxscore.${format}?api_key=${token}`,

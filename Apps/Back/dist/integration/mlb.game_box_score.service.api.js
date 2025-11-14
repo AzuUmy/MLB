@@ -14,7 +14,7 @@ let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
     async getBoxScoreGamesFromApi(id) {
         try {
             const gameBoxScore = [];
-            const result = await Promise.all(id.map(async (gamesId) => {
+            await Promise.all(id.map(async (gamesId) => {
                 const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${gamesId}/boxscore.${api_1.format}?api_key=${api_1.token}`);
                 const data = (await response.json());
                 if (Array.isArray(data)) {

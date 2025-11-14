@@ -17,7 +17,7 @@ let GamesBoxScoreApp = class GamesBoxScoreApp {
     constructor(scheduleService) {
         this.scheduleService = scheduleService;
     }
-    async getGamesBoxScore() {
+    async getGamesBoxScore(id) {
         const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
         common_1.Logger.log('games boxScore id for testing', gamesBoxScore);
     }

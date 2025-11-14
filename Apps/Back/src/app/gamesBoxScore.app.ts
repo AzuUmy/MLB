@@ -5,7 +5,7 @@ import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
 export class GamesBoxScoreApp {
   constructor(private readonly scheduleService: ScheduleService) {}
 
-  async getGamesBoxScore() {
+  async getGamesBoxScore(id: string) {
     const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
     Logger.log('games boxScore id for testing', gamesBoxScore);
   }

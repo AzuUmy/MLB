@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GamesBoxScoreResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
@@ -18,15 +21,16 @@ let GamesBoxScoreResolver = class GamesBoxScoreResolver {
     constructor(gamesBoxScoreApp) {
         this.gamesBoxScoreApp = gamesBoxScoreApp;
     }
-    async gamesBoxScore() {
-        return this.gamesBoxScoreApp.getGamesBoxScore();
+    async gamesBoxScore(id) {
+        return this.gamesBoxScoreApp.getGamesBoxScore(id);
     }
 };
 exports.GamesBoxScoreResolver = GamesBoxScoreResolver;
 __decorate([
     (0, graphql_1.Query)(() => Game_entity_1.Game, { name: 'gamesBoxScore' }),
+    __param(0, (0, graphql_1.Args)('id', { type: () => String })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], GamesBoxScoreResolver.prototype, "gamesBoxScore", null);
 exports.GamesBoxScoreResolver = GamesBoxScoreResolver = __decorate([

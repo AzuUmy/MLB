@@ -7,7 +7,9 @@ export class GamesBoxScoreResolver {
   constructor(private readonly gamesBoxScoreApp: GamesBoxScoreApp) {}
 
   @Query(() => Game, { name: 'gamesBoxScore' })
-  async gamesBoxScore(): Promise<any> {
-    return this.gamesBoxScoreApp.getGamesBoxScore();
+  async gamesBoxScore(
+    @Args('id', { type: () => String }) id: string,
+  ): Promise<any> {
+    return this.gamesBoxScoreApp.getGamesBoxScore(id);
   }
 }

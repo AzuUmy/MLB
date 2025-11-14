@@ -4,7 +4,7 @@ import { Team } from './team.entity';
 import { Broadcast } from './broadcast.entity';
 
 @ObjectType()
-export class Game {
+export class Games {
   @Field(() => ID)
   id!: string;
 

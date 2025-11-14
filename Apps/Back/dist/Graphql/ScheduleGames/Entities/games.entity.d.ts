@@ -1,7 +1,7 @@
 import { Venue } from './venu.entity';
 import { Team } from './team.entity';
 import { Broadcast } from './broadcast.entity';
-export declare class Game {
+export declare class Games {
     id: string;
     status: string;
     coverage: string;

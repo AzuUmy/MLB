@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", String)
 ], ScheduleGames.prototype, "date", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => [games_entity_1.Game], { nullable: true }),
+    (0, graphql_1.Field)(() => [games_entity_1.Games], { nullable: true }),
     __metadata("design:type", Array)
 ], ScheduleGames.prototype, "games", void 0);
 __decorate([
@@ -54,7 +54,7 @@ __decorate([
     __metadata("design:type", String)
 ], ScheduleGamesSeries.prototype, "series", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => [games_entity_1.Game]),
+    (0, graphql_1.Field)(() => [games_entity_1.Games]),
     __metadata("design:type", Array)
 ], ScheduleGamesSeries.prototype, "games", void 0);
 exports.ScheduleGamesSeries = ScheduleGamesSeries = __decorate([

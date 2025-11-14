@@ -38,9 +38,8 @@ let MlbServiceApi = class MlbServiceApi {
                 date: games.date,
             });
         });
-        const hasDuplicates = existingGames.some((existingGame) => existingGame.games.some((game) => matchingGames.some((matching) => 
-        // matching.id === game.id &&
-        matching.serie === game.ps_round &&
+        const hasDuplicates = existingGames.some((existingGame) => existingGame.games.some((game) => matchingGames.some((matching) => matching.id === game.id &&
+            matching.serie === game.ps_round &&
             matching.date === games.date)));
         if (hasDuplicates) {
             common_2.Logger.warn('Games for today already exist in the database');

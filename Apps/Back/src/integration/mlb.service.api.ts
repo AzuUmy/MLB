@@ -42,7 +42,7 @@ export class MlbServiceApi {
       existingGame.games.some((game) =>
         matchingGames.some(
           (matching) =>
-           // matching.id === game.id &&
+            matching.id === game.id &&
             matching.serie === game.ps_round &&
             matching.date === games.date,
         ),
@@ -79,3 +79,5 @@ export class MlbServiceApi {
     Logger.log("Successfully fetched and stored today's schedule games");
   }
 }
+
+

@@ -1,0 +1,37 @@
+import { MoundVisits } from './Mound_visit.entity';
+import { Reviews } from './Reviews.entity';
+import { TimeZones } from './Time_zones.entity';
+import { Venue } from 'src/Graphql/ScheduleGames/Entities/venu.entity';
+import { Broadcast } from 'src/Graphql/ScheduleGames/Entities/broadcast.entity';
+import { Weather } from './Weather.entity';
+import { Final } from './Final.entity';
+import { TeamStatus } from './Team_status.entity';
+export declare class Game {
+    id: string;
+    status: string;
+    coverage: string;
+    game_number: number;
+    day_night: string;
+    scheduled: string;
+    home_team: string;
+    away_team: string;
+    ps_round: string;
+    ps_game: string;
+    attendance?: number;
+    duration: string;
+    season_id?: string;
+    season_type?: string;
+    season_year?: number;
+    double_header: boolean;
+    entry_mode: string;
+    reference: string;
+    mound_visits?: MoundVisits;
+    reviews?: Reviews;
+    time_zones?: TimeZones;
+    venue?: Venue;
+    broadcasts?: Broadcast[];
+    weather?: Weather;
+    final?: Final;
+    home?: TeamStatus;
+    away?: TeamStatus;
+}

@@ -35,6 +35,18 @@ let ScheduleService = class ScheduleService {
         ]);
         return scheduleGames;
     }
+    async getScheduleGamesById() {
+        const scheduleGamesById = await this.scheduleGamesModel.aggregate([
+            { $unwind: '$games' },
+            {
+                $project: {
+                    _id: 0,
+                    game: '$games.id',
+                },
+            },
+        ]);
+        return scheduleGamesById.map((g) => g.game);
+    }
 };
 exports.ScheduleService = ScheduleService;
 exports.ScheduleService = ScheduleService = __decorate([

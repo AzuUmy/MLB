@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Game = void 0;
+exports.Games = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const venu_entity_1 = require("./venu.entity");
 const team_entity_1 = require("./team.entity");
 const broadcast_entity_1 = require("./broadcast.entity");
-let Game = class Game {
+let Games = class Games {
     id;
     status;
     coverage;
@@ -35,84 +35,84 @@ let Game = class Game {
     away;
     broadcasts;
 };
-exports.Game = Game;
+exports.Games = Games;
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.ID),
     __metadata("design:type", String)
-], Game.prototype, "id", void 0);
+], Games.prototype, "id", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "status", void 0);
+], Games.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "coverage", void 0);
+], Games.prototype, "coverage", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "game_number", void 0);
+], Games.prototype, "game_number", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "day_night", void 0);
+], Games.prototype, "day_night", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "scheduled", void 0);
+], Games.prototype, "scheduled", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "home_team", void 0);
+], Games.prototype, "home_team", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "away_team", void 0);
+], Games.prototype, "away_team", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "ps_round", void 0);
+], Games.prototype, "ps_round", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "ps_game", void 0);
+], Games.prototype, "ps_game", void 0);
 __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], Game.prototype, "attendance", void 0);
+], Games.prototype, "attendance", void 0);
 __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], Game.prototype, "duration", void 0);
+], Games.prototype, "duration", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", Boolean)
-], Game.prototype, "double_header", void 0);
+], Games.prototype, "double_header", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "entry_mode", void 0);
+], Games.prototype, "entry_mode", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Game.prototype, "reference", void 0);
+], Games.prototype, "reference", void 0);
 __decorate([
     (0, graphql_1.Field)(() => venu_entity_1.Venue),
     __metadata("design:type", venu_entity_1.Venue)
-], Game.prototype, "venue", void 0);
+], Games.prototype, "venue", void 0);
 __decorate([
     (0, graphql_1.Field)(() => team_entity_1.Team),
     __metadata("design:type", team_entity_1.Team)
-], Game.prototype, "home", void 0);
+], Games.prototype, "home", void 0);
 __decorate([
     (0, graphql_1.Field)(() => team_entity_1.Team),
     __metadata("design:type", team_entity_1.Team)
-], Game.prototype, "away", void 0);
+], Games.prototype, "away", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [broadcast_entity_1.Broadcast]),
     __metadata("design:type", Array)
-], Game.prototype, "broadcasts", void 0);
-exports.Game = Game = __decorate([
+], Games.prototype, "broadcasts", void 0);
+exports.Games = Games = __decorate([
     (0, graphql_1.ObjectType)()
-], Game);
+], Games);
 //# sourceMappingURL=games.entity.js.map

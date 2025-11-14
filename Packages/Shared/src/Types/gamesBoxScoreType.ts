@@ -1,4 +1,4 @@
-import { Broadcasts, Vanue } from "./gamesMLBTypes";
+import { Broadcasts, Vanue } from "./scheduleGamesType";
 
 export type Game = {
   id: string;

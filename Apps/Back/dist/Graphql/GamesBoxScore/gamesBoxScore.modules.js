@@ -25,7 +25,7 @@ exports.gamesBoxScoreModules = gamesBoxScoreModules = __decorate([
                 { name: scheduleGames_schema_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
             ]),
         ],
-        providers: [gamesBoxScore_service_1.GamesBoxScoreService, gamesBoxScore_resolver_1.GamesBoxScoreResolver, gamesBoxScore_app_1.GamesBoxScoreApp],
+        providers: [gamesBoxScore_service_1.GamesBoxScoreService, gamesBoxScore_resolver_1.GamesBoxScoreResolver, gamesBoxScore_app_1.GamesBoxScoreApp, schedule_modules_1.ScheduleModule],
         exports: [gamesBoxScore_service_1.GamesBoxScoreService],
     })
 ], gamesBoxScoreModules);

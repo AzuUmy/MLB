@@ -12,7 +12,7 @@ const schedule_service_1 = require("./schedule.service");
 const schedule_resolver_1 = require("./schedule.resolver");
 const mongoose_1 = require("@nestjs/mongoose");
 const scheduleGames_schema_1 = require("../../schema/scheduleGames/scheduleGames.schema");
-const scheduleGames_app_1 = require("../../app/scheduleGames.app");
+const gamesBoxScore_app_1 = require("../../app/gamesBoxScore.app");
 let ScheduleModule = class ScheduleModule {
 };
 exports.ScheduleModule = ScheduleModule;
@@ -23,7 +23,7 @@ exports.ScheduleModule = ScheduleModule = __decorate([
                 { name: scheduleGames_schema_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
             ]),
         ],
-        providers: [schedule_service_1.ScheduleService, schedule_resolver_1.ScheduleResolver, scheduleGames_app_1.ScheduleGamesApp],
+        providers: [schedule_service_1.ScheduleService, schedule_resolver_1.ScheduleResolver, gamesBoxScore_app_1.GamesBoxScoreApp],
         exports: [schedule_service_1.ScheduleService],
     })
 ], ScheduleModule);

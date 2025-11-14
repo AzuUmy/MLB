@@ -1,4 +1,4 @@
-export * from "./Types/gamesMLBTypes";
+export * from "./Types/scheduleGamesType";
 export * from  "./Types/gamesBoxScoreType"
 
 export type Location = {

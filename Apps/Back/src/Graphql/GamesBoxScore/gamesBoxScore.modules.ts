@@ -16,7 +16,7 @@ import { ScheduleModule } from '../ScheduleGames/schedule.modules';
       { name: ScheduleGames.name, schema: ScheduleGamesSchema },
     ]),
   ],
-  providers: [GamesBoxScoreService, GamesBoxScoreResolver, GamesBoxScoreApp],
+  providers: [GamesBoxScoreService, GamesBoxScoreResolver, GamesBoxScoreApp, ScheduleModule],
   exports: [GamesBoxScoreService],
 })
 export class gamesBoxScoreModules {}

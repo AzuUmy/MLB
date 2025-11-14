@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
 import { ScheduleGamesSeries } from 'src/Graphql/ScheduleGames/Entities/schedule.entity';
-import { Logger } from '@nestjs/common';
-import { apiUrl, format, locale, token } from 'src/services/Api/api';
-import { ScheduleGames } from '@my-mlb/shared/Types/gamesMLBTypes';
 @Injectable()
 export class ScheduleGamesApp {
   constructor(private readonly scheduleService: ScheduleService) {}

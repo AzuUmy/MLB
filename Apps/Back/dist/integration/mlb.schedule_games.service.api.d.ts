@@ -1,5 +1,5 @@
 import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
-import { ScheduleGames } from '@my-mlb/shared/Types/gamesMLBTypes';
+import { ScheduleGames } from '@my-mlb/shared';
 export declare class MlbScheduleGamesServiceApi {
     private readonly scheduleGamesApp;
     constructor(scheduleGamesApp: ScheduleGamesApp);

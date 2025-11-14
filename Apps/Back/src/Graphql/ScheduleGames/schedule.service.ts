@@ -3,7 +3,7 @@ import { ScheduleGames } from './Entities/schedule.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ScheduleGameDocument } from 'src/schema/scheduleGames/scheduleGames.schema';
-import { ScheduleGames as games } from '@my-mlb/shared/Types/gamesMLBTypes';
+import type { ScheduleGames as games } from '@my-mlb/shared';
 @Injectable()
 export class ScheduleService {
   constructor(

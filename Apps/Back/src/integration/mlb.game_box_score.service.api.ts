@@ -8,7 +8,7 @@ import { Game as boxScoreGames } from '@my-mlb/shared';
 @Injectable()
 export class MlbBoxScoreGamesServiceApi {
 
-  async getBoxScoreGamesFromApi(id: string[]): Promise<boxScoreGames[] | undefined> {
+  async getBoxScoreGamesFromApi(id: string[]): Promise<any[] | undefined> {
     try {
       const gameBoxScore: boxScoreGames[] = [];
 

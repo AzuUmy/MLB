@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
 import { Logger } from '@nestjs/common';
-import { Games, ScheduleGames } from '@my-mlb/shared/Types/gamesMLBTypes';
 import { toTimestamp } from 'src/helper/date';
 import { apiUrl, format, locale, token } from 'src/services/Api/api';
+import { ScheduleGames, Games } from '@my-mlb/shared';
 @Injectable()
 export class MlbScheduleGamesServiceApi {
   constructor(private readonly scheduleGamesApp: ScheduleGamesApp) {}

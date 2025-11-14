@@ -7,12 +7,11 @@ import { WinstonModule } from 'nest-winston';
 import { winstonTransports } from './Logs/Logger';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModules } from './Graphql/graphql.modules';
-import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { mongoConfig } from './config/mongo.config';
 import { CronModule } from './cron/cron.module';
-
+import { PrismaModule } from './prisma/prisma.module';
 @Module({
   imports: [
     ConfigModule.forRoot({

@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",                // modern JS target
-    "module": "ESNext",                // modern module system
+    "target": "ES2020",                
+    "module": "ESNext",                
     "moduleResolution": "Node",
-    "strict": true,                    // enable strict type checking
+    "strict": true,                  
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "baseUrl": ".",                     // for paths mapping
-    "paths": {}                         // root-level paths, can leave empty
+    "baseUrl": ".",                    
+    "paths": {}                       
   },
   "include": [],
-  "references": []                     // root can have empty references
+  "references": []                    
 }

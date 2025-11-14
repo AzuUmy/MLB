@@ -28,7 +28,7 @@
       "@my-mlb/shared/*": ["../../Packages/Shared/dist/*"]
     }
   },
-  "include": ["src", "**/*.test.ts", "**/*.spec.ts"],
+  "include": ["src", "**/*.test.ts", "**/*.spec.ts", "prisma"],
   "references": [
     {
       "path": "../../Packages/Shared/tsconfig.json"

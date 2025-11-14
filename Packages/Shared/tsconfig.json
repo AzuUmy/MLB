@@ -5,7 +5,7 @@
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
-    "rootDir": "./src",        // IMPORTANT: rootDir = src
+    "rootDir": "./src",
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "baseUrl": "."

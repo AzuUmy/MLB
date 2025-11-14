@@ -19,8 +19,8 @@ export class MlbScheduleGamesServiceApi {
       );
       const data = (await response.json()) as ScheduleGames;
       return data;
-    } catch (error) {
-      Logger.error('Error fetching schedule games from API:', error);
+    } catch (erro) {
+      Logger.error(`Error fetching schedule games from api: ${erro}`);
       return undefined;
     }
   }

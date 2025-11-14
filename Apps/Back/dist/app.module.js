@@ -16,11 +16,11 @@ const nest_winston_1 = require("nest-winston");
 const Logger_1 = require("./Logs/Logger");
 const apollo_1 = require("@nestjs/apollo");
 const graphql_modules_1 = require("./Graphql/graphql.modules");
-const prisma_module_1 = require("./prisma/prisma.module");
 const config_1 = require("@nestjs/config");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongo_config_1 = require("./config/mongo.config");
 const cron_module_1 = require("./cron/cron.module");
+const prisma_module_1 = require("./prisma/prisma.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;

@@ -97,21 +97,4 @@ export class ScheduleGamesApp {
 
     return result;
   }
-
-  async getScheduleGamesFromApi(
-    year: string,
-    month: string,
-    day: string,
-  ): Promise<ScheduleGames | undefined> {
-    try {
-      const response = await fetch(
-        `${apiUrl}/${locale}/games/${year}/${month}/${day}/schedule.${format}?api_key=${token}`,
-      );
-      const data = (await response.json()) as ScheduleGames;
-      return data;
-    } catch (error) {
-      Logger.error('Error fetching schedule games from API:', error);
-      return undefined;
-    }
-  }
 }

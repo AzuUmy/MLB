@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MlbServiceApi = void 0;
+exports.MlbScheduleGamesServiceApi = void 0;
 const common_1 = require("@nestjs/common");
 const scheduleGames_app_1 = require("../app/scheduleGames.app");
 const common_2 = require("@nestjs/common");
 const date_1 = require("../helper/date");
 const api_1 = require("../services/Api/api");
-let MlbServiceApi = class MlbServiceApi {
+let MlbScheduleGamesServiceApi = class MlbScheduleGamesServiceApi {
     scheduleGamesApp;
     constructor(scheduleGamesApp) {
         this.scheduleGamesApp = scheduleGamesApp;
@@ -76,9 +76,9 @@ let MlbServiceApi = class MlbServiceApi {
         common_2.Logger.log("Successfully fetched and stored today's schedule games");
     }
 };
-exports.MlbServiceApi = MlbServiceApi;
-exports.MlbServiceApi = MlbServiceApi = __decorate([
+exports.MlbScheduleGamesServiceApi = MlbScheduleGamesServiceApi;
+exports.MlbScheduleGamesServiceApi = MlbScheduleGamesServiceApi = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [scheduleGames_app_1.ScheduleGamesApp])
-], MlbServiceApi);
-//# sourceMappingURL=mlb.service.api.js.map
+], MlbScheduleGamesServiceApi);
+//# sourceMappingURL=mlb.schedule_games.service.api.js.map

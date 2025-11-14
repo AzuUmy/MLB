@@ -1,7 +1,7 @@
-import { MlbServiceApi } from 'src/integration/mlb.service.api';
+import { MlbScheduleGamesServiceApi } from 'src/integration/mlb.schedule_games.service.api';
 export declare class MlbSchedulerService {
-    private readonly mlbServiceApi;
-    constructor(mlbServiceApi: MlbServiceApi);
+    private readonly mlbScheduleGamesServiceApi;
+    constructor(mlbScheduleGamesServiceApi: MlbScheduleGamesServiceApi);
     onModuleInit(): void;
     handleDailyScheduleFetch(): Promise<void>;
 }

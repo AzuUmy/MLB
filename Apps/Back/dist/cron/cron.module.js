@@ -12,7 +12,7 @@ const schedule_1 = require("@nestjs/schedule");
 const mongoose_1 = require("@nestjs/mongoose");
 const cron_service_1 = require("./cron.service");
 const schedule_games_cron_service_1 = require("./services/schedule.games.cron.service");
-const mlb_service_api_1 = require("../integration/mlb.service.api");
+const mlb_schedule_games_service_api_1 = require("../integration/mlb.schedule_games.service.api");
 const scheduleGames_app_1 = require("../app/scheduleGames.app");
 const schedule_service_1 = require("../Graphql/ScheduleGames/schedule.service");
 const schedule_entity_1 = require("../Graphql/ScheduleGames/Entities/schedule.entity");
@@ -24,12 +24,14 @@ exports.CronModule = CronModule = __decorate([
     (0, common_1.Module)({
         imports: [
             schedule_1.ScheduleModule.forRoot(),
-            mongoose_1.MongooseModule.forFeature([{ name: schedule_entity_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema }]),
+            mongoose_1.MongooseModule.forFeature([
+                { name: schedule_entity_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
+            ]),
         ],
         providers: [
             cron_service_1.CronService,
             schedule_games_cron_service_1.MlbSchedulerService,
-            mlb_service_api_1.MlbServiceApi,
+            mlb_schedule_games_service_api_1.MlbScheduleGamesServiceApi,
             scheduleGames_app_1.ScheduleGamesApp,
             schedule_service_1.ScheduleService,
         ],

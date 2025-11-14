@@ -3,9 +3,27 @@ import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
 import { Logger } from '@nestjs/common';
 import { Games, ScheduleGames } from '@my-mlb/shared/Types/gamesMLBTypes';
 import { toTimestamp } from 'src/helper/date';
+import { apiUrl, format, locale, token } from 'src/services/Api/api';
 @Injectable()
-export class MlbServiceApi {
+export class MlbScheduleGamesServiceApi {
   constructor(private readonly scheduleGamesApp: ScheduleGamesApp) {}
+
+  async getScheduleGamesFromApi(
+    year: string,
+    month: string,
+    day: string,
+  ): Promise<ScheduleGames | undefined> {
+    try {
+      const response = await fetch(
+        `${apiUrl}/${locale}/games/${year}/${month}/${day}/schedule.${format}?api_key=${token}`,
+      );
+      const data = (await response.json()) as ScheduleGames;
+      return data;
+    } catch (error) {
+      Logger.error('Error fetching schedule games from API:', error);
+      return undefined;
+    }
+  }
 
   async fetchDailyScheduleGames() {
     const today = new Date();
@@ -13,11 +31,7 @@ export class MlbServiceApi {
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
     const day = today.getDate().toString().padStart(2, '0');
 
-    const games = await this.scheduleGamesApp.getScheduleGamesFromApi(
-      year,
-      month,
-      day,
-    );
+    const games = await this.getScheduleGamesFromApi(year, month, day);
 
     if (!games || !games.games?.length) {
       Logger.warn('No games found for today');
@@ -79,5 +93,3 @@ export class MlbServiceApi {
     Logger.log("Successfully fetched and stored today's schedule games");
   }
 }
-
-

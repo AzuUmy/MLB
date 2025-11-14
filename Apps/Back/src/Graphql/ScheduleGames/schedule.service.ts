@@ -27,7 +27,7 @@ export class ScheduleService {
     return scheduleGames;
   }
 
-  async getScheduleGamesById(): Promise<games[]> {
+  async getScheduleGamesById(): Promise<string[]> {
     const scheduleGamesById = await this.scheduleGamesModel.aggregate([
       { $unwind: '$games' },
       {

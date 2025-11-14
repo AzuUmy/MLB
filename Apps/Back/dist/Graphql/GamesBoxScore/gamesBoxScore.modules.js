@@ -14,6 +14,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const scheduleGames_schema_1 = require("../../schema/scheduleGames/scheduleGames.schema");
 const gamesBoxScore_app_1 = require("../../app/gamesBoxScore.app");
 const schedule_modules_1 = require("../ScheduleGames/schedule.modules");
+const mlb_game_box_score_service_api_1 = require("../../integration/mlb.game_box_score.service.api");
 let gamesBoxScoreModules = class gamesBoxScoreModules {
 };
 exports.gamesBoxScoreModules = gamesBoxScoreModules;
@@ -25,7 +26,12 @@ exports.gamesBoxScoreModules = gamesBoxScoreModules = __decorate([
                 { name: scheduleGames_schema_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
             ]),
         ],
-        providers: [gamesBoxScore_service_1.GamesBoxScoreService, gamesBoxScore_resolver_1.GamesBoxScoreResolver, gamesBoxScore_app_1.GamesBoxScoreApp, schedule_modules_1.ScheduleModule],
+        providers: [
+            gamesBoxScore_service_1.GamesBoxScoreService,
+            gamesBoxScore_resolver_1.GamesBoxScoreResolver,
+            gamesBoxScore_app_1.GamesBoxScoreApp,
+            mlb_game_box_score_service_api_1.MlbBoxScoreGamesServiceApi,
+        ],
         exports: [gamesBoxScore_service_1.GamesBoxScoreService],
     })
 ], gamesBoxScoreModules);

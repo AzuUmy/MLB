@@ -4,18 +4,14 @@ import { MlbBoxScoreGamesServiceApi } from 'src/integration/mlb.game_box_score.s
 
 @Injectable()
 export class GamesBoxScoreApp {
-  constructor(private readonly scheduleService: ScheduleService,
-    private readonly mlbBoxScoregamesServiceApp: MlbBoxScoreGamesServiceApi
+  constructor(
+    private readonly scheduleService: ScheduleService,
+    private readonly mlbBoxScoregamesServiceApp: MlbBoxScoreGamesServiceApi,
   ) {}
 
   async getGamesBoxScore(id: string) {
     const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
 
-    //const scheduleGamesId = gamesBoxScore.map(e => e.games.map(a => a.id))
-
-        Logger.log('games boxScore id for testing', gamesBoxScore);
-
-    
-    //const boxScore = this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(scheduleGamesId)
+    this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(gamesBoxScore);
   }
 }

@@ -22,9 +22,7 @@ let GamesBoxScoreApp = class GamesBoxScoreApp {
     }
     async getGamesBoxScore(id) {
         const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
-        //const scheduleGamesId = gamesBoxScore.map(e => e.games.map(a => a.id))
-        common_1.Logger.log('games boxScore id for testing', gamesBoxScore);
-        //const boxScore = this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(scheduleGamesId)
+        this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(gamesBoxScore);
     }
 };
 exports.GamesBoxScoreApp = GamesBoxScoreApp;

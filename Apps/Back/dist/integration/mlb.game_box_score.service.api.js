@@ -14,11 +14,18 @@ let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
     async getBoxScoreGamesFromApi(id) {
         try {
             const gameBoxScore = [];
-            id.forEach(async (gamesId) => {
+            const result = await Promise.all(id.map(async (gamesId) => {
                 const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${gamesId}/boxscore.${api_1.format}?api_key=${api_1.token}`);
                 const data = (await response.json());
-                gameBoxScore.push(...data);
-            });
+                if (Array.isArray(data)) {
+                    common_2.Logger.error(`API error for game ${gamesId}: ${JSON.stringify(data)}`);
+                    return [];
+                }
+                else {
+                    gameBoxScore.push(data);
+                }
+            }));
+            common_2.Logger.log('teste of games', gameBoxScore);
             return gameBoxScore;
         }
         catch (erro) {

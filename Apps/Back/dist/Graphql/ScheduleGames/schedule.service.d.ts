@@ -7,5 +7,5 @@ export declare class ScheduleService {
     constructor(scheduleGamesModel: Model<ScheduleGameDocument>);
     createScheduleGames(scheduleGames: ScheduleGames[]): Promise<void>;
     getScheduleGames(startDate: string, endDate: string): Promise<games[]>;
-    getScheduleGamesById(): Promise<games[]>;
+    getScheduleGamesById(): Promise<string[]>;
 }

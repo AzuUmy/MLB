@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common';
 import { ScheduleService } from './schedule.service';
 import { ScheduleResolver } from './schedule.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ScheduleGames, ScheduleGamesSchema } from 'src/schema/scheduleGames/scheduleGames.schema';
+import {
+  ScheduleGames,
+  ScheduleGamesSchema,
+} from 'src/schema/scheduleGames/scheduleGames.schema';
 import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
-import { GamesBoxScoreApp } from 'src/app/gamesBoxScore.app';
 
 @Module({
   imports: [
@@ -12,7 +14,7 @@ import { GamesBoxScoreApp } from 'src/app/gamesBoxScore.app';
       { name: ScheduleGames.name, schema: ScheduleGamesSchema },
     ]),
   ],
-  providers: [ScheduleService, ScheduleResolver, GamesBoxScoreApp],
+  providers: [ScheduleService, ScheduleResolver, ScheduleGamesApp],
   exports: [ScheduleService],
 })
 export class ScheduleModule {}

@@ -8,6 +8,7 @@ import {
 } from 'src/schema/scheduleGames/scheduleGames.schema';
 import { GamesBoxScoreApp } from 'src/app/gamesBoxScore.app';
 import { ScheduleModule } from '../ScheduleGames/schedule.modules';
+import { MlbBoxScoreGamesServiceApi } from 'src/integration/mlb.game_box_score.service.api';
 
 @Module({
   imports: [
@@ -16,7 +17,12 @@ import { ScheduleModule } from '../ScheduleGames/schedule.modules';
       { name: ScheduleGames.name, schema: ScheduleGamesSchema },
     ]),
   ],
-  providers: [GamesBoxScoreService, GamesBoxScoreResolver, GamesBoxScoreApp, ScheduleModule],
+  providers: [
+    GamesBoxScoreService,
+    GamesBoxScoreResolver,
+    GamesBoxScoreApp,
+    MlbBoxScoreGamesServiceApi,
+  ],
   exports: [GamesBoxScoreService],
 })
 export class gamesBoxScoreModules {}

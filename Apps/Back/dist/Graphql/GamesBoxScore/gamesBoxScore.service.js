@@ -22,6 +22,9 @@ let GamesBoxScoreService = class GamesBoxScoreService {
     constructor(gamesBoxScoreModel) {
         this.gamesBoxScoreModel = gamesBoxScoreModel;
     }
+    async getGamesBoxScoreById(id) {
+        return this.gamesBoxScoreModel.findOne({ id });
+    }
     async creatGamesBoxScore(game) {
         try {
             this.gamesBoxScoreModel.create(game);

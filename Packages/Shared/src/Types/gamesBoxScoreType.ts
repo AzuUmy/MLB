@@ -1,7 +1,7 @@
 import { Broadcasts, Venue } from "./scheduleGamesType";
 
 export type BoxScore = {
-  game: Game
+  game: Game;
   _comment: string;
 };
 
@@ -24,16 +24,16 @@ export type Game = {
   double_header: boolean;
   entry_mode: string;
   reference: string;
-  mound_visits: MoundVisits;
-  reviews: reviews;
-  time_zones: TimeZones;
-  venue: Venue;
+  mound_visits?: MoundVisits;
+  reviews?: reviews;
+  time_zones?: TimeZones;
+  venue?: Venue;
   broadcasts: Broadcasts[];
-  weather: Weather;
-  final: Final;
-  home: TeamStatus;
-  away: TeamStatus;
-  pitching: Pitching;
+  weather?: Weather;
+  final?: Final;
+  home?: TeamStatus;
+  away?: TeamStatus;
+  pitching?: Pitching;
 };
 
 export type MoundVisits = {
@@ -105,18 +105,18 @@ export type Pitcher = {
   jersey_number?: string;
   id: string;
   full_name: string;
-  win: number;
-  loss: number;
-  era: number;
+  win?: number;
+  loss?: number;
+  era?: number;
 };
 
 export type Scoring = {
-  number: number;
-  sequence: number;
-  runs: number;
-  hits: number;
-  errors: number;
-  type: string;
+  number?: number;
+  sequence?: number;
+  runs?: number;
+  hits?: number;
+  errors?: number;
+  type?: string;
 };
 
 export type Events = {

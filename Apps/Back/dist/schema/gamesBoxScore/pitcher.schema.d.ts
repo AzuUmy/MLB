@@ -5,9 +5,9 @@ export declare class Pitcher {
     id: string;
     full_name: string;
     jersey_number?: string;
-    win: number;
-    loss: number;
-    era: number;
+    win?: number;
+    loss?: number;
+    era?: number;
 }
 export declare const PitcherSchema: import("mongoose").Schema<Pitcher, import("mongoose").Model<Pitcher, any, any, any, import("mongoose").Document<unknown, any, Pitcher, any, {}> & Pitcher & {
     _id: import("mongoose").Types.ObjectId;

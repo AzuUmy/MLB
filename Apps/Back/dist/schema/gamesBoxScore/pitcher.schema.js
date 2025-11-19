@@ -48,15 +48,15 @@ __decorate([
     __metadata("design:type", String)
 ], Pitcher.prototype, "jersey_number", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: false }),
     __metadata("design:type", Number)
 ], Pitcher.prototype, "win", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: false }),
     __metadata("design:type", Number)
 ], Pitcher.prototype, "loss", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: false }),
     __metadata("design:type", Number)
 ], Pitcher.prototype, "era", void 0);
 exports.Pitcher = Pitcher = __decorate([

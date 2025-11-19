@@ -4,7 +4,7 @@ export declare class Pitcher {
     last_name: string;
     id: string;
     full_name: string;
-    win: number;
-    loss: number;
-    era: number;
+    win?: number;
+    loss?: number;
+    era?: number;
 }

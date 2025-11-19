@@ -1,10 +1,10 @@
 export declare class Scoring {
-    number: number;
-    sequence: number;
-    runs: number;
-    hits: number;
-    errors: number;
-    type: string;
+    number?: number;
+    sequence?: number;
+    runs?: number;
+    hits?: number;
+    errors?: number;
+    type?: string;
 }
 export declare const ScoringSchema: import("mongoose").Schema<Scoring, import("mongoose").Model<Scoring, any, any, any, import("mongoose").Document<unknown, any, Scoring, any, {}> & Scoring & {
     _id: import("mongoose").Types.ObjectId;

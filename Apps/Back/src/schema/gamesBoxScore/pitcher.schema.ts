@@ -14,12 +14,12 @@ export class Pitcher {
   full_name!: string;
   @Prop({ required: false })
   jersey_number?: string;
-  @Prop()
-  win!: number;
-  @Prop()
-  loss!: number;
-  @Prop()
-  era!: number;
+  @Prop({ required: false })
+  win?: number;
+  @Prop({ required: false })
+  loss?: number;
+  @Prop({ required: false })
+  era?: number;
 }
 export const PitcherSchema = SchemaFactory.createForClass(Pitcher);
 export type PitcherDocument = Pitcher & Document;

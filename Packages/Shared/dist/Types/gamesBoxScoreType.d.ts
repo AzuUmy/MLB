@@ -1,4 +1,8 @@
-import { Broadcasts, Vanue } from "./scheduleGamesType";
+import { Broadcasts, Venue } from "./scheduleGamesType";
+export type BoxScore = {
+    game: Game;
+    _comment: string;
+};
 export type Game = {
     id: string;
     status: string;
@@ -21,12 +25,13 @@ export type Game = {
     mound_visits: MoundVisits;
     reviews: reviews;
     time_zones: TimeZones;
-    venue: Vanue;
-    broadcasts: Broadcasts;
+    venue: Venue;
+    broadcasts: Broadcasts[];
     weather: Weather;
     final: Final;
     home: TeamStatus;
     away: TeamStatus;
+    pitching: Pitching;
 };
 export type MoundVisits = {
     home: Metting;
@@ -85,6 +90,7 @@ export type Pitcher = {
     preferred_name: string;
     first_name: string;
     last_name: string;
+    jersey_number?: string;
     id: string;
     full_name: string;
     win: number;
@@ -117,6 +123,7 @@ export type Runners = {
     jersey_number: string;
     id: string;
     full_name: string;
+    suffix?: string;
 };
 export type Pitching = {
     win: Status;

@@ -6,6 +6,7 @@ import { Broadcast } from 'src/Graphql/ScheduleGames/Entities/broadcast.entity';
 import { Weather } from './Weather.entity';
 import { Final } from './Final.entity';
 import { TeamStatus } from './Team_status.entity';
+import { Pitching } from './Pitching.entity';
 export declare class Game {
     id: string;
     status: string;
@@ -34,4 +35,5 @@ export declare class Game {
     final?: Final;
     home?: TeamStatus;
     away?: TeamStatus;
+    pitching?: Pitching;
 }

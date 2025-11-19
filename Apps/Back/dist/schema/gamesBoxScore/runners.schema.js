@@ -9,78 +9,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VenuSchema = exports.Venue = void 0;
+exports.RunnersSchema = exports.Runners = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-let Venue = class Venue {
-    name;
-    market;
-    capacity;
-    surface;
-    address;
-    city;
-    state;
-    zip;
-    country;
+let Runners = class Runners {
+    starting_base;
+    first_name;
+    last_name;
+    preferred_name;
+    jersey_number;
     id;
-    field_orientation;
-    stadium_type;
-    time_zone;
+    full_name;
+    suffix;
 };
-exports.Venue = Venue;
+exports.Runners = Runners;
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], Runners.prototype, "starting_base", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Venue.prototype, "name", void 0);
+], Runners.prototype, "first_name", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Venue.prototype, "market", void 0);
+], Runners.prototype, "last_name", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Venue.prototype, "capacity", void 0);
+], Runners.prototype, "preferred_name", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Venue.prototype, "surface", void 0);
+], Runners.prototype, "jersey_number", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Venue.prototype, "address", void 0);
+], Runners.prototype, "id", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Venue.prototype, "city", void 0);
+], Runners.prototype, "full_name", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: false }),
     __metadata("design:type", String)
-], Venue.prototype, "state", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Venue.prototype, "zip", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Venue.prototype, "country", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Venue.prototype, "id", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Venue.prototype, "field_orientation", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Venue.prototype, "stadium_type", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Venue.prototype, "time_zone", void 0);
-exports.Venue = Venue = __decorate([
+], Runners.prototype, "suffix", void 0);
+exports.Runners = Runners = __decorate([
     (0, mongoose_1.Schema)()
-], Venue);
-exports.VenuSchema = mongoose_1.SchemaFactory.createForClass(Venue);
-//# sourceMappingURL=venu.schema.js.map
+], Runners);
+exports.RunnersSchema = mongoose_1.SchemaFactory.createForClass(Runners);
+//# sourceMappingURL=runners.schema.js.map

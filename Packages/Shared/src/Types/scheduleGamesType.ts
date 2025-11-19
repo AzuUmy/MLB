@@ -29,13 +29,13 @@ export type Games = {
   double_header: boolean;
   entry_mode: string;
   reference: string;
-  venue: Vanue;
+  venue: Venue;
   home: Home;
   away: Away;
   broadcasts: Broadcasts[];
 };
 
-export type Vanue = {
+export type Venue = {
   name: string;
   market: string;
   capacity: string;

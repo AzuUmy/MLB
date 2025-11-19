@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int, Float } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { MoundVisits } from './Mound_visit.entity';
 import { Reviews } from './Reviews.entity';
 import { TimeZones } from './Time_zones.entity';
@@ -7,6 +7,7 @@ import { Broadcast } from 'src/Graphql/ScheduleGames/Entities/broadcast.entity';
 import { Weather } from './Weather.entity';
 import { Final } from './Final.entity';
 import { TeamStatus } from './Team_status.entity';
+import { Pitching } from './Pitching.entity';
 
 @ObjectType()
 export class Game {
@@ -64,4 +65,6 @@ export class Game {
   home?: TeamStatus;
   @Field(() => TeamStatus, { nullable: true })
   away?: TeamStatus;
+  @Field(() => Pitching, {nullable: true})
+  pitching?: Pitching;
 }

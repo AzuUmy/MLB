@@ -11,8 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Status = void 0;
 const graphql_1 = require("@nestjs/graphql");
-(0, graphql_1.ObjectType)();
-class Status {
+let Status = class Status {
     preferred_name;
     first_name;
     last_name;
@@ -27,7 +26,7 @@ class Status {
     hold;
     blown_save;
     full_name;
-}
+};
 exports.Status = Status;
 __decorate([
     (0, graphql_1.Field)(),
@@ -85,4 +84,7 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Status.prototype, "full_name", void 0);
+exports.Status = Status = __decorate([
+    (0, graphql_1.ObjectType)()
+], Status);
 //# sourceMappingURL=Status.entity.js.map

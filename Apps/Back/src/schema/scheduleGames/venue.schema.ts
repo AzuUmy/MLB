@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-
 @Schema()
 export class Venue {
   @Prop()
@@ -41,7 +40,10 @@ export class Venue {
 
   @Prop()
   time_zone!: string;
+
+  @Prop({ type: Object, required: false })
+  location?: { lat?: string; lng?: string };
 }
 
 export type VenueDocument = Venue & Document;
-export const VenuSchema = SchemaFactory.createForClass(Venue);
+export const VenueSchema = SchemaFactory.createForClass(Venue);

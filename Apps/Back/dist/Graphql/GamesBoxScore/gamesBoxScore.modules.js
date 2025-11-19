@@ -15,6 +15,7 @@ const scheduleGames_schema_1 = require("../../schema/scheduleGames/scheduleGames
 const gamesBoxScore_app_1 = require("../../app/gamesBoxScore.app");
 const schedule_modules_1 = require("../ScheduleGames/schedule.modules");
 const mlb_game_box_score_service_api_1 = require("../../integration/mlb.game_box_score.service.api");
+const game_schema_1 = require("../../schema/gamesBoxScore/game.schema");
 let gamesBoxScoreModules = class gamesBoxScoreModules {
 };
 exports.gamesBoxScoreModules = gamesBoxScoreModules;
@@ -24,6 +25,7 @@ exports.gamesBoxScoreModules = gamesBoxScoreModules = __decorate([
             schedule_modules_1.ScheduleModule,
             mongoose_1.MongooseModule.forFeature([
                 { name: scheduleGames_schema_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
+                { name: game_schema_1.Game.name, schema: game_schema_1.GameSchema },
             ]),
         ],
         providers: [

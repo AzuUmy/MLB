@@ -19,6 +19,7 @@ const broadcast_entity_1 = require("../../ScheduleGames/Entities/broadcast.entit
 const Weather_entity_1 = require("./Weather.entity");
 const Final_entity_1 = require("./Final.entity");
 const Team_status_entity_1 = require("./Team_status.entity");
+const Pitching_entity_1 = require("./Pitching.entity");
 let Game = class Game {
     id;
     status;
@@ -47,6 +48,7 @@ let Game = class Game {
     final;
     home;
     away;
+    pitching;
 };
 exports.Game = Game;
 __decorate([
@@ -157,6 +159,10 @@ __decorate([
     (0, graphql_1.Field)(() => Team_status_entity_1.TeamStatus, { nullable: true }),
     __metadata("design:type", Team_status_entity_1.TeamStatus)
 ], Game.prototype, "away", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => Pitching_entity_1.Pitching, { nullable: true }),
+    __metadata("design:type", Pitching_entity_1.Pitching)
+], Game.prototype, "pitching", void 0);
 exports.Game = Game = __decorate([
     (0, graphql_1.ObjectType)()
 ], Game);

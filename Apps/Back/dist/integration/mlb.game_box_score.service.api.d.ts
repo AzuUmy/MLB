@@ -1,3 +1,7 @@
+import { GamesBoxScoreService } from 'src/Graphql/GamesBoxScore/gamesBoxScore.service';
 export declare class MlbBoxScoreGamesServiceApi {
-    getBoxScoreGamesFromApi(id: string[]): Promise<any[] | undefined>;
+    private readonly gamesBoxScoreService;
+    constructor(gamesBoxScoreService: GamesBoxScoreService);
+    getBoxScoreGamesFromApi(id: string[]): Promise<void>;
+    private sanitizeGame;
 }

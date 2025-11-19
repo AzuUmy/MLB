@@ -19,6 +19,7 @@ let Runners = class Runners {
     jersey_number;
     id;
     full_name;
+    suffix;
 };
 exports.Runners = Runners;
 __decorate([
@@ -49,6 +50,10 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Runners.prototype, "full_name", void 0);
+__decorate([
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], Runners.prototype, "suffix", void 0);
 exports.Runners = Runners = __decorate([
     (0, graphql_1.ObjectType)()
 ], Runners);

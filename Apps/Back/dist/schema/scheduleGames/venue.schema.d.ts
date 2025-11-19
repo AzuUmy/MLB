@@ -12,9 +12,13 @@ export declare class Venue {
     field_orientation: string;
     stadium_type: string;
     time_zone: string;
+    location?: {
+        lat?: string;
+        lng?: string;
+    };
 }
 export type VenueDocument = Venue & Document;
-export declare const VenuSchema: import("mongoose").Schema<Venue, import("mongoose").Model<Venue, any, any, any, import("mongoose").Document<unknown, any, Venue, any, {}> & Venue & {
+export declare const VenueSchema: import("mongoose").Schema<Venue, import("mongoose").Model<Venue, any, any, any, import("mongoose").Document<unknown, any, Venue, any, {}> & Venue & {
     _id: import("mongoose").Types.ObjectId;
 } & {
     __v: number;

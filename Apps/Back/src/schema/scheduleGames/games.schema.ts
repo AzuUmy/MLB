@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import type { Venue } from './venu.schema';
+import type { Venue } from './venue.schema';
 import type { Team } from './team.schema';
 import { Broadcast } from 'src/Graphql/ScheduleGames/Entities/broadcast.entity';
 

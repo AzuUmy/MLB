@@ -52,7 +52,7 @@ let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
         ['home', 'away'].forEach((side) => {
             const team = game[side];
             if (!team)
-                return; // prevents: cannot read home
+                return;
             if (!Array.isArray(team.scoring))
                 return;
             team.scoring = team.scoring.map((inning) => ({

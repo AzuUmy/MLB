@@ -1,4 +1,4 @@
-import { WeatherInfo } from "./weather_info.schema";
+import { WeatherInfo } from './weather_info.schema';
 export declare class Weather {
     forecast: WeatherInfo;
     current_conditions: WeatherInfo;

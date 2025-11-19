@@ -13,6 +13,10 @@ const schedule_resolver_1 = require("./schedule.resolver");
 const mongoose_1 = require("@nestjs/mongoose");
 const scheduleGames_schema_1 = require("../../schema/scheduleGames/scheduleGames.schema");
 const scheduleGames_app_1 = require("../../app/scheduleGames.app");
+const mlb_game_box_score_service_api_1 = require("../../integration/mlb.game_box_score.service.api");
+const gamesBoxScore_app_1 = require("../../app/gamesBoxScore.app");
+const gamesBoxScore_service_1 = require("../GamesBoxScore/gamesBoxScore.service");
+const game_schema_1 = require("../../schema/gamesBoxScore/game.schema");
 let ScheduleModule = class ScheduleModule {
 };
 exports.ScheduleModule = ScheduleModule;
@@ -21,9 +25,17 @@ exports.ScheduleModule = ScheduleModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forFeature([
                 { name: scheduleGames_schema_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
+                { name: game_schema_1.Game.name, schema: game_schema_1.GameSchema },
             ]),
         ],
-        providers: [schedule_service_1.ScheduleService, schedule_resolver_1.ScheduleResolver, scheduleGames_app_1.ScheduleGamesApp],
+        providers: [
+            schedule_service_1.ScheduleService,
+            schedule_resolver_1.ScheduleResolver,
+            scheduleGames_app_1.ScheduleGamesApp,
+            mlb_game_box_score_service_api_1.MlbBoxScoreGamesServiceApi,
+            gamesBoxScore_app_1.GamesBoxScoreApp,
+            gamesBoxScore_service_1.GamesBoxScoreService,
+        ],
         exports: [schedule_service_1.ScheduleService],
     })
 ], ScheduleModule);

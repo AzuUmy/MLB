@@ -1,6 +1,6 @@
-import { Pitcher } from "./pitcher.schema";
-import { Scoring } from "./scoring.schema";
-import { Events } from "./events.schema";
+import { Pitcher } from './pitcher.schema';
+import { Scoring } from './scoring.schema';
+import { Events } from './events.schema';
 export declare class TeamStatus {
     name: string;
     market: string;

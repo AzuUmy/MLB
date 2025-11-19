@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MlbSchedulerService = void 0;
+exports.MlbScheduleService = void 0;
 const common_1 = require("@nestjs/common");
 const schedule_1 = require("@nestjs/schedule");
 const mlb_schedule_games_service_api_1 = require("../../integration/mlb.schedule_games.service.api");
-let MlbSchedulerService = class MlbSchedulerService {
+let MlbScheduleService = class MlbScheduleService {
     mlbScheduleGamesServiceApi;
     constructor(mlbScheduleGamesServiceApi) {
         this.mlbScheduleGamesServiceApi = mlbScheduleGamesServiceApi;
@@ -26,15 +26,15 @@ let MlbSchedulerService = class MlbSchedulerService {
         await this.mlbScheduleGamesServiceApi.fetchDailyScheduleGames();
     }
 };
-exports.MlbSchedulerService = MlbSchedulerService;
+exports.MlbScheduleService = MlbScheduleService;
 __decorate([
     (0, schedule_1.Cron)('0 0 0 * * *', { timeZone: 'UTC' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], MlbSchedulerService.prototype, "handleDailyScheduleFetch", null);
-exports.MlbSchedulerService = MlbSchedulerService = __decorate([
+], MlbScheduleService.prototype, "handleDailyScheduleFetch", null);
+exports.MlbScheduleService = MlbScheduleService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [mlb_schedule_games_service_api_1.MlbScheduleGamesServiceApi])
-], MlbSchedulerService);
+], MlbScheduleService);
 //# sourceMappingURL=schedule.games.cron.service.js.map

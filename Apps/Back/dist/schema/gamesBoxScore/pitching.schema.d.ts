@@ -1,4 +1,4 @@
-import { Status } from "./status.schema";
+import { Status } from './status.schema';
 export declare class Pitching {
     win: Status;
     loss: Status;

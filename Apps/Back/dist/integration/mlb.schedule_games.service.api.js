@@ -41,7 +41,7 @@ let MlbScheduleGamesServiceApi = class MlbScheduleGamesServiceApi {
             common_2.Logger.warn('No games found for today');
             return;
         }
-        const existingGames = await this.scheduleGamesApp['scheduleService'].getScheduleGames(games.date, games.date);
+        const existingGames = await this.scheduleGamesApp['scheduleService'].getScheduleGamesByDate(games.date, games.date);
         const matchingGames = [];
         games.games.forEach((game) => {
             matchingGames.push({
@@ -72,7 +72,9 @@ let MlbScheduleGamesServiceApi = class MlbScheduleGamesServiceApi {
             games: newGame,
             _comment: games._comment,
         });
-        await this.scheduleGamesApp['scheduleService'].createScheduleGames(newScheduleGame);
+        //await this.scheduleGamesApp['scheduleService'].createScheduleGames(
+        //newScheduleGame,
+        //);
         common_2.Logger.log("Successfully fetched and stored today's schedule games");
     }
 };

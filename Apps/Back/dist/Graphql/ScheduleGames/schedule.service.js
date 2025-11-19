@@ -25,7 +25,18 @@ let ScheduleService = class ScheduleService {
     async createScheduleGames(scheduleGames) {
         this.scheduleGamesModel.create(scheduleGames);
     }
-    async getScheduleGames(startDate, endDate) {
+    async getAllScheduleGames() {
+        const scheduleGames = await this.scheduleGamesModel.aggregate([
+            { $unwind: '$games' },
+            {
+                $project: {
+                    games: 'games',
+                },
+            },
+        ]);
+        return scheduleGames;
+    }
+    async getScheduleGamesByDate(startDate, endDate) {
         const scheduleGames = await this.scheduleGamesModel.aggregate([
             {
                 $match: {

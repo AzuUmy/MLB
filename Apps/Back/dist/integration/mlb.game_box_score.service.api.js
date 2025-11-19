@@ -13,24 +13,30 @@ exports.MlbBoxScoreGamesServiceApi = void 0;
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
 const api_1 = require("../services/Api/api");
-const gamesBoxScore_service_1 = require("../Graphql/GamesBoxScore/gamesBoxScore.service");
+const schedule_service_1 = require("../Graphql/ScheduleGames/schedule.service");
+const gamesBoxScore_app_1 = require("../app/gamesBoxScore.app");
 let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
-    gamesBoxScoreService;
-    constructor(gamesBoxScoreService) {
-        this.gamesBoxScoreService = gamesBoxScoreService;
+    gamesBoxScoreApp;
+    scheduleGamesService;
+    constructor(gamesBoxScoreApp, scheduleGamesService) {
+        this.gamesBoxScoreApp = gamesBoxScoreApp;
+        this.scheduleGamesService = scheduleGamesService;
     }
-    async getBoxScoreGamesFromApi(id) {
+    async getBoxScoreGamesFromApi(games) {
         try {
+            const scheduleGames = !games?.length
+                ? (await this.scheduleGamesService.getAllScheduleGames()).filter((e) => e.status === 'closed')
+                : games;
             const gameBoxScore = [];
-            await Promise.all(id.map(async (gamesId) => {
-                const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${gamesId}/boxscore.${api_1.format}?api_key=${api_1.token}`);
+            await Promise.all(scheduleGames.map(async (games) => {
+                const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${games.id}/boxscore.${api_1.format}?api_key=${api_1.token}`);
                 const data = (await response.json());
                 if (!data || !data.game) {
-                    common_2.Logger.error(`Game ${gamesId} returned invalid payload: ${JSON.stringify(data)}`);
+                    common_2.Logger.error(`Game ${games.id} returned invalid payload: ${JSON.stringify(data)}`);
                     return;
                 }
                 if (Array.isArray(data.game)) {
-                    common_2.Logger.error(`API error for game ${gamesId}: ${JSON.stringify(data)}`);
+                    common_2.Logger.error(`API error for game ${games.id}: ${JSON.stringify(data)}`);
                     return [];
                 }
                 else {
@@ -39,7 +45,7 @@ let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
                 }
             }));
             common_2.Logger.log('injecting games');
-            await this.gamesBoxScoreService.creatGamesBoxScore(gameBoxScore);
+            await this.gamesBoxScoreApp['gamexBoxScoreService'].creatGamesBoxScore(gameBoxScore);
         }
         catch (erro) {
             common_2.Logger.error(`erro fetching games from api: ${erro}`);
@@ -68,6 +74,7 @@ let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
 exports.MlbBoxScoreGamesServiceApi = MlbBoxScoreGamesServiceApi;
 exports.MlbBoxScoreGamesServiceApi = MlbBoxScoreGamesServiceApi = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [gamesBoxScore_service_1.GamesBoxScoreService])
+    __metadata("design:paramtypes", [gamesBoxScore_app_1.GamesBoxScoreApp,
+        schedule_service_1.ScheduleService])
 ], MlbBoxScoreGamesServiceApi);
 //# sourceMappingURL=mlb.game_box_score.service.api.js.map

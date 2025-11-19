@@ -40,7 +40,7 @@ export class MlbScheduleGamesServiceApi {
 
     const existingGames = await this.scheduleGamesApp[
       'scheduleService'
-    ].getScheduleGames(games.date, games.date);
+    ].getScheduleGamesByDate(games.date, games.date);
 
     const matchingGames: { id: string; serie: string; date: string }[] = [];
 
@@ -87,9 +87,10 @@ export class MlbScheduleGamesServiceApi {
       _comment: games._comment,
     });
 
-    await this.scheduleGamesApp['scheduleService'].createScheduleGames(
-      newScheduleGame,
-    );
+    //await this.scheduleGamesApp['scheduleService'].createScheduleGames(
+      //newScheduleGame,
+    //);
+
     Logger.log("Successfully fetched and stored today's schedule games");
   }
 }

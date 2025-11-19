@@ -3,7 +3,7 @@ import { ScheduleGames } from './Entities/schedule.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ScheduleGameDocument } from 'src/schema/scheduleGames/scheduleGames.schema';
-import type { ScheduleGames as games } from '@my-mlb/shared';
+import type { Games, ScheduleGames as games } from '@my-mlb/shared';
 @Injectable()
 export class ScheduleService {
   constructor(
@@ -15,7 +15,22 @@ export class ScheduleService {
     this.scheduleGamesModel.create(scheduleGames);
   }
 
-  async getScheduleGames(startDate: string, endDate: string): Promise<games[]> {
+  async getAllScheduleGames(): Promise<Games[]> {
+    const scheduleGames = await this.scheduleGamesModel.aggregate([
+      { $unwind: '$games' },
+      {
+        $project: {
+          games: 'games',
+        },
+      },
+    ]);
+    return scheduleGames;
+  }
+
+  async getScheduleGamesByDate(
+    startDate: string,
+    endDate: string,
+  ): Promise<games[]> {
     const scheduleGames = await this.scheduleGamesModel.aggregate([
       {
         $match: {

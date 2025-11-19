@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toTimestamp = toTimestamp;
+exports.getCurrentDateInYearMonthDay = getCurrentDateInYearMonthDay;
 const common_1 = require("@nestjs/common");
 function toTimestamp(value, unit = 'ms') {
     const logger = new common_1.Logger('toTimestamp');
@@ -48,5 +49,12 @@ function toTimestamp(value, unit = 'ms') {
         logger.error(`Error parsing value "${value}": ${err}`);
         return null;
     }
+}
+function getCurrentDateInYearMonthDay(today) {
+    const year = today.getFullYear().toString();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const curretday = year.concat('-').concat(month).concat('-').concat(day);
+    return curretday;
 }
 //# sourceMappingURL=date.js.map

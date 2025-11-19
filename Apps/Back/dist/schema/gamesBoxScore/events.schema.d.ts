@@ -1,4 +1,4 @@
-import { Runners } from "./runners.schema";
+import { Runners } from './runners.schema';
 export declare class Events {
     hitter_id: string;
     pitcher_id: string;

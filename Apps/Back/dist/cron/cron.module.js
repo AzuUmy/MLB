@@ -17,6 +17,11 @@ const scheduleGames_app_1 = require("../app/scheduleGames.app");
 const schedule_service_1 = require("../Graphql/ScheduleGames/schedule.service");
 const schedule_entity_1 = require("../Graphql/ScheduleGames/Entities/schedule.entity");
 const scheduleGames_schema_1 = require("../schema/scheduleGames/scheduleGames.schema");
+const game_schema_1 = require("../schema/gamesBoxScore/game.schema");
+const gamesBoxScore_service_1 = require("../Graphql/GamesBoxScore/gamesBoxScore.service");
+const games_box_score_cron_service_1 = require("./services/games.box.score.cron.service");
+const mlb_game_box_score_service_api_1 = require("../integration/mlb.game_box_score.service.api");
+const gamesBoxScore_app_1 = require("../app/gamesBoxScore.app");
 let CronModule = class CronModule {
 };
 exports.CronModule = CronModule;
@@ -26,16 +31,21 @@ exports.CronModule = CronModule = __decorate([
             schedule_1.ScheduleModule.forRoot(),
             mongoose_1.MongooseModule.forFeature([
                 { name: schedule_entity_1.ScheduleGames.name, schema: scheduleGames_schema_1.ScheduleGamesSchema },
+                { name: game_schema_1.Game.name, schema: game_schema_1.GameSchema },
             ]),
         ],
         providers: [
             cron_service_1.CronService,
-            schedule_games_cron_service_1.MlbSchedulerService,
+            schedule_games_cron_service_1.MlbScheduleService,
             mlb_schedule_games_service_api_1.MlbScheduleGamesServiceApi,
+            mlb_game_box_score_service_api_1.MlbBoxScoreGamesServiceApi,
+            games_box_score_cron_service_1.MlbSGamesBoxScoreService,
             scheduleGames_app_1.ScheduleGamesApp,
+            gamesBoxScore_app_1.GamesBoxScoreApp,
             schedule_service_1.ScheduleService,
+            gamesBoxScore_service_1.GamesBoxScoreService,
         ],
-        exports: [schedule_games_cron_service_1.MlbSchedulerService],
+        exports: [schedule_games_cron_service_1.MlbScheduleService, games_box_score_cron_service_1.MlbSGamesBoxScoreService],
     })
 ], CronModule);
 //# sourceMappingURL=cron.module.js.map

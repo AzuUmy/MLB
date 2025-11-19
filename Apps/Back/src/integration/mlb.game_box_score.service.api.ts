@@ -1,34 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 import { apiUrl, format, locale, token } from 'src/services/Api/api';
-import { Game as boxScoreGames, BoxScore } from '@my-mlb/shared';
-import { GamesBoxScoreService } from 'src/Graphql/GamesBoxScore/gamesBoxScore.service';
+import { Game as boxScoreGames, BoxScore, Games } from '@my-mlb/shared';
+import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
+import { GamesBoxScoreApp } from 'src/app/gamesBoxScore.app';
 @Injectable()
 export class MlbBoxScoreGamesServiceApi {
-  constructor(private readonly gamesBoxScoreService: GamesBoxScoreService) {}
+  constructor(
+    private readonly gamesBoxScoreApp: GamesBoxScoreApp,
+    private readonly scheduleGamesService: ScheduleService,
+  ) {}
 
-  async getBoxScoreGamesFromApi(id: string[]) {
+  async getBoxScoreGamesFromApi(games?: Games[]) {
     try {
+      const scheduleGames = !games?.length
+        ? (await this.scheduleGamesService.getAllScheduleGames()).filter(
+            (e) => e.status === 'closed',
+          )
+        : games;
+
       const gameBoxScore: boxScoreGames[] = [];
 
       await Promise.all(
-        id.map(async (gamesId) => {
+        scheduleGames!.map(async (games) => {
           const response = await fetch(
-            `${apiUrl}/${locale}/games/${gamesId}/boxscore.${format}?api_key=${token}`,
+            `${apiUrl}/${locale}/games/${games.id}/boxscore.${format}?api_key=${token}`,
           );
 
           const data = (await response.json()) as BoxScore;
 
           if (!data || !data.game) {
             Logger.error(
-              `Game ${gamesId} returned invalid payload: ${JSON.stringify(data)}`,
+              `Game ${games.id} returned invalid payload: ${JSON.stringify(data)}`,
             );
             return;
           }
 
           if (Array.isArray(data.game)) {
             Logger.error(
-              `API error for game ${gamesId}: ${JSON.stringify(data)}`,
+              `API error for game ${games.id}: ${JSON.stringify(data)}`,
             );
             return [];
           } else {
@@ -38,11 +48,14 @@ export class MlbBoxScoreGamesServiceApi {
         }),
       );
       Logger.log('injecting games');
-      await this.gamesBoxScoreService.creatGamesBoxScore(gameBoxScore);
+      await this.gamesBoxScoreApp['gamexBoxScoreService'].creatGamesBoxScore(
+        gameBoxScore,
+      );
     } catch (erro) {
       Logger.error(`erro fetching games from api: ${erro}`);
     }
   }
+
   private sanitizeGame(game: any) {
     if (!game) return game;
 

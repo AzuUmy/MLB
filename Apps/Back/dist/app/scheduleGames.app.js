@@ -12,13 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScheduleGamesApp = void 0;
 const common_1 = require("@nestjs/common");
 const schedule_service_1 = require("../Graphql/ScheduleGames/schedule.service");
+const date_1 = require("../helper/date");
+const mlb_game_box_score_service_api_1 = require("../integration/mlb.game_box_score.service.api");
 let ScheduleGamesApp = class ScheduleGamesApp {
     scheduleService;
-    constructor(scheduleService) {
+    mlbBoxScoreGamesServiceApi;
+    constructor(scheduleService, mlbBoxScoreGamesServiceApi) {
         this.scheduleService = scheduleService;
+        this.mlbBoxScoreGamesServiceApi = mlbBoxScoreGamesServiceApi;
     }
     async getScheduleGamesSeries(startDate, endDate) {
-        const scheduleGames = await this.scheduleService.getScheduleGames(startDate, endDate);
+        const scheduleGames = await this.scheduleService.getScheduleGamesByDate(startDate, endDate);
         const seriesMap = new Map();
         for (const schedule of scheduleGames) {
             for (const game of schedule.games) {
@@ -82,10 +86,28 @@ let ScheduleGamesApp = class ScheduleGamesApp {
         }
         return result;
     }
+    async checkGamesStatus() {
+        const date = new Date();
+        const today = (0, date_1.getCurrentDateInYearMonthDay)(date);
+        const scheduleGamesOfTheDay = await this.scheduleService.getScheduleGamesByDate(today, today);
+        const allGames = scheduleGamesOfTheDay.flatMap((e) => e.games);
+        if (allGames.length === 0) {
+            common_1.Logger.warn(`No games found in the provided date, ${today}`);
+            return;
+        }
+        const closedGamesOnDate = [];
+        allGames.map((e) => {
+            if (e.status === 'closed') {
+                closedGamesOnDate.push(e);
+            }
+        });
+        this.mlbBoxScoreGamesServiceApi.getBoxScoreGamesFromApi(closedGamesOnDate);
+    }
 };
 exports.ScheduleGamesApp = ScheduleGamesApp;
 exports.ScheduleGamesApp = ScheduleGamesApp = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [schedule_service_1.ScheduleService])
+    __metadata("design:paramtypes", [schedule_service_1.ScheduleService,
+        mlb_game_box_score_service_api_1.MlbBoxScoreGamesServiceApi])
 ], ScheduleGamesApp);
 //# sourceMappingURL=scheduleGames.app.js.map

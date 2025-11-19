@@ -1,4 +1,4 @@
-import { Wind } from "./wind.schema";
+import { Wind } from './wind.schema';
 export declare class WeatherInfo {
     temp_f: number;
     condition: string;

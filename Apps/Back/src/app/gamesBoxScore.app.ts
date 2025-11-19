@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { GamesBoxScoreService } from 'src/Graphql/GamesBoxScore/gamesBoxScore.service';
 import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
 import { MlbBoxScoreGamesServiceApi } from 'src/integration/mlb.game_box_score.service.api';
 
@@ -6,11 +7,11 @@ import { MlbBoxScoreGamesServiceApi } from 'src/integration/mlb.game_box_score.s
 export class GamesBoxScoreApp {
   constructor(
     private readonly scheduleService: ScheduleService,
-    private readonly mlbBoxScoregamesServiceApp: MlbBoxScoreGamesServiceApi,
+    private readonly gamexBoxScoreService: GamesBoxScoreService
   ) {}
 
   async getGamesBoxScore(id: string) {
-    const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
-    this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(gamesBoxScore);
+    //const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
+    //this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(gamesBoxScore);
   }
 }

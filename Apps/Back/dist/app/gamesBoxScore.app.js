@@ -11,24 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GamesBoxScoreApp = void 0;
 const common_1 = require("@nestjs/common");
+const gamesBoxScore_service_1 = require("../Graphql/GamesBoxScore/gamesBoxScore.service");
 const schedule_service_1 = require("../Graphql/ScheduleGames/schedule.service");
-const mlb_game_box_score_service_api_1 = require("../integration/mlb.game_box_score.service.api");
 let GamesBoxScoreApp = class GamesBoxScoreApp {
     scheduleService;
-    mlbBoxScoregamesServiceApp;
-    constructor(scheduleService, mlbBoxScoregamesServiceApp) {
+    gamexBoxScoreService;
+    constructor(scheduleService, gamexBoxScoreService) {
         this.scheduleService = scheduleService;
-        this.mlbBoxScoregamesServiceApp = mlbBoxScoregamesServiceApp;
+        this.gamexBoxScoreService = gamexBoxScoreService;
     }
     async getGamesBoxScore(id) {
-        const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
-        this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(gamesBoxScore);
+        //const gamesBoxScore = await this.scheduleService.getScheduleGamesById();
+        //this.mlbBoxScoregamesServiceApp.getBoxScoreGamesFromApi(gamesBoxScore);
     }
 };
 exports.GamesBoxScoreApp = GamesBoxScoreApp;
 exports.GamesBoxScoreApp = GamesBoxScoreApp = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [schedule_service_1.ScheduleService,
-        mlb_game_box_score_service_api_1.MlbBoxScoreGamesServiceApi])
+        gamesBoxScore_service_1.GamesBoxScoreService])
 ], GamesBoxScoreApp);
 //# sourceMappingURL=gamesBoxScore.app.js.map

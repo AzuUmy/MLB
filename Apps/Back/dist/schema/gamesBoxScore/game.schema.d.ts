@@ -1,12 +1,12 @@
-import { MoundVisits } from "./mound_visits.schema";
-import { Reviews } from "./reviews.schema";
-import { TimeZones } from "../time_zones.schema";
-import { Weather } from "./weather.schema";
-import { FinalInfo } from "./final_info.schema";
-import { TeamStatus } from "./teams_status.schema";
-import { Venue } from "../scheduleGames/venue.schema";
-import { Broadcast } from "../scheduleGames/broadcast.schema";
-import { Pitching } from "./pitching.schema";
+import { MoundVisits } from './mound_visits.schema';
+import { Reviews } from './reviews.schema';
+import { TimeZones } from '../time_zones.schema';
+import { Weather } from './weather.schema';
+import { FinalInfo } from './final_info.schema';
+import { TeamStatus } from './teams_status.schema';
+import { Venue } from '../scheduleGames/venue.schema';
+import { Broadcast } from '../scheduleGames/broadcast.schema';
+import { Pitching } from './pitching.schema';
 export declare class Game {
     id: string;
     status: string;

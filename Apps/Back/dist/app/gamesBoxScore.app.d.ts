@@ -1,8 +1,8 @@
+import { GamesBoxScoreService } from 'src/Graphql/GamesBoxScore/gamesBoxScore.service';
 import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
-import { MlbBoxScoreGamesServiceApi } from 'src/integration/mlb.game_box_score.service.api';
 export declare class GamesBoxScoreApp {
     private readonly scheduleService;
-    private readonly mlbBoxScoregamesServiceApp;
-    constructor(scheduleService: ScheduleService, mlbBoxScoregamesServiceApp: MlbBoxScoreGamesServiceApi);
+    private readonly gamexBoxScoreService;
+    constructor(scheduleService: ScheduleService, gamexBoxScoreService: GamesBoxScoreService);
     getGamesBoxScore(id: string): Promise<void>;
 }

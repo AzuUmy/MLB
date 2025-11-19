@@ -3,7 +3,7 @@ import { Cron } from '@nestjs/schedule';
 import { MlbScheduleGamesServiceApi } from 'src/integration/mlb.schedule_games.service.api';
 
 @Injectable()
-export class MlbSchedulerService {
+export class MlbScheduleService {
   constructor(
     private readonly mlbScheduleGamesServiceApi: MlbScheduleGamesServiceApi,
   ) {}

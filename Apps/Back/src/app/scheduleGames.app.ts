@@ -1,15 +1,21 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
 import { ScheduleGamesSeries } from 'src/Graphql/ScheduleGames/Entities/schedule.entity';
+import { getCurrentDateInYearMonthDay } from 'src/helper/date';
+import { MlbBoxScoreGamesServiceApi } from 'src/integration/mlb.game_box_score.service.api';
+import { Games } from '@my-mlb/shared';
 @Injectable()
 export class ScheduleGamesApp {
-  constructor(private readonly scheduleService: ScheduleService) {}
+  constructor(
+    private readonly scheduleService: ScheduleService,
+    private readonly mlbBoxScoreGamesServiceApi: MlbBoxScoreGamesServiceApi,
+  ) {}
 
   async getScheduleGamesSeries(
     startDate: string,
     endDate: string,
   ): Promise<ScheduleGamesSeries[]> {
-    const scheduleGames = await this.scheduleService.getScheduleGames(
+    const scheduleGames = await this.scheduleService.getScheduleGamesByDate(
       startDate,
       endDate,
     );
@@ -93,5 +99,30 @@ export class ScheduleGamesApp {
     }
 
     return result;
+  }
+
+  async checkGamesStatus() {
+    const date = new Date();
+    const today = getCurrentDateInYearMonthDay(date);
+
+    const scheduleGamesOfTheDay =
+      await this.scheduleService.getScheduleGamesByDate(today, today);
+
+    const allGames = scheduleGamesOfTheDay.flatMap((e) => e.games);
+
+    if (allGames.length === 0) {
+      Logger.warn(`No games found in the provided date, ${today}`);
+      return;
+    }
+
+    const closedGamesOnDate: Games[] = [];
+
+    allGames.map((e) => {
+      if (e.status === 'closed') {
+        closedGamesOnDate.push(e);
+      }
+    });
+
+    this.mlbBoxScoreGamesServiceApi.getBoxScoreGamesFromApi(closedGamesOnDate);
   }
 }

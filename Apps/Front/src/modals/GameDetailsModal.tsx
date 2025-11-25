@@ -67,15 +67,22 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
 
           <div className="p-1">
             <div className="p-2">
-              {data?.gamesBoxScore.ps_round
-                .concat(" | ")
+              {data.gamesBoxScore.season_type
+                .concat(" ")
+                .concat(" ")
                 .concat(
-                  data.gamesBoxScore.season_type
-                    .concat(" | ")
+                  data?.gamesBoxScore.ps_round.concat(" ")
                     .concat(
                       String(data.gamesBoxScore.season_year) ||
                         "year not founded"
-                    ).concat(" ").concat(" - ").concat("Score Box")
+                    )
+                    .concat(" ")
+                    .concat(" - ")
+                    .concat("Score Box")
+                    .concat(" ")
+                    .concat("Game")
+                    .concat(" - ")
+                    .concat(data.gamesBoxScore.ps_game)
                 )}
             </div>
             <div>

@@ -83,6 +83,77 @@ export function GameBoxScoreStats({ gamesScoreBox }: gameScoreBoxProps) {
             );
           })}
         </div>
+
+        <div className="relative mt-2">
+          <div className="flex justify-center">
+            <div className="w-[40px]" />
+
+            <div className={`w-full flex justify-center ${gap}`}>
+              {Array.from({ length: 11 }).map((_, inningIndex) => {
+                const inningNum = inningIndex + 1;
+                const awayInning = gamesScoreBox?.away?.scoring?.[inningIndex];
+                const awayRuns = awayInning?.runs ?? 0;
+                const homeInning = gamesScoreBox?.home?.scoring?.[inningIndex];
+                const homeRuns = homeInning?.runs ?? 0;
+
+                const totalRunsThisInning = awayRuns + homeRuns;
+                const hasScoring = totalRunsThisInning > 0;
+
+                const event =
+                  gamesScoreBox?.away?.events?.find(
+                    (e) => e.inning === inningNum
+                  ) ||
+                  gamesScoreBox?.home?.events?.find(
+                    (e) => e.inning === inningNum
+                  );
+
+                let label = "";
+                if (event?.hitter_outcome === "aHR") {
+                  const runnersOn =
+                    event.runners?.filter((r) => r.starting_base > 0).length ??
+                    0;
+                  label = runnersOn === 0 ? "HR" : `${runnersOn + 1}-RUN HR`;
+                } else if (event?.hitter_outcome === "aS") {
+                  label =
+                    inningNum >= 10 && gamesScoreBox?.final?.inning_half === "T"
+                      ? "WOFF SF"
+                      : "SF";
+                } else if (hasScoring) {
+                  label =
+                    totalRunsThisInning > 1
+                      ? `${totalRunsThisInning} runs`
+                      : "RUN";
+                }
+
+                return (
+                  <div
+                    key={inningIndex}
+                    className={`${cellWidth} ${cellBase} flex flex-col items-center`}
+                  >
+                    {hasScoring && (
+                      <>
+                        <span className="text-black font-bold text-lg leading-none">
+                          ▲
+                        </span>
+                        {label && (
+                          <span className="text-[9px] sm:text-[10px] text-gray-700 mt-0.5 whitespace-nowrap">
+                            {label}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className={`flex ${gap}`}>
+              <div className={`${cellWidth}`} />
+              <div className={`${cellWidth}`} />
+              <div className={`${cellWidth}`} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

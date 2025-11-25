@@ -9,7 +9,6 @@ type contextProps = {
 
 export function Context({
   showContext,
-  header,
   onClose,
   children,
 }: contextProps) {
@@ -40,11 +39,10 @@ export function Context({
         }`}
       />
       <div
-        className={`fixed bottom-0 left-0 bg-white w-full h-auto p-1 rounded-t-3xl shadow-[0_-1px_100px_rgba(0,0,0,0.2)] z-20 transform transition-transform duration-500 ease-in-out ${
+        className={`fixed bottom-0 left-0 bg-white w-full h-auto rounded-t-3xl shadow-[0_-1px_100px_rgba(0,0,0,0.2)] z-20 transform transition-transform duration-500 ease-in-out ${
           animateIn ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <h2>{header}</h2>
         <div>{children}</div>
       </div>
     </div>

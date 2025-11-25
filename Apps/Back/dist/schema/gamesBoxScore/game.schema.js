@@ -20,6 +20,7 @@ const teams_status_schema_1 = require("./teams_status.schema");
 const venue_schema_1 = require("../scheduleGames/venue.schema");
 const broadcast_schema_1 = require("../scheduleGames/broadcast.schema");
 const pitching_schema_1 = require("./pitching.schema");
+const graphql_1 = require("@nestjs/graphql");
 let Game = class Game {
     id;
     status;
@@ -92,7 +93,7 @@ __decorate([
     __metadata("design:type", String)
 ], Game.prototype, "ps_game", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)(() => graphql_1.Int),
     __metadata("design:type", Number)
 ], Game.prototype, "attendance", void 0);
 __decorate([

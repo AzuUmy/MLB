@@ -11,6 +11,7 @@ export function ScheduleGames({
   allScheduleGames,
   onGameClick,
 }: allScheduleGamesProps) {
+  
   const getLogo = (abbr: string | undefined | null) => {
     if (!abbr) return null;
     const LogoComponent = (MLBLogos as any)[abbr.toUpperCase()];

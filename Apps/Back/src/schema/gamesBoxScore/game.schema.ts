@@ -8,6 +8,7 @@ import { TeamStatus, TeamStatusSchema } from './teams_status.schema';
 import { Venue, VenueSchema } from '../scheduleGames/venue.schema';
 import { Broadcast, BroadcastSchema } from '../scheduleGames/broadcast.schema';
 import { Pitching, PitchingSchema } from './pitching.schema';
+import { Int } from '@nestjs/graphql';
 
 @Schema({ collection: 'gamesboxscore' })
 export class Game {
@@ -31,7 +32,7 @@ export class Game {
   ps_round!: string;
   @Prop()
   ps_game!: string;
-  @Prop()
+  @Prop(() => Int!)
   attendance!: number;
   @Prop()
   duration!: string;

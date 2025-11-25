@@ -48,7 +48,6 @@ export function Games() {
             <GamesDetails
               showContext={triggerContex}
               onClose={handleCloseContext}
-              header="Details"
             >
               {<GamesDetailsModal details={details} />}
             </GamesDetails>

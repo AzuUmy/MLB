@@ -130,7 +130,7 @@ export function GameBoxScoreStats({ gamesScoreBox }: gameScoreBoxProps) {
                           ▲
                         </span>
                         {label && (
-                          <span className="text-[9px] sm:text-[10px] text-center leading-tight max-w-[25px] text-gray-700 mt-0.5">
+                          <span className="text-[10px] sm:text-[10px] text-center leading-tight max-w-[25px] text-gray-700 mt-0.5">
                             {label}
                           </span>
                         )}

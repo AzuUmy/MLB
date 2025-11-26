@@ -1,4 +1,4 @@
-import { useClickOutside } from "../../hooks/clickOutside";
+import { useClickOutside } from "../../Hooks/clickOutside";
 import { useEffect, useState } from "react";
 import { TEX } from "react-mlb-logos";
 

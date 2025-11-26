@@ -1,8 +1,8 @@
 import "./App.css";
-import MainLayout from "./layouts/MainLayout";
+import MainLayout from "./Layouts/MainLayout";
 import { Routes, Route } from "react-router-dom";
-import { Games } from "./pages/Games";
-import { Score } from "./pages/Score";
+import { Games } from "./Pages/Games";
+import { Score } from "./Pages/Score";
 
 function App() {
   return (

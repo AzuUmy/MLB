@@ -1,4 +1,4 @@
-import { Series } from "../../utils/Dictionary";
+import { Series } from "../../Utils/Dictionary";
 import * as MLBLogos from "react-mlb-logos";
 import type { ScheduleGamesSeries } from "@my-mlb/shared";
 

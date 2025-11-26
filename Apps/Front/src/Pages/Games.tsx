@@ -8,8 +8,8 @@ import { ScheduleGamesDocument } from "../api/graphql/queries/scheduleGamesQuery
 import type { ScheduleGamesSeries, Games } from "@my-mlb/shared";
 import { ScheduleGames } from "../components/GameDay/ScheduleGames";
 import { useState } from "react";
-import { Context as GamesDetails } from "../modals/Context";
-import { GamesDetailsModal } from "../modals/GameDetailsModal";
+import { Context as GamesDetails } from "../Modals/Context";
+import { GamesDetailsModal } from "../Modals/GameDetailsModal";
 
 export function Games() {
   const { data, loading, error } = useQuery<

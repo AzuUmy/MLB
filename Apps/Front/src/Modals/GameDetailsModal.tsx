@@ -7,7 +7,7 @@ import type {
 } from "../api/graphql/generated/graphql";
 import { GamesBoxScoreDocument } from "../api/graphql/queries/gamesBoxScoreQuery";
 import * as MLBLogos from "react-mlb-logos";
-import { GameBoxScoreStats } from "../components/stats/gameScoreBoxStat";
+import { GameBoxScoreStats } from "../components/Stats/gameScoreBoxStat";
 
 type gamesDetailsProps = {
   details?: Games | undefined;

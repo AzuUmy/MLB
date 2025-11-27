@@ -44,6 +44,7 @@ export function Games() {
             <ScheduleGames
               allScheduleGames={data?.scheduleGames as ScheduleGamesSeries[]}
               onGameClick={handleGameClick}
+              loading={loading}
             />
             <GamesDetails
               showContext={triggerContex}

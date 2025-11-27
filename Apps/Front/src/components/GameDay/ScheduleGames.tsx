@@ -1,22 +1,33 @@
 import { Series } from "../../Utils/Dictionary";
 import * as MLBLogos from "react-mlb-logos";
 import type { ScheduleGamesSeries, Games } from "@my-mlb/shared";
+import { Skeleton } from "../../Loading/Skeleton";
 
 type allScheduleGamesProps = {
   allScheduleGames?: ScheduleGamesSeries[] | undefined;
-  onGameClick?: (games: Games ) => void;
+  onGameClick?: (games: Games) => void;
+  loading: boolean;
 };
 
 export function ScheduleGames({
   allScheduleGames,
   onGameClick,
+  loading,
 }: allScheduleGamesProps) {
-  
   const getLogo = (abbr: string | undefined | null) => {
     if (!abbr) return null;
     const LogoComponent = (MLBLogos as any)[abbr.toUpperCase()];
     return typeof LogoComponent === "function" ? <LogoComponent /> : null;
   };
+
+  if (loading)
+    return (
+      <div className="flex flex-col gap-3 ">
+        {Array.from({ length: 10 }).map((_) => (
+          <Skeleton className="opacity-[50%]" height="350px" width="100%" rounded="15px" />
+        ))}
+      </div>
+    );
 
   return (
     <div>
@@ -53,7 +64,10 @@ export function ScheduleGames({
                       </span>
                     </div>
 
-                    <div onClick={() => onGameClick?.(games)} className="flex flex-row gap-2 items-center text-left">
+                    <div
+                      onClick={() => onGameClick?.(games)}
+                      className="flex flex-row gap-2 items-center text-left"
+                    >
                       <div>
                         {
                           <div className="flex flex-row items-center">

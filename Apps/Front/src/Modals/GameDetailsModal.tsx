@@ -8,6 +8,7 @@ import type {
 import { GamesBoxScoreDocument } from "../api/graphql/queries/gamesBoxScoreQuery";
 import * as MLBLogos from "react-mlb-logos";
 import { GameBoxScoreStats } from "../components/Stats/gameScoreBoxStat";
+import { Skeleton } from "../Loading/Skeleton";
 
 type gamesDetailsProps = {
   details?: Games | undefined;
@@ -37,7 +38,53 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
     return typeof LogoComponent === "function" ? <LogoComponent /> : null;
   };
 
-  if (data?.gamesBoxScore === undefined) return <div>Hello error</div>;
+  if (loading)
+    return (
+      <div>
+        <div className="relative p-1 h-0">
+          <Skeleton
+            className="fixed -top-[13.2em] opacity-[100%]"
+            height="200px"
+            width="100%"
+            rounded="15px"
+          />
+        </div>
+
+        <div className="p-2">
+          <Skeleton
+            className="opacity-[100%]"
+            height="200px"
+            width="100%"
+            rounded="15px"
+          />
+        </div>
+         <div className="p-2">
+          <Skeleton
+            className="opacity-[100%]"
+            height="100px"
+            width="100%"
+            rounded="15px"
+          />
+        </div>
+        <div className="p-2">
+          <Skeleton
+            className="opacity-[100%]"
+            height="100px"
+            width="100%"
+            rounded="15px"
+          />
+        </div>
+         <div className="p-2">
+          <Skeleton
+            className="opacity-[100%]"
+            height="100px"
+            width="100%"
+            rounded="15px"
+          />
+        </div>
+      </div>
+    );
+  else if (data?.gamesBoxScore === undefined) return <div></div>;
 
   return (
     <div>
@@ -65,7 +112,7 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
             </div>
           </div>
 
-          <div className="p-1 w-full h-[70vh] max-h-[70vh] overflow-y-auto overflow-x-auto">
+          <div className="p-1 w-full h-[70vh] max-h-[65vh] overflow-y-auto overflow-x-auto">
             {" "}
             <div className="p-2">
               {data.gamesBoxScore.season_type

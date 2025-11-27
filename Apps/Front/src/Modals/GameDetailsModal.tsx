@@ -58,7 +58,7 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
             rounded="15px"
           />
         </div>
-         <div className="p-2">
+        <div className="p-2">
           <Skeleton
             className="opacity-[100%]"
             height="100px"
@@ -74,7 +74,7 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
             rounded="15px"
           />
         </div>
-         <div className="p-2">
+        <div className="p-2">
           <Skeleton
             className="opacity-[100%]"
             height="100px"

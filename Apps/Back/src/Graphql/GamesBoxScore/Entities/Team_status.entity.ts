@@ -23,9 +23,9 @@ export class TeamStatus {
   win!: number;
   @Field(() => Int)
   loss!: number;
-  @Field(() => Pitcher, { nullable: true })
+  @Field(() => Pitcher)
   probable_pitcher?: Pitcher;
-  @Field(() => Pitcher, { nullable: true })
+  @Field(() => Pitcher)
   starting_pitcher?: Pitcher;
   @Field(() => [Scoring])
   scoring!: Scoring[];

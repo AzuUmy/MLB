@@ -32,7 +32,7 @@ __decorate([
     __metadata("design:type", String)
 ], Broadcast.prototype, "locale", void 0);
 __decorate([
-    (0, graphql_1.Field)({ nullable: true }),
+    (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Broadcast.prototype, "channel", void 0);
 exports.Broadcast = Broadcast = __decorate([

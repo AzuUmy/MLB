@@ -2,16 +2,16 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Scoring {
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int)
   number?: number;
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int)
   sequence?: number;
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int)
   runs?: number;
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int)
   hits?: number;
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int)
   errors?: number;
-  @Field({ nullable: true })
+  @Field()
   type?: string;
 }

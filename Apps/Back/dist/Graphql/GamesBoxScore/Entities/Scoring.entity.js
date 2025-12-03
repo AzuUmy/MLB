@@ -21,27 +21,27 @@ let Scoring = class Scoring {
 };
 exports.Scoring = Scoring;
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(() => graphql_1.Int),
     __metadata("design:type", Number)
 ], Scoring.prototype, "number", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(() => graphql_1.Int),
     __metadata("design:type", Number)
 ], Scoring.prototype, "sequence", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(() => graphql_1.Int),
     __metadata("design:type", Number)
 ], Scoring.prototype, "runs", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(() => graphql_1.Int),
     __metadata("design:type", Number)
 ], Scoring.prototype, "hits", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
+    (0, graphql_1.Field)(() => graphql_1.Int),
     __metadata("design:type", Number)
 ], Scoring.prototype, "errors", void 0);
 __decorate([
-    (0, graphql_1.Field)({ nullable: true }),
+    (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Scoring.prototype, "type", void 0);
 exports.Scoring = Scoring = __decorate([

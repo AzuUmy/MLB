@@ -13,9 +13,9 @@ export class Pitcher {
   @Field()
   full_name!: string;
   @Field(() => Int, { nullable: true })
-  win?: number;
+  win?: number | null;
   @Field(() => Int, { nullable: true })
-  loss?: number;
+  loss?: number | null;
   @Field(() => Float, { nullable: true })
-  era?: number;
+  era?: number | null;
 }

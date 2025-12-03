@@ -11,8 +11,8 @@ export declare class TeamStatus {
     errors: number;
     win: number;
     loss: number;
-    probable_pitcher?: Pitcher;
-    starting_pitcher?: Pitcher;
+    probable_pitcher?: Pitcher | null;
+    starting_pitcher?: Pitcher | null;
     scoring: Scoring[];
     events: Events[];
 }

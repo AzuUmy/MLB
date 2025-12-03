@@ -9,42 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Scoring = void 0;
+exports.Location = void 0;
 const graphql_1 = require("@nestjs/graphql");
-let Scoring = class Scoring {
-    number;
-    sequence;
-    runs;
-    hits;
-    errors;
-    type;
+let Location = class Location {
+    lat;
+    lng;
 };
-exports.Scoring = Scoring;
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Object)
-], Scoring.prototype, "number", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Object)
-], Scoring.prototype, "sequence", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Object)
-], Scoring.prototype, "runs", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Object)
-], Scoring.prototype, "hits", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Object)
-], Scoring.prototype, "errors", void 0);
+exports.Location = Location;
 __decorate([
     (0, graphql_1.Field)(() => String, { nullable: true }),
     __metadata("design:type", Object)
-], Scoring.prototype, "type", void 0);
-exports.Scoring = Scoring = __decorate([
+], Location.prototype, "lat", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", Object)
+], Location.prototype, "lng", void 0);
+exports.Location = Location = __decorate([
     (0, graphql_1.ObjectType)()
-], Scoring);
-//# sourceMappingURL=Scoring.entity.js.map
+], Location);
+//# sourceMappingURL=location.entity.js.map

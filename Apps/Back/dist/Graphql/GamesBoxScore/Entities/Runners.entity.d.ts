@@ -6,5 +6,5 @@ export declare class Runners {
     jersey_number: string;
     id: string;
     full_name: string;
-    suffix?: string;
+    suffix?: string | null;
 }

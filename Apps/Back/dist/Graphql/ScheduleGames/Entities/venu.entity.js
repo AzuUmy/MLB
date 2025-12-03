@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Venue = void 0;
 // graphql/entities/venue.entity.ts
 const graphql_1 = require("@nestjs/graphql");
+const location_entity_1 = require("./location.entity");
 let Venue = class Venue {
     name;
     market;
@@ -26,6 +27,7 @@ let Venue = class Venue {
     field_orientation;
     stadium_type;
     time_zone;
+    location;
 };
 exports.Venue = Venue;
 __decorate([
@@ -80,6 +82,10 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Venue.prototype, "time_zone", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => location_entity_1.Location, { nullable: true }),
+    __metadata("design:type", Object)
+], Venue.prototype, "location", void 0);
 exports.Venue = Venue = __decorate([
     (0, graphql_1.ObjectType)()
 ], Venue);

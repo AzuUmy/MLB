@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", legue_entity_1.League)
 ], ScheduleGames.prototype, "league", void 0);
 __decorate([
-    (0, graphql_1.Field)({ nullable: true }),
+    (0, graphql_1.Field)(() => String, { nullable: true }),
     __metadata("design:type", String)
 ], ScheduleGames.prototype, "date", void 0);
 __decorate([
@@ -34,7 +34,7 @@ __decorate([
     __metadata("design:type", Array)
 ], ScheduleGames.prototype, "games", void 0);
 __decorate([
-    (0, graphql_1.Field)({ nullable: true }),
+    (0, graphql_1.Field)(() => String, { nullable: true }),
     __metadata("design:type", String)
 ], ScheduleGames.prototype, "_comment", void 0);
 __decorate([

@@ -1,5 +1,3 @@
-import { Location } from "..";
-
 export type ScheduleGames = {
   league: League;
   date: string;
@@ -49,7 +47,12 @@ export type Venue = {
   field_orientation: string;
   stadium_type: string;
   time_zone: string;
-  location: Location;
+  location?: Location | null | undefined;
+};
+
+export type Location = {
+  lat?: string | null;
+  lng?: string | null;
 };
 
 export type Home = {
@@ -76,7 +79,7 @@ export type Broadcasts = {
   network: string;
   type: string;
   locale: string;
-  channel?: string;
+  channel?: string | null | undefined;
 };
 
 export type ScheduleGamesSeries = {

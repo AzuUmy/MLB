@@ -68,11 +68,11 @@ __decorate([
 ], TeamStatus.prototype, "loss", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Pitcher_entity_1.Pitcher, { nullable: true }),
-    __metadata("design:type", Pitcher_entity_1.Pitcher)
+    __metadata("design:type", Object)
 ], TeamStatus.prototype, "probable_pitcher", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Pitcher_entity_1.Pitcher, { nullable: true }),
-    __metadata("design:type", Pitcher_entity_1.Pitcher)
+    __metadata("design:type", Object)
 ], TeamStatus.prototype, "starting_pitcher", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [Scoring_entity_1.Scoring]),

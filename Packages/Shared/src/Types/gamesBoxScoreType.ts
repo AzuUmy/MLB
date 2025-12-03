@@ -16,24 +16,24 @@ export type Game = {
   away_team: string;
   ps_round: string;
   ps_game: string;
-  attendance: number;
+  attendance?: number | null | undefined;
   duration: string;
-  season_id: string;
-  season_type: string;
-  season_year: number;
+  season_id?: string | null | undefined; 
+  season_type?: string | null | undefined;
+  season_year?: number | null | undefined;
   double_header: boolean;
   entry_mode: string;
   reference: string;
-  mound_visits?: MoundVisits;
-  reviews?: reviews;
-  time_zones?: TimeZones;
-  venue?: Venue;
-  broadcasts: Broadcasts[];
-  weather?: Weather;
-  final?: Final;
-  home?: TeamStatus;
-  away?: TeamStatus;
-  pitching?: Pitching;
+  mound_visits?: MoundVisits | null | undefined;
+  reviews?: reviews | null | undefined;
+  time_zones?: TimeZones | null | undefined;
+  venue?: Venue | null | undefined;
+  broadcasts?: (Broadcasts | null)[] | null;
+  weather?: Weather | null | undefined;
+  final?: Final | null | undefined;
+  home?: TeamStatus | null | undefined;
+  away?: TeamStatus | null | undefined;
+  pitching?: Pitching | null | undefined;
 };
 
 export type MoundVisits = {
@@ -92,8 +92,8 @@ export type TeamStatus = {
   errors: number;
   win: number;
   loss: number;
-  probable_pitcher: Pitcher;
-  starting_pitcher: Pitcher;
+  probable_pitcher?: Pitcher | null | undefined;
+  starting_pitcher?: Pitcher | null | undefined;
   scoring: Scoring[];
   events: Events[];
 };
@@ -102,21 +102,21 @@ export type Pitcher = {
   preferred_name: string;
   first_name: string;
   last_name: string;
-  jersey_number?: string;
+  jersey_number?: string | null | undefined;
   id: string;
   full_name: string;
-  win?: number;
-  loss?: number;
-  era?: number;
+  win?: number | null | undefined;
+  loss?: number | null | undefined;
+  era?: number | null | undefined;
 };
 
 export type Scoring = {
-  number?: number;
-  sequence?: number;
-  runs?: number;
-  hits?: number;
-  errors?: number;
-  type?: string;
+  number?: number | null | undefined;
+  sequence?: number | null | undefined;
+  runs?: number | null | undefined;
+  hits?: number | null | undefined;
+  errors?: number | null | undefined;
+  type?: string | null | undefined;
 };
 
 export type Events = {
@@ -138,7 +138,7 @@ export type Runners = {
   jersey_number: string;
   id: string;
   full_name: string;
-  suffix?: string;
+  suffix?: string | null | undefined;
 };
 
 export type Pitching = {

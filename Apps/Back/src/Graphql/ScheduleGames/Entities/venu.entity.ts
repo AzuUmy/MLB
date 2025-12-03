@@ -1,5 +1,6 @@
 // graphql/entities/venue.entity.ts
 import { ObjectType, Field, ID } from '@nestjs/graphql';
+import { Location } from './location.entity';
 
 @ObjectType()
 export class Venue {
@@ -42,7 +43,6 @@ export class Venue {
   @Field()
   time_zone!: string;
 
-  // You can skip Location or make it another entity if needed
-  // @Field(() => Location)
-  // location: Location;
+  @Field(() => Location, { nullable: true })
+  location?: Location | null;
 }

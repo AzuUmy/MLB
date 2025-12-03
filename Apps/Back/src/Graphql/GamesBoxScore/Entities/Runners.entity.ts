@@ -16,6 +16,6 @@ export class Runners {
   id!: string;
   @Field()
   full_name!: string;
-  @Field({nullable: true})
-  suffix?: string
+  @Field(() => String, {nullable: true})
+  suffix?: string | null
 }

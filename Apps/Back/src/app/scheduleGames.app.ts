@@ -36,7 +36,6 @@ export class ScheduleGamesApp {
             games: [],
           } as ScheduleGamesSeries);
         }
-
         seriesMap.get(matchupKey)!.games.push(game);
       }
     }

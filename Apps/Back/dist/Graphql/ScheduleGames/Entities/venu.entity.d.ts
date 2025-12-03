@@ -1,3 +1,4 @@
+import { Location } from './location.entity';
 export declare class Venue {
     name: string;
     market: string;
@@ -12,4 +13,5 @@ export declare class Venue {
     field_orientation: string;
     stadium_type: string;
     time_zone: string;
+    location?: Location | null;
 }

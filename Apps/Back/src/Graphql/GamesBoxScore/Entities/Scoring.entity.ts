@@ -3,15 +3,15 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 @ObjectType()
 export class Scoring {
   @Field(() => Int, { nullable: true })
-  number?: number;
+  number?: number | null;
   @Field(() => Int, { nullable: true })
-  sequence?: number;
+  sequence?: number | null;
   @Field(() => Int, { nullable: true })
-  runs?: number;
+  runs?: number | null;
   @Field(() => Int, { nullable: true })
-  hits?: number;
+  hits?: number | null;
   @Field(() => Int, { nullable: true })
-  errors?: number;
-  @Field({ nullable: true })
-  type?: string;
+  errors?: number | null;
+  @Field(() => String, { nullable: true })
+  type?: string | null;
 }

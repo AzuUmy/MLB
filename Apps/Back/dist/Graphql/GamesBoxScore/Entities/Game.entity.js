@@ -93,23 +93,23 @@ __decorate([
 ], Game.prototype, "ps_game", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", Object)
 ], Game.prototype, "attendance", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], Game.prototype, "duration", void 0);
 __decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", Object)
 ], Game.prototype, "season_id", void 0);
 __decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
+    (0, graphql_1.Field)(() => String, { nullable: true }),
+    __metadata("design:type", Object)
 ], Game.prototype, "season_type", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", Object)
 ], Game.prototype, "season_year", void 0);
 __decorate([
     (0, graphql_1.Field)(),
@@ -125,43 +125,43 @@ __decorate([
 ], Game.prototype, "reference", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Mound_visit_entity_1.MoundVisits, { nullable: true }),
-    __metadata("design:type", Mound_visit_entity_1.MoundVisits)
+    __metadata("design:type", Object)
 ], Game.prototype, "mound_visits", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Reviews_entity_1.Reviews, { nullable: true }),
-    __metadata("design:type", Reviews_entity_1.Reviews)
+    __metadata("design:type", Object)
 ], Game.prototype, "reviews", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Time_zones_entity_1.TimeZones, { nullable: true }),
-    __metadata("design:type", Time_zones_entity_1.TimeZones)
+    __metadata("design:type", Object)
 ], Game.prototype, "time_zones", void 0);
 __decorate([
     (0, graphql_1.Field)(() => venu_entity_1.Venue, { nullable: true }),
-    __metadata("design:type", venu_entity_1.Venue)
+    __metadata("design:type", Object)
 ], Game.prototype, "venue", void 0);
 __decorate([
     (0, graphql_1.Field)(() => [broadcast_entity_1.Broadcast], { nullable: 'itemsAndList' }),
-    __metadata("design:type", Array)
+    __metadata("design:type", Object)
 ], Game.prototype, "broadcasts", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Weather_entity_1.Weather, { nullable: true }),
-    __metadata("design:type", Weather_entity_1.Weather)
+    __metadata("design:type", Object)
 ], Game.prototype, "weather", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Final_entity_1.Final, { nullable: true }),
-    __metadata("design:type", Final_entity_1.Final)
+    __metadata("design:type", Object)
 ], Game.prototype, "final", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Team_status_entity_1.TeamStatus, { nullable: true }),
-    __metadata("design:type", Team_status_entity_1.TeamStatus)
+    __metadata("design:type", Object)
 ], Game.prototype, "home", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Team_status_entity_1.TeamStatus, { nullable: true }),
-    __metadata("design:type", Team_status_entity_1.TeamStatus)
+    __metadata("design:type", Object)
 ], Game.prototype, "away", void 0);
 __decorate([
     (0, graphql_1.Field)(() => Pitching_entity_1.Pitching, { nullable: true }),
-    __metadata("design:type", Pitching_entity_1.Pitching)
+    __metadata("design:type", Object)
 ], Game.prototype, "pitching", void 0);
 exports.Game = Game = __decorate([
     (0, graphql_1.ObjectType)()

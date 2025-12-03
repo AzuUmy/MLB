@@ -87,9 +87,9 @@ export class MlbScheduleGamesServiceApi {
       _comment: games._comment,
     });
 
-    //await this.scheduleGamesApp['scheduleService'].createScheduleGames(
-      //newScheduleGame,
-    //);
+    await this.scheduleGamesApp['scheduleService'].createScheduleGames(
+      newScheduleGame,
+    );
 
     Logger.log("Successfully fetched and stored today's schedule games");
   }

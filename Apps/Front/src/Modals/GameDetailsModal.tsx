@@ -115,7 +115,8 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
           <div className="p-1 w-full h-[70vh] max-h-[65vh] overflow-y-auto overflow-x-auto">
             {" "}
             <div className="p-2">
-              {data.gamesBoxScore.season_type
+              {data.gamesBoxScore.season_type != null ?
+                data.gamesBoxScore.season_type
                 .concat(" ")
                 .concat(" ")
                 .concat(
@@ -132,7 +133,7 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
                     .concat("Game")
                     .concat(" - ")
                     .concat(data.gamesBoxScore.ps_game)
-                )}
+                ): "Score Box"}
             </div>
             <div>
               <GameBoxScoreStats gamesScoreBox={data!.gamesBoxScore} />

@@ -35,10 +35,10 @@ export class Games {
   @Field()
   ps_game!: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   attendance?: string;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   duration?: string;
 
   @Field()

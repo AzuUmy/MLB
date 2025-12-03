@@ -45,7 +45,7 @@ export type Venue = {
     field_orientation: string;
     stadium_type: string;
     time_zone: string;
-    location?: Location;
+    location: Location;
 };
 export type Home = {
     name: string;

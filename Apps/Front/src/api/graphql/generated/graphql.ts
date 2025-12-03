@@ -16,7 +16,7 @@ export type Scalars = {
 
 export type Broadcast = {
   __typename?: 'Broadcast';
-  channel: Scalars['String']['output'];
+  channel?: Maybe<Scalars['String']['output']>;
   locale: Scalars['String']['output'];
   network: Scalars['String']['output'];
   type: Scalars['String']['output'];
@@ -42,34 +42,34 @@ export type Final = {
 
 export type Game = {
   __typename?: 'Game';
-  attendance: Scalars['Int']['output'];
-  away: TeamStatus;
+  attendance?: Maybe<Scalars['Int']['output']>;
+  away?: Maybe<TeamStatus>;
   away_team: Scalars['String']['output'];
-  broadcasts: Array<Broadcast>;
+  broadcasts?: Maybe<Array<Maybe<Broadcast>>>;
   coverage: Scalars['String']['output'];
   day_night: Scalars['String']['output'];
   double_header: Scalars['Boolean']['output'];
   duration: Scalars['String']['output'];
   entry_mode: Scalars['String']['output'];
-  final: Final;
+  final?: Maybe<Final>;
   game_number: Scalars['Int']['output'];
-  home: TeamStatus;
+  home?: Maybe<TeamStatus>;
   home_team: Scalars['String']['output'];
   id: Scalars['String']['output'];
-  mound_visits: MoundVisits;
-  pitching: Pitching;
+  mound_visits?: Maybe<MoundVisits>;
+  pitching?: Maybe<Pitching>;
   ps_game: Scalars['String']['output'];
   ps_round: Scalars['String']['output'];
   reference: Scalars['String']['output'];
-  reviews: Reviews;
+  reviews?: Maybe<Reviews>;
   scheduled: Scalars['String']['output'];
   season_id: Scalars['String']['output'];
   season_type: Scalars['String']['output'];
-  season_year: Scalars['Int']['output'];
+  season_year?: Maybe<Scalars['Int']['output']>;
   status: Scalars['String']['output'];
-  time_zones: TimeZones;
-  venue: Venue;
-  weather: Weather;
+  time_zones?: Maybe<TimeZones>;
+  venue?: Maybe<Venue>;
+  weather?: Maybe<Weather>;
 };
 
 export type Games = {
@@ -116,14 +116,14 @@ export type MoundVisits = {
 
 export type Pitcher = {
   __typename?: 'Pitcher';
-  era: Scalars['Float']['output'];
+  era?: Maybe<Scalars['Float']['output']>;
   first_name: Scalars['String']['output'];
   full_name: Scalars['String']['output'];
   id: Scalars['String']['output'];
   last_name: Scalars['String']['output'];
-  loss: Scalars['Int']['output'];
+  loss?: Maybe<Scalars['Int']['output']>;
   preferred_name: Scalars['String']['output'];
-  win: Scalars['Int']['output'];
+  win?: Maybe<Scalars['Int']['output']>;
 };
 
 export type Pitching = {
@@ -168,7 +168,7 @@ export type Runners = {
   last_name: Scalars['String']['output'];
   preferred_name: Scalars['String']['output'];
   starting_base: Scalars['Int']['output'];
-  suffix: Scalars['String']['output'];
+  suffix?: Maybe<Scalars['String']['output']>;
 };
 
 export type ScheduleGamesSeries = {
@@ -179,12 +179,12 @@ export type ScheduleGamesSeries = {
 
 export type Scoring = {
   __typename?: 'Scoring';
-  errors: Scalars['Int']['output'];
-  hits: Scalars['Int']['output'];
-  number: Scalars['Int']['output'];
-  runs: Scalars['Int']['output'];
-  sequence: Scalars['Int']['output'];
-  type: Scalars['String']['output'];
+  errors?: Maybe<Scalars['Int']['output']>;
+  hits?: Maybe<Scalars['Int']['output']>;
+  number?: Maybe<Scalars['Int']['output']>;
+  runs?: Maybe<Scalars['Int']['output']>;
+  sequence?: Maybe<Scalars['Int']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 export type Status = {
@@ -226,10 +226,10 @@ export type TeamStatus = {
   loss: Scalars['Int']['output'];
   market: Scalars['String']['output'];
   name: Scalars['String']['output'];
-  probable_pitcher: Pitcher;
+  probable_pitcher?: Maybe<Pitcher>;
   runs: Scalars['Int']['output'];
   scoring: Array<Scoring>;
-  starting_pitcher: Pitcher;
+  starting_pitcher?: Maybe<Pitcher>;
   win: Scalars['Int']['output'];
 };
 
@@ -293,7 +293,7 @@ export type GamesBoxScoreQueryVariables = Exact<{
 }>;
 
 
-export type GamesBoxScoreQuery = { __typename?: 'Query', gamesBoxScore: { __typename?: 'Game', id: string, status: string, coverage: string, game_number: number, day_night: string, scheduled: string, home_team: string, away_team: string, ps_round: string, ps_game: string, attendance: number, duration: string, season_id: string, season_type: string, season_year: number, double_header: boolean, entry_mode: string, reference: string, mound_visits: { __typename?: 'MoundVisits', home: { __typename?: 'Metting', used: number, remaining: number }, away: { __typename?: 'Metting', used: number, remaining: number } }, reviews: { __typename?: 'Reviews', home: { __typename?: 'Metting', used: number, remaining: number }, away: { __typename?: 'Metting', used: number, remaining: number } }, time_zones: { __typename?: 'TimeZones', venue: string, home: string, away: string }, venue: { __typename?: 'Venue', name: string, market: string, capacity: string, surface: string, address: string, city: string, state: string, zip: string, country: string, id: string, field_orientation: string, stadium_type: string, time_zone: string }, broadcasts: Array<{ __typename?: 'Broadcast', network: string, type: string, locale: string, channel: string }>, weather: { __typename?: 'Weather', forecast: { __typename?: 'WeatherInfo', temp_f: number, condition: string, humidity: number, dew_point_f: number, cloud_cover: number, obs_time: string, wind: { __typename?: 'Wind', speed_mph: number, direction: string } }, current_conditions: { __typename?: 'WeatherInfo', temp_f: number, condition: string, humidity: number, dew_point_f: number, cloud_cover: number, obs_time: string, wind: { __typename?: 'Wind', speed_mph: number, direction: string } } }, final: { __typename?: 'Final', inning: number, inning_half: string }, home: { __typename?: 'TeamStatus', name: string, market: string, abbr: string, id: string, runs: number, hits: number, errors: number, win: number, loss: number, probable_pitcher: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win: number, loss: number, era: number }, starting_pitcher: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win: number, loss: number, era: number }, scoring: Array<{ __typename?: 'Scoring', number: number, sequence: number, runs: number, hits: number, errors: number, type: string }>, events: Array<{ __typename?: 'Events', hitter_id: string, pitcher_id: string, inning: number, inning_half: string, type: string, hitter_outcome: string, id: string, runners: Array<{ __typename?: 'Runners', starting_base: number, first_name: string, last_name: string, preferred_name: string, jersey_number: string, id: string, full_name: string, suffix: string }> }> }, away: { __typename?: 'TeamStatus', name: string, market: string, abbr: string, id: string, runs: number, hits: number, errors: number, win: number, loss: number, probable_pitcher: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win: number, loss: number, era: number }, starting_pitcher: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win: number, loss: number, era: number }, scoring: Array<{ __typename?: 'Scoring', number: number, sequence: number, runs: number, hits: number, errors: number, type: string }>, events: Array<{ __typename?: 'Events', hitter_id: string, pitcher_id: string, inning: number, inning_half: string, type: string, hitter_outcome: string, id: string, runners: Array<{ __typename?: 'Runners', starting_base: number, first_name: string, last_name: string, preferred_name: string, jersey_number: string, id: string, full_name: string, suffix: string }> }> }, pitching: { __typename?: 'Pitching', win: { __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }, loss: { __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }, hold: Array<{ __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }>, blown_save: Array<{ __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }> } } };
+export type GamesBoxScoreQuery = { __typename?: 'Query', gamesBoxScore: { __typename?: 'Game', id: string, status: string, coverage: string, game_number: number, day_night: string, scheduled: string, home_team: string, away_team: string, ps_round: string, ps_game: string, attendance?: number | null, duration: string, season_id: string, season_type: string, season_year?: number | null, double_header: boolean, entry_mode: string, reference: string, mound_visits?: { __typename?: 'MoundVisits', home: { __typename?: 'Metting', used: number, remaining: number }, away: { __typename?: 'Metting', used: number, remaining: number } } | null, reviews?: { __typename?: 'Reviews', home: { __typename?: 'Metting', used: number, remaining: number }, away: { __typename?: 'Metting', used: number, remaining: number } } | null, time_zones?: { __typename?: 'TimeZones', venue: string, home: string, away: string } | null, venue?: { __typename?: 'Venue', name: string, market: string, capacity: string, surface: string, address: string, city: string, state: string, zip: string, country: string, id: string, field_orientation: string, stadium_type: string, time_zone: string } | null, broadcasts?: Array<{ __typename?: 'Broadcast', network: string, type: string, locale: string, channel?: string | null } | null> | null, weather?: { __typename?: 'Weather', forecast: { __typename?: 'WeatherInfo', temp_f: number, condition: string, humidity: number, dew_point_f: number, cloud_cover: number, obs_time: string, wind: { __typename?: 'Wind', speed_mph: number, direction: string } }, current_conditions: { __typename?: 'WeatherInfo', temp_f: number, condition: string, humidity: number, dew_point_f: number, cloud_cover: number, obs_time: string, wind: { __typename?: 'Wind', speed_mph: number, direction: string } } } | null, final?: { __typename?: 'Final', inning: number, inning_half: string } | null, home?: { __typename?: 'TeamStatus', name: string, market: string, abbr: string, id: string, runs: number, hits: number, errors: number, win: number, loss: number, probable_pitcher?: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win?: number | null, loss?: number | null, era?: number | null } | null, starting_pitcher?: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win?: number | null, loss?: number | null, era?: number | null } | null, scoring: Array<{ __typename?: 'Scoring', number?: number | null, sequence?: number | null, runs?: number | null, hits?: number | null, errors?: number | null, type?: string | null }>, events: Array<{ __typename?: 'Events', hitter_id: string, pitcher_id: string, inning: number, inning_half: string, type: string, hitter_outcome: string, id: string, runners: Array<{ __typename?: 'Runners', starting_base: number, first_name: string, last_name: string, preferred_name: string, jersey_number: string, id: string, full_name: string, suffix?: string | null }> }> } | null, away?: { __typename?: 'TeamStatus', name: string, market: string, abbr: string, id: string, runs: number, hits: number, errors: number, win: number, loss: number, probable_pitcher?: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win?: number | null, loss?: number | null, era?: number | null } | null, starting_pitcher?: { __typename?: 'Pitcher', preferred_name: string, first_name: string, last_name: string, id: string, full_name: string, win?: number | null, loss?: number | null, era?: number | null } | null, scoring: Array<{ __typename?: 'Scoring', number?: number | null, sequence?: number | null, runs?: number | null, hits?: number | null, errors?: number | null, type?: string | null }>, events: Array<{ __typename?: 'Events', hitter_id: string, pitcher_id: string, inning: number, inning_half: string, type: string, hitter_outcome: string, id: string, runners: Array<{ __typename?: 'Runners', starting_base: number, first_name: string, last_name: string, preferred_name: string, jersey_number: string, id: string, full_name: string, suffix?: string | null }> }> } | null, pitching?: { __typename?: 'Pitching', win: { __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }, loss: { __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }, hold: Array<{ __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }>, blown_save: Array<{ __typename?: 'Status', preferred_name: string, first_name: string, last_name: string, jersey_number: string, status: string, position: string, primary_position: string, id: string, win: number, loss: number, save: number, hold: number, blown_save: number, full_name: string }> } | null } };
 
 export type ScheduleGamesQueryVariables = Exact<{
   startDate: Scalars['String']['input'];
@@ -301,4 +301,4 @@ export type ScheduleGamesQueryVariables = Exact<{
 }>;
 
 
-export type ScheduleGamesQuery = { __typename?: 'Query', scheduleGames: Array<{ __typename?: 'ScheduleGamesSeries', series: string, games: Array<{ __typename?: 'Games', id: string, status: string, coverage: string, game_number: string, day_night: string, scheduled: string, home_team: string, away_team: string, ps_round: string, ps_game: string, attendance?: string | null, duration?: string | null, double_header: boolean, entry_mode: string, reference: string, venue: { __typename?: 'Venue', name: string, market: string, capacity: string, surface: string, address: string, city: string, state: string, zip: string, country: string, id: string, field_orientation: string, stadium_type: string, time_zone: string }, home: { __typename?: 'Team', name: string, market: string, abbr: string, id: string, seed: number, win: number, loss: number }, away: { __typename?: 'Team', name: string, market: string, abbr: string, id: string, seed: number, win: number, loss: number }, broadcasts: Array<{ __typename?: 'Broadcast', network: string, type: string, locale: string, channel: string }> }> }> };
+export type ScheduleGamesQuery = { __typename?: 'Query', scheduleGames: Array<{ __typename?: 'ScheduleGamesSeries', series: string, games: Array<{ __typename?: 'Games', id: string, status: string, coverage: string, game_number: string, day_night: string, scheduled: string, home_team: string, away_team: string, ps_round: string, ps_game: string, attendance?: string | null, duration?: string | null, double_header: boolean, entry_mode: string, reference: string, venue: { __typename?: 'Venue', name: string, market: string, capacity: string, surface: string, address: string, city: string, state: string, zip: string, country: string, id: string, field_orientation: string, stadium_type: string, time_zone: string }, home: { __typename?: 'Team', name: string, market: string, abbr: string, id: string, seed: number, win: number, loss: number }, away: { __typename?: 'Team', name: string, market: string, abbr: string, id: string, seed: number, win: number, loss: number }, broadcasts: Array<{ __typename?: 'Broadcast', network: string, type: string, locale: string, channel?: string | null }> }> }> };

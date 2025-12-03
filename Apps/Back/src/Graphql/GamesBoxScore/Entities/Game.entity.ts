@@ -31,40 +31,40 @@ export class Game {
   ps_round!: string;
   @Field()
   ps_game!: string;
-  @Field(() => Int)
-  attendance!: number;
+  @Field(() => Int, { nullable: true })
+  attendance?: number;
   @Field()
   duration!: string;
   @Field()
-  season_id!: string;
+  season_id?: string;
   @Field()
-  season_type!: string;
-  @Field(() => Int)
-  season_year!: number;
+  season_type?: string;
+  @Field(() => Int, { nullable: true })
+  season_year?: number;
   @Field()
   double_header!: boolean;
   @Field()
   entry_mode!: string;
   @Field()
   reference!: string;
-  @Field(() => MoundVisits)
+  @Field(() => MoundVisits, { nullable: true })
   mound_visits?: MoundVisits;
-  @Field(() => Reviews)
+  @Field(() => Reviews, { nullable: true })
   reviews?: Reviews;
-  @Field(() => TimeZones)
+  @Field(() => TimeZones, { nullable: true })
   time_zones?: TimeZones;
-  @Field(() => Venue)
+  @Field(() => Venue, { nullable: true })
   venue?: Venue;
-  @Field(() => [Broadcast])
+  @Field(() => [Broadcast], { nullable: 'itemsAndList' })
   broadcasts?: Broadcast[];
-  @Field(() => Weather)
+  @Field(() => Weather, { nullable: true })
   weather?: Weather;
-  @Field(() => Final)
+  @Field(() => Final, { nullable: true })
   final?: Final;
-  @Field(() => TeamStatus)
+  @Field(() => TeamStatus, { nullable: true })
   home?: TeamStatus;
-  @Field(() => TeamStatus)
+  @Field(() => TeamStatus, { nullable: true })
   away?: TeamStatus;
-  @Field(() => Pitching)
+  @Field(() => Pitching, {nullable: true})
   pitching?: Pitching;
 }

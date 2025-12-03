@@ -18,11 +18,11 @@ export declare class Game {
     away_team: string;
     ps_round: string;
     ps_game: string;
-    attendance: number;
+    attendance?: number;
     duration: string;
-    season_id: string;
-    season_type: string;
-    season_year: number;
+    season_id?: string;
+    season_type?: string;
+    season_year?: number;
     double_header: boolean;
     entry_mode: string;
     reference: string;

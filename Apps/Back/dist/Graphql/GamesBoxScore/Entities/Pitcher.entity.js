@@ -43,15 +43,15 @@ __decorate([
     __metadata("design:type", String)
 ], Pitcher.prototype, "full_name", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int),
+    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
     __metadata("design:type", Number)
 ], Pitcher.prototype, "win", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int),
+    (0, graphql_1.Field)(() => graphql_1.Int, { nullable: true }),
     __metadata("design:type", Number)
 ], Pitcher.prototype, "loss", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Float),
+    (0, graphql_1.Field)(() => graphql_1.Float, { nullable: true }),
     __metadata("design:type", Number)
 ], Pitcher.prototype, "era", void 0);
 exports.Pitcher = Pitcher = __decorate([

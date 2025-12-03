@@ -12,10 +12,10 @@ export class Pitcher {
   id!: string;
   @Field()
   full_name!: string;
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   win?: number;
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   loss?: number;
-  @Field(() => Float)
+  @Field(() => Float, { nullable: true })
   era?: number;
 }

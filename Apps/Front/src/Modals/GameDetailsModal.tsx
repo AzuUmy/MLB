@@ -84,7 +84,6 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
         </div>
       </div>
     );
-
   else if (data?.gamesBoxScore === undefined) return <div></div>;
 
   return (

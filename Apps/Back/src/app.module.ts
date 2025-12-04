@@ -12,6 +12,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { mongoConfig } from './config/mongo.config';
 import { CronModule } from './cron/cron.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { FirebaseAdminModule } from './Firebase/Firebase.modules';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -31,6 +32,7 @@ import { PrismaModule } from './prisma/prisma.module';
       level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
     }),
     CronModule,
+    FirebaseAdminModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],

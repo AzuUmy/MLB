@@ -1,0 +1,1 @@
+{"version":3,"file":"Firebase.modules.js","sourceRoot":"","sources":["../../src/Firebase/Firebase.modules.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAwC;AACxC,yDAA0D;AAMnD,IAAM,mBAAmB,GAAzB,MAAM,mBAAmB;CAAG,CAAA;AAAtB,kDAAmB;8BAAnB,mBAAmB;IAJ/B,IAAA,eAAM,EAAC;QACN,SAAS,EAAE,CAAC,uCAAoB,CAAC;QACjC,OAAO,EAAE,CAAC,uCAAoB,CAAC;KAChC,CAAC;GACW,mBAAmB,CAAG"}

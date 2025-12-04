@@ -21,6 +21,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongo_config_1 = require("./config/mongo.config");
 const cron_module_1 = require("./cron/cron.module");
 const prisma_module_1 = require("./prisma/prisma.module");
+const Firebase_modules_1 = require("./Firebase/Firebase.modules");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -44,6 +45,7 @@ exports.AppModule = AppModule = __decorate([
                 level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
             }),
             cron_module_1.CronModule,
+            Firebase_modules_1.FirebaseAdminModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, app_resolver_1.AppResolver],

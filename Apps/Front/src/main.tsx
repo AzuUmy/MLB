@@ -1,17 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client/react";
+import { RouterProvider } from "@tanstack/react-router";
 import { client } from "./api/graphql/Client";
+import { Router } from "./Routes/Router";
 import "./index.css";
-import App from "./App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <RouterProvider router={Router} />
+    </ApolloProvider>
   </StrictMode>
 );

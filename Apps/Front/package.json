@@ -1,5 +1,5 @@
 {
-  "name": "mlb",
+  "name": "Front",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,13 +15,14 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
+    "@my-mlb/shared": "workspace:*",
+    "@tanstack/react-router": "^1.139.14",
     "graphql": "^16.11.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-mlb-logos": "^1.1.2",
     "react-router-dom": "^7.9.4",
-    "rxjs": "^7.8.2",
-    "@my-mlb/shared": "workspace:*"
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

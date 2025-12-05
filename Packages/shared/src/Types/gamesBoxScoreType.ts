@@ -1,4 +1,4 @@
-import { Broadcasts, Venue } from "./scheduleGamesType";
+import { Broadcasts, Venue } from "./scheduleGamesType.js";
 
 export type BoxScore = {
   game: Game;

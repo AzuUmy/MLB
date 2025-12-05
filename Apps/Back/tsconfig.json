@@ -24,14 +24,14 @@
     "noFallthroughCasesInSwitch": false,
     "types": ["node", "jest"],
     "paths": {
-      "@my-mlb/shared": ["../../Packages/Shared/dist"],
-      "@my-mlb/shared/*": ["../../Packages/Shared/dist/*"]
+      "@my-mlb/shared": ["../../Packages/shared/dist"],
+      "@my-mlb/shared/*": ["../../Packages/shared/dist/*"]
     }
   },
   "include": ["src", "**/*.test.ts", "**/*.spec.ts", "prisma"],
   "references": [
     {
-      "path": "../../Packages/Shared/tsconfig.json"
+      "path": "../../Packages/shared/tsconfig.json"
     }
   ]
 }

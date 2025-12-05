@@ -7,14 +7,14 @@
   ],
   "scripts": {
     "dev:Shared": "pnpm --filter @my-mlb/shared dev",
-    "dev:Frontend": "pnpm --filter mlb dev --host",
+    "dev:Frontend": "pnpm --filter Front dev --host",
     "dev:Backend": "pnpm --filter Back dev",
-    "dev": "concurrently -n \"Shared,Front,Back\" -c \"yellow,cyan,green\" \"pnpm dev:Shared\" \"pnpm dev:Frontend\" \"pnpm dev:Backend\"",
+    "dev": "concurrently -n \"shared,Front,Back\" -c \"yellow,cyan,green\" \"pnpm dev:Shared\" \"pnpm dev:Frontend\" \"pnpm dev:Backend\"",
     "build": "pnpm -r --parallel build"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
-    "ts-node": "^10.9.2",
+    "ts-node": "^10.9.2", 
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   }

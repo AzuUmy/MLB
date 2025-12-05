@@ -16,8 +16,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@my-mlb/shared": ["../../Packages/Shared/dist"],
-      "@my-mlb/shared/*": ["../../Packages/Shared/dist/*"]
+      "@my-mlb/shared": ["../../Packages/shared/dist"],
+      "@my-mlb/shared/*": ["../../Packages/shared/dist/*"]
     }
   },
   "include": ["src/**/*"],

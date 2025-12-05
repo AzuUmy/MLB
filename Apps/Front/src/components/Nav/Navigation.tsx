@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   SportsBaseballTwoTone,
   SportsBaseballRounded,
@@ -10,7 +10,9 @@ import {
 
 export default function BottomBar() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const {location} = useRouterState();
+  const pathname = location.pathname;
+
   return (
     <div
       className="fixed  bottom-10 left-1/2 transform -translate-x-1/2 
@@ -18,12 +20,12 @@ export default function BottomBar() {
     >
       <div className="flex gap-2">
         <div
-          onClick={() => navigate("/Games")}
+          onClick={() => navigate({to:"/Games"})}
           className={`p-3 rounded-full ${
-            location.pathname === "/Games" ? "bg-blue-600" : "bg-slate-700"
+            pathname === "/Games" ? "bg-blue-600" : "bg-slate-700"
           }`}
         >
-          {location.pathname === "/Games" ? (
+          {pathname === "/Games" ? (
             <SportsBaseballRounded
               fontSize="inherit"
               className="!w-[30px] !h-[30px] text-white"
@@ -36,12 +38,12 @@ export default function BottomBar() {
           )}
         </div>
         <div
-          onClick={() => navigate("/Score")}
+          onClick={() => navigate({to: "/Score"})}
           className={`p-3 rounded-full ${
-            location.pathname === "/Score" ? "bg-blue-600" : "bg-slate-700"
+            pathname === "/Score" ? "bg-blue-600" : "bg-slate-700"
           }`}
         >
-          {location.pathname === "/Score" ? (
+          {pathname === "/Score" ? (
             <ScoreboardRounded
               fontSize="inherit"
               className="!w-[30px] !h-[30px] text-white"

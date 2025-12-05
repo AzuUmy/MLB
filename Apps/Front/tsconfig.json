@@ -7,7 +7,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@my-mlb/shared": ["../../Packages/Shared/src"]
+      "@my-mlb/shared": ["../../Packages/shared/src"]
     }
   }
 }

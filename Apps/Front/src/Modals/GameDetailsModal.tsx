@@ -114,7 +114,7 @@ export function GamesDetailsModal({ details }: gamesDetailsProps) {
 
           <div className="p-1 w-full h-[70vh] max-h-[65vh] overflow-y-auto overflow-x-auto">
             {" "}
-            <div className="p-2">
+            <div className="p-2 flex justify-center">
               {data.gamesBoxScore.season_type != null ?
                 data.gamesBoxScore.season_type
                 .concat(" ")

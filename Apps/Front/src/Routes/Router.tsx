@@ -8,8 +8,15 @@ import {
 import { Score } from "../Pages/Score";
 import { Games } from "../Pages/Games";
 import MainLayout from "../Layouts/MainLayout";
+import LoginLayout from "../Layouts/LoginLayout";
 
 const rootRoute = createRootRoute({
+  component: () => <Outlet />,
+});
+
+const mainLayoutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  id: "main-layout",
   component: () => (
     <MainLayout>
       <Outlet />
@@ -17,8 +24,23 @@ const rootRoute = createRootRoute({
   ),
 });
 
-const indexRoute = createRoute({
+const loginLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
+  id: "login-layout",
+  component: () => (
+    <LoginLayout>
+      <Outlet />
+    </LoginLayout>
+  ),
+});
+
+const loginRoute = createRoute({
+  getParentRoute: () => loginLayoutRoute,
+  path: "/login",
+});
+
+const indexRoute = createRoute({
+  getParentRoute: () => mainLayoutRoute,
   path: "/",
   beforeLoad: () => {
     throw redirect({
@@ -28,13 +50,13 @@ const indexRoute = createRoute({
 });
 
 const gamesRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => mainLayoutRoute,
   path: "/Games",
   component: Games,
 });
 
 const scoreRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => mainLayoutRoute,
   path: "/Score",
   component: Score,
 });
@@ -43,6 +65,8 @@ export const routeTree = rootRoute.addChildren([
   indexRoute,
   gamesRoute,
   scoreRoute,
+  loginLayoutRoute.addChildren([loginRoute]),
+  mainLayoutRoute.addChildren([gamesRoute, scoreRoute]),
 ]);
 
 export const Router = createRouter({

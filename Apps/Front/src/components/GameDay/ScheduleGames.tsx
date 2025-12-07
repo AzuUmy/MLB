@@ -24,7 +24,12 @@ export function ScheduleGames({
     return (
       <div className="flex flex-col gap-3 ">
         {Array.from({ length: 10 }).map((_) => (
-          <Skeleton className="opacity-[50%]" height="350px" width="100%" rounded="15px" />
+          <Skeleton
+            className="opacity-[50%]"
+            height="350px"
+            width="100%"
+            rounded="15px"
+          />
         ))}
       </div>
     );

@@ -12,19 +12,18 @@ export function NavigationTop({ setOpenSideMenu }: NavigationTopProps) {
 
   return (
     <div className="relative h-12">
- <div className="fixed left-0 top-0 w-full pl-3 pr-3  bg-white bg-opacity-80 flex justify-between align items-center z-10 backdrop-blur-sm">
-      <Menu
-        onClick={toggleSideMenu}
-        className="text-black sm:!h-[30px] sm:!w-[30px] transition-colors duration-300"
-        style={{
-          WebkitTapHighlightColor: "transparent",
-        }}
-      />
+      <div className="fixed left-0 top-0 w-full pl-3 pr-3  bg-white bg-opacity-80 flex justify-between align items-center z-10 backdrop-blur-sm">
+        <Menu
+          onClick={toggleSideMenu}
+          className="text-black sm:!h-[30px] sm:!w-[30px] transition-colors duration-300"
+          style={{
+            WebkitTapHighlightColor: "transparent",
+          }}
+        />
 
-      <MLBLogo />
-      <AccountCircleRounded className="text-black sm:!h-[30px] sm!w-[30px] " />
+        <MLBLogo />
+        <AccountCircleRounded className="text-black sm:!h-[30px] sm!w-[30px] " />
+      </div>
     </div>
-    </div>
-   
   );
 }

@@ -1,5 +1,3 @@
-import { Series } from "../../Utils/Dictionary";
-import * as MLBLogos from "react-mlb-logos";
 import type { ScheduleGamesSeries } from "@my-mlb/shared";
 
 type GamesTodayProps = {
@@ -21,14 +19,6 @@ export function GameDay({ gameToday }: GamesTodayProps) {
       return { series: serie.series, games: todaysGames };
     })
     .filter((s) => s.games && s.games.length > 0);
-
-  const getLogo = (abbr: string | undefined | null) => {
-    if (!abbr) return null;
-    const LogoComponent = (MLBLogos as any)[abbr.toUpperCase()];
-    return typeof LogoComponent === "function" ? (
-      <LogoComponent />
-    ) : null;
-  };
 
   if (todaysGamesWithSerie != undefined && todaysGamesWithSerie?.length > 0)
     return (

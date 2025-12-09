@@ -2,7 +2,8 @@ type buttonProps = {
   text?: string;
   backgroundColor?: string;
   textColor?: string;
-  state?: boolean;
+  state?: string;
+  disabled?: boolean;
   onClick?: () => void;
 };
 
@@ -12,14 +13,21 @@ export function Button({
   textColor,
   state,
   onClick,
+  disabled,
 }: buttonProps) {
   return (
     <button
-      className="w-full p-3"
+      className="
+        w-full p-3 rounded-lg
+        outline-none focus:outline-none active:bg-transparent
+        transition-all duration-300 ease-in-out
+      "
       onClick={onClick}
+      disabled={disabled}
       style={{
         backgroundColor: backgroundColor || "#ffffff",
         color: textColor || "#000000",
+        WebkitTapHighlightColor: "transparent",
       }}
     >
       {text}

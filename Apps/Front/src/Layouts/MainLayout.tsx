@@ -12,7 +12,6 @@ export default function MainLayout({ children }: MainLayoutProps) {
   const [closing, setClosing] = useState(false);
 
   const handleClose = () => {
-   
     setClosing(true);
 
     setTimeout(() => {

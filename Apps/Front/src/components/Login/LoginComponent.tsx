@@ -67,7 +67,7 @@ export function LoginComponenet() {
 
       {showForm && (
         <div className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-4 px-4 animate-fadeIn mb-20">
-          <div className="origin-center scale-[3] p-10">
+          <div className="origin-center scale-[3] mb-14">
             <MLBLogo />
           </div>
 
@@ -109,8 +109,10 @@ export function LoginComponenet() {
               }
               textColor={buttonState === "enabled" ? "#ffffff" : "#9a9ea6"}
               disabled={buttonState !== "enabled"}
+              state={buttonState}
               onClick={() => {
                 if (buttonState !== "enabled") return;
+                handleButtonState("loading");
               }}
             />
             <div className="flex items-center justify-center gap-1 mt-8">

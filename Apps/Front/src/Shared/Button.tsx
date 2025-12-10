@@ -1,3 +1,5 @@
+import { Spinner } from "../Loading/Spinner";
+
 type buttonProps = {
   text?: string;
   backgroundColor?: string;
@@ -30,7 +32,11 @@ export function Button({
         WebkitTapHighlightColor: "transparent",
       }}
     >
-      {text}
+      {state === "loading" ? (
+        <Spinner staticColor="#c9c9c9" spinColor="#17193b" />
+      ) : (
+        text
+      )}
     </button>
   );
 }

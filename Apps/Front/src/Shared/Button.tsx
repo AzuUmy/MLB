@@ -33,7 +33,7 @@ export function Button({
       }}
     >
       {state === "loading" ? (
-        <Spinner staticColor="#c9c9c9" spinColor="#17193b" />
+        <Spinner staticColor="#c9c9c9" spinColor="#000000" />
       ) : (
         text
       )}

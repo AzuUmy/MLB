@@ -7,7 +7,6 @@ import { useButtonState } from "../../../Hooks/buttonState";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
 import { PasswordProceed } from "./passwordProcced";
 
-
 type LoginComponentProps = {
   backOnClick?: () => void;
 };
@@ -28,7 +27,6 @@ export function LoginComponenet({ backOnClick }: LoginComponentProps) {
   useEffect(() => {
     if (emailValid && email.length > 0) {
       handleButtonState("enabled");
-      console.log("check");
     } else {
       handleButtonState("disabled");
     }

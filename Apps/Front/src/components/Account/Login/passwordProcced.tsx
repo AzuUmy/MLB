@@ -17,7 +17,6 @@ export function PasswordProceed({ backOnClick, email }: PasswordProceedProps) {
   const {
     value: password,
     isValid: passwordValid,
-    touched: passwordTouched,
     onChange: onPasswordChange,
   } = useInputValidation();
 
@@ -62,7 +61,7 @@ export function PasswordProceed({ backOnClick, email }: PasswordProceedProps) {
         </div>
       </div>
 
-      <div className="w-full pl-5 pr-5 flex flex-col gap-3">
+      <div className="w-full pl-5 pr-5 flex flex-col gap-3 mt-10">
         <div className="flex flex-col gap-3">
           <span className="font-bold">Password</span>
           <Input

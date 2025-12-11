@@ -7,11 +7,9 @@ import { useButtonState } from "../../../Hooks/buttonState";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
 import { PasswordProceed } from "./passwordProcced";
 
-type LoginComponentProps = {
-  backOnClick?: () => void;
-};
 
-export function LoginComponenet({ backOnClick }: LoginComponentProps) {
+
+export function LoginComponenet() {
   const [startTransition, setStartTransition] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const { buttonState, handleButtonState } = useButtonState();
@@ -20,7 +18,6 @@ export function LoginComponenet({ backOnClick }: LoginComponentProps) {
   const {
     value: email,
     isValid: emailValid,
-    touched: emailTouched,
     onChange: onEmailChange,
   } = useInputValidation();
 

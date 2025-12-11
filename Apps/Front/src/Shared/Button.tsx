@@ -6,6 +6,8 @@ type buttonProps = {
   textColor?: string;
   state?: string;
   disabled?: boolean;
+  padding?: string;
+  rounded?: string;
   onClick?: () => void;
 };
 
@@ -16,11 +18,13 @@ export function Button({
   state,
   onClick,
   disabled,
+  padding,
+  rounded
 }: buttonProps) {
   return (
     <button
       className="
-        w-full p-3 rounded-lg
+        w-full p-3
         outline-none focus:outline-none active:bg-transparent
         transition-all duration-300 ease-in-out
       "
@@ -30,6 +34,8 @@ export function Button({
         backgroundColor: backgroundColor || "#ffffff",
         color: textColor || "#000000",
         WebkitTapHighlightColor: "transparent",
+        padding: padding || '0.8em',
+        borderRadius: rounded || '0.5em'
       }}
     >
       {state === "loading" ? (

@@ -100,12 +100,6 @@ export function LoginComponenet({ backOnClick }: LoginComponentProps) {
               <span className="text-sm text-slate-400">
                 we need to validate your email to be abble to log you in
               </span>
-              <div className="flex items-center gap-1">
-                <span className="text-sm text-slate-400">Forgot Password?</span>
-                <a className="text-sm" href="#">
-                  Reset Password
-                </a>
-              </div>
             </div>
 
             <div className="w-full mt-5">
@@ -136,6 +130,6 @@ export function LoginComponenet({ backOnClick }: LoginComponentProps) {
       </div>
     );
   else if (procedToPassword) {
-    return <PasswordProceed backOnClick={() => setProcedToPassword(false)} />;
+    return <PasswordProceed backOnClick={() => setProcedToPassword(false)} email={email}/>;
   }
 }

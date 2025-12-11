@@ -7,9 +7,13 @@ import { useButtonState } from "../../../Hooks/buttonState";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
 import { PasswordProceed } from "./passwordProcced";
 
+type LoginComponenetProps = {
+  onConfirmPasswordOnClick?: () => void;
+};
 
-
-export function LoginComponenet() {
+export function LoginComponenet({
+  onConfirmPasswordOnClick,
+}: LoginComponenetProps) {
   const [startTransition, setStartTransition] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const { buttonState, handleButtonState } = useButtonState();
@@ -127,6 +131,12 @@ export function LoginComponenet() {
       </div>
     );
   else if (procedToPassword) {
-    return <PasswordProceed backOnClick={() => setProcedToPassword(false)} email={email}/>;
+    return (
+      <PasswordProceed
+        backOnClick={() => setProcedToPassword(false)}
+        email={email}
+        confirmPasswordOnClick={onConfirmPasswordOnClick}
+      />
+    );
   }
 }

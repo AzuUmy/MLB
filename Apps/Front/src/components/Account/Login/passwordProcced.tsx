@@ -8,11 +8,18 @@ import BaseballPlayer from "../../../Img/baseball-player.jpg";
 
 type PasswordProceedProps = {
   backOnClick?: () => void;
+  confirmPasswordOnClick?: () => void;
   email: string;
 };
 
-export function PasswordProceed({ backOnClick, email }: PasswordProceedProps) {
+export function PasswordProceed({
+  backOnClick,
+  confirmPasswordOnClick,
+  email,
+}: PasswordProceedProps) {
   const { buttonState, handleButtonState } = useButtonState();
+
+  let passwordTeste = "123";
 
   const {
     value: password,
@@ -81,6 +88,9 @@ export function PasswordProceed({ backOnClick, email }: PasswordProceedProps) {
           state={buttonState}
           onClick={() => {
             handleButtonState("loading");
+            if (password === passwordTeste) {
+              confirmPasswordOnClick && confirmPasswordOnClick();
+            }
           }}
         />
       </div>

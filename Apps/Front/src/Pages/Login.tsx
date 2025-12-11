@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LoginComponenet } from "../components/Account/Login/LoginComponent";
 import { Context as LoginNumberConfirmation } from "../Modals/Context";
+import { LoginCode } from "../components/Account/Login/LoginCode";
 
 export function Login() {
   const [triggerContex, setTriggerContex] = useState<boolean>(false);
@@ -17,7 +18,7 @@ export function Login() {
             showContext={triggerContex}
             onClose={handleCloseContext}
           >
-            <h1>hello login confirmation</h1>
+            <LoginCode />
           </LoginNumberConfirmation>
         </div>
       </div>

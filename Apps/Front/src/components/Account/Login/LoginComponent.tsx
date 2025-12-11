@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import MLBLogo from "../../../assets/icon/mlb-logo";
 import { useButtonState } from "../../../Hooks/buttonState";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
-import { PasswordProceed } from "./passwordProcced";
+import { PasswordProceed } from "./PasswordProcced";
 
 type LoginComponenetProps = {
   onConfirmPasswordOnClick?: () => void;

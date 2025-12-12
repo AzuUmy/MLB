@@ -9,10 +9,12 @@ import { PasswordProceed } from "./PasswordProcced";
 
 type LoginComponenetProps = {
   onConfirmPasswordOnClick?: () => void;
+  resetState?: boolean;
 };
 
 export function LoginComponenet({
   onConfirmPasswordOnClick,
+  resetState,
 }: LoginComponenetProps) {
   const [startTransition, setStartTransition] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -134,6 +136,7 @@ export function LoginComponenet({
     return (
       <PasswordProceed
         backOnClick={() => setProcedToPassword(false)}
+        resetState={resetState}
         email={email}
         confirmPasswordOnClick={onConfirmPasswordOnClick}
       />

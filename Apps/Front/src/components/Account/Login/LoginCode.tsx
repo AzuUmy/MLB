@@ -29,9 +29,13 @@ export function LoginCode() {
   }
 
   useEffect(() => {
+    inputsRef.current[0]?.focus();
+  }, []);
+
+  useEffect(() => {
     if (tryAgain <= 0) {
       handleButtonState("enabled");
-      return
+      return;
     }
     const interval = setInterval(() => {
       setTryAgain((prev) => prev - 1);

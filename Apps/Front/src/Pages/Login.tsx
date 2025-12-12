@@ -8,12 +8,14 @@ export function Login() {
   const handleCloseContext = () => setTriggerContex(false);
 
   const openContext = () => setTriggerContex(true);
-
   return (
     <div>
       <div>
         <div>
-          <LoginComponenet onConfirmPasswordOnClick={openContext} />
+          <LoginComponenet
+            onConfirmPasswordOnClick={openContext}
+            resetState={triggerContex}
+          />
           <LoginNumberConfirmation
             showContext={triggerContex}
             onClose={handleCloseContext}

@@ -3,12 +3,12 @@ import { Button } from "../../../Shared/Button";
 import { Input } from "../../../Shared/Input";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
 import { useButtonState } from "../../../Hooks/buttonState";
-
 import BaseballPlayer from "../../../Img/baseball-player.jpg";
 
 type PasswordProceedProps = {
   backOnClick?: () => void;
   confirmPasswordOnClick?: () => void;
+  resetState?: boolean;
   email: string;
 };
 
@@ -16,6 +16,7 @@ export function PasswordProceed({
   backOnClick,
   confirmPasswordOnClick,
   email,
+  resetState,
 }: PasswordProceedProps) {
   const { buttonState, handleButtonState } = useButtonState();
 
@@ -28,12 +29,16 @@ export function PasswordProceed({
   } = useInputValidation();
 
   useEffect(() => {
+    if (resetState) {
+      handleButtonState("loading");
+      return;
+    }
     if (passwordValid && password.length > 0) {
       handleButtonState("enabled");
     } else {
       handleButtonState("disabled");
     }
-  }, [passwordValid, password]);
+  }, [passwordValid, password, resetState]);
 
   return (
     <div className="w-screen">
@@ -51,7 +56,7 @@ export function PasswordProceed({
       </div>
 
       <h1 className="absolute top-36 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-3xl">
-        Wellcome
+        Welcome
       </h1>
 
       <div>

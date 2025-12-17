@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from 'src/Graphql/Auth/auth.service';
 import { Token } from 'src/Graphql/Auth/Entities/auth.entity';
@@ -17,7 +17,7 @@ export class AuthApp {
     const userAuth = await this.authService.GetUserAuth(email, password);
 
     if (!userAuth) {
-      return 'User not found';
+      throw new UnauthorizedException('User not found');
     }
 
     const payload = {

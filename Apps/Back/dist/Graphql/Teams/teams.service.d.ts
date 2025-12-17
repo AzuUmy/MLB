@@ -7,7 +7,7 @@ export declare class TeamsService {
     getAllTeams(): Promise<{
         name: string;
         id: string;
-        abbr: string;
         market: string;
+        abbr: string;
     }[]>;
 }

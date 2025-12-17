@@ -6,6 +6,12 @@ import MLBLogo from "../../../assets/icon/mlb-logo";
 import { useButtonState } from "../../../Hooks/buttonState";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
 import { PasswordProceed } from "./PasswordProcced";
+import { useLazyQuery } from "@apollo/client/react";
+import type {
+  EmailCheckQuery,
+  EmailCheckQueryVariables,
+} from "../../../api/graphql/generated/graphql";
+import { CheckEmailQueryDocument } from "../../../api/graphql/queries/authQuery";
 
 type LoginComponenetProps = {
   onConfirmPasswordOnClick?: () => void;
@@ -21,6 +27,11 @@ export function LoginComponenet({
   const { buttonState, handleButtonState } = useButtonState();
   const [procedToPassword, setProcedToPassword] = useState(false);
 
+  const [checkEmail, { data, loading, error }] = useLazyQuery<
+    EmailCheckQuery,
+    EmailCheckQueryVariables
+  >(CheckEmailQueryDocument);
+
   const {
     value: email,
     isValid: emailValid,
@@ -28,12 +39,38 @@ export function LoginComponenet({
   } = useInputValidation();
 
   useEffect(() => {
-    if (emailValid && email.length > 0) {
+    if (!emailValid || email.length === 0) {
+      handleButtonState("disabled");
+      return;
+    }
+
+    handleButtonState("disabled");
+    const timeout = setTimeout(() => {
+      checkEmail({
+        variables: { email },
+      });
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [emailValid, email]);
+
+  useEffect(() => {
+    if (loading) {
+      handleButtonState("loading");
+      return;
+    }
+
+    if (error) {
+      handleButtonState("disabled");
+    }
+
+    if (!data) return;
+    if (data.EmailCheck.email) {
       handleButtonState("enabled");
     } else {
       handleButtonState("disabled");
     }
-  }, [emailValid, email]);
+  }, [data, loading]);
 
   function handleStart() {
     setStartTransition(true);
@@ -113,6 +150,7 @@ export function LoginComponenet({
                 }
                 textColor={buttonState === "enabled" ? "#ffffff" : "#9a9ea6"}
                 disabled={buttonState !== "enabled"}
+                state={buttonState}
                 onClick={() => {
                   if (buttonState !== "enabled") return;
                   setProcedToPassword(true);

@@ -22,6 +22,11 @@ export type Broadcast = {
   type: Scalars['String']['output'];
 };
 
+export type Email = {
+  __typename?: 'Email';
+  email?: Maybe<Scalars['String']['output']>;
+};
+
 export type Events = {
   __typename?: 'Events';
   hitter_id: Scalars['String']['output'];
@@ -120,6 +125,11 @@ export type MoundVisits = {
   home: Metting;
 };
 
+export type Password = {
+  __typename?: 'Password';
+  password?: Maybe<Scalars['String']['output']>;
+};
+
 export type Pitcher = {
   __typename?: 'Pitcher';
   era?: Maybe<Scalars['Float']['output']>;
@@ -142,10 +152,23 @@ export type Pitching = {
 
 export type Query = {
   __typename?: 'Query';
+  Auth: Token;
+  EmailCheck: Email;
   Teams: Array<Teams>;
   gamesBoxScore: Game;
   hello: Scalars['String']['output'];
   scheduleGames: Array<ScheduleGamesSeries>;
+};
+
+
+export type QueryAuthArgs = {
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+};
+
+
+export type QueryEmailCheckArgs = {
+  email: Scalars['String']['input'];
 };
 
 
@@ -254,6 +277,11 @@ export type TimeZones = {
   venue: Scalars['String']['output'];
 };
 
+export type Token = {
+  __typename?: 'Token';
+  accessToken: Scalars['String']['output'];
+};
+
 export type Venue = {
   __typename?: 'Venue';
   address: Scalars['String']['output'];
@@ -294,6 +322,13 @@ export type Wind = {
   direction: Scalars['String']['output'];
   speed_mph: Scalars['Float']['output'];
 };
+
+export type EmailCheckQueryVariables = Exact<{
+  email: Scalars['String']['input'];
+}>;
+
+
+export type EmailCheckQuery = { __typename?: 'Query', EmailCheck: { __typename?: 'Email', email?: string | null } };
 
 export type GamesBoxScoreQueryVariables = Exact<{
   id: Scalars['String']['input'];

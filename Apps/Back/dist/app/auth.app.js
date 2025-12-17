@@ -20,6 +20,13 @@ let AuthApp = class AuthApp {
         this.authService = authService;
         this.jwtService = jwtService;
     }
+    async userEmail(email) {
+        const userEmail = await this.authService.GetUserEmail(email);
+        if (!userEmail) {
+            throw new common_1.UnauthorizedException('Email not founded');
+        }
+        return userEmail;
+    }
     async userAuthentication(email, password) {
         const userAuth = await this.authService.GetUserAuth(email, password);
         if (!userAuth) {

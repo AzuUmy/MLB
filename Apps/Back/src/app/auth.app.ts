@@ -1,3 +1,4 @@
+import { Email } from '@my-mlb/shared';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from 'src/Graphql/Auth/auth.service';
@@ -9,6 +10,16 @@ export class AuthApp {
     private readonly authService: AuthService,
     private readonly jwtService: JwtService,
   ) {}
+
+  async userEmail(email: string): Promise<Email> {
+    const userEmail = await this.authService.GetUserEmail(email);
+
+    if (!userEmail) {
+      throw new UnauthorizedException('Email not founded');
+    }
+
+    return userEmail;
+  }
 
   async userAuthentication(
     email: string,

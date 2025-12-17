@@ -4,4 +4,5 @@ export declare class AuthResolver {
     private readonly authApp;
     constructor(authApp: AuthApp);
     Auth(email: string, password: string): Promise<string | Token>;
+    EmailCheck(email: string): Promise<import("@my-mlb/shared").Email>;
 }

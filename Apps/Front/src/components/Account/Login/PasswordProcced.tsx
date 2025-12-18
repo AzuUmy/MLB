@@ -43,12 +43,9 @@ export function PasswordProceed({
     }
 
     if (password.length <= 0 && !resetState) {
-      console.log("check1", passwordValid, password, resetState);
       handleButtonState("disabled");
       return;
     }
-
-    console.log("check2", passwordValid, password, resetState);
 
     handleButtonState("loading");
   }, [passwordValid, password, resetState]);

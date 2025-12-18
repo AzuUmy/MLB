@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { isValidElement, useEffect, useRef, useState } from "react";
 import { Button } from "../../../Shared/Button";
 import { Input } from "../../../Shared/Input";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
 import { useButtonState } from "../../../Hooks/buttonState";
 import BaseballPlayer from "../../../Img/baseball-player.jpg";
+import { useLazyQuery } from "@apollo/client/react";
+import { AuthQueryDocument } from "../../../api/graphql/queries/authQuery";
+import type {
+  AuthQuery,
+  AuthQueryVariables,
+} from "../../../api/graphql/generated/graphql";
 
 type PasswordProceedProps = {
   backOnClick?: () => void;
@@ -20,24 +26,31 @@ export function PasswordProceed({
 }: PasswordProceedProps) {
   const { buttonState, handleButtonState } = useButtonState();
 
-  let passwordTeste = "123";
-
   const {
     value: password,
     isValid: passwordValid,
     onChange: onPasswordChange,
   } = useInputValidation();
 
+  const [auth, { data, loading }] = useLazyQuery<AuthQuery, AuthQueryVariables>(
+    AuthQueryDocument
+  );
+
   useEffect(() => {
-    if (resetState) {
-      handleButtonState("loading");
+    if (passwordValid && password.length > 0 && !resetState) {
+      handleButtonState("enabled");
       return;
     }
-    if (passwordValid && password.length > 0) {
-      handleButtonState("enabled");
-    } else {
+
+    if (password.length <= 0 && !resetState) {
+      console.log("check1", passwordValid, password, resetState);
       handleButtonState("disabled");
+      return;
     }
+
+    console.log("check2", passwordValid, password, resetState);
+
+    handleButtonState("loading");
   }, [passwordValid, password, resetState]);
 
   return (
@@ -82,8 +95,10 @@ export function PasswordProceed({
             backgroundColor="#f2f4f7"
             value={password}
             onChange={onPasswordChange}
-          />{" "}
+          />
         </div>
+
+        <div></div>
 
         <Button
           text="Login"
@@ -92,8 +107,9 @@ export function PasswordProceed({
           disabled={buttonState !== "enabled"}
           state={buttonState}
           onClick={() => {
-            handleButtonState("loading");
-            if (password === passwordTeste) {
+            if (passwordValid) {
+              auth({ variables: { email, password } });
+              handleButtonState("loading");
               confirmPasswordOnClick && confirmPasswordOnClick();
             }
           }}

@@ -58,7 +58,7 @@ export function LoginCode() {
           <input
             key={i}
             maxLength={1}
-            type="text"
+            type="number"
             inputMode="numeric"
             className="w-12 h-12 border rounded-lg text-center text-xl outline-none focus:border-blue-500"
             ref={(el) => {

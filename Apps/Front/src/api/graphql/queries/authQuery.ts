@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
-export const CheckEmailQueryDocument = gql`
-  query EmailCheck($email: String!) {
-    EmailCheck(email: $email) {
-      email
+export const AuthQueryDocument = gql`
+  query Auth($email: String!, $password: String!) {
+    Auth(email: $email, password: $password) {
+      accessToken
     }
   }
 `;

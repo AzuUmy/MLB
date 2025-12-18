@@ -323,6 +323,14 @@ export type Wind = {
   speed_mph: Scalars['Float']['output'];
 };
 
+export type AuthQueryVariables = Exact<{
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+}>;
+
+
+export type AuthQuery = { __typename?: 'Query', Auth: { __typename?: 'Token', accessToken: string } };
+
 export type EmailCheckQueryVariables = Exact<{
   email: Scalars['String']['input'];
 }>;

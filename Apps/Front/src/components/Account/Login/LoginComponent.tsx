@@ -11,7 +11,7 @@ import type {
   EmailCheckQuery,
   EmailCheckQueryVariables,
 } from "../../../api/graphql/generated/graphql";
-import { CheckEmailQueryDocument } from "../../../api/graphql/queries/authQuery";
+import { CheckEmailQueryDocument } from "../../../api/graphql/queries/checkEmailQuery";
 
 type LoginComponenetProps = {
   onConfirmPasswordOnClick?: () => void;

@@ -1,4 +1,4 @@
-import { isValidElement, useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { Button } from "../../../Shared/Button";
 import { Input } from "../../../Shared/Input";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
@@ -47,8 +47,40 @@ export function PasswordProceed({
       return;
     }
 
+    if (loading) {
+      handleButtonState("loading");
+      return;
+    }
+
     handleButtonState("loading");
-  }, [passwordValid, password, resetState]);
+  }, [passwordValid, password, resetState, data]);
+
+  async function validateUserInfo(
+    email: string,
+    password: string
+  ): Promise<void> {
+    if (!email || !password) {
+      throw new Error("invalid email our password");
+    }
+
+    const result = await auth({
+      variables: {
+        email: email,
+        password: password,
+      },
+    });
+
+    if (result.data?.Auth.accessToken) {
+      handleButtonState("loading");
+      console.log("hey");
+      return confirmPasswordOnClick && confirmPasswordOnClick();
+    }
+
+    handleButtonState("disabled");
+    throw new Error(
+      "Error validating credetials, please try again with the rigth credentials"
+    );
+  }
 
   return (
     <div className="w-screen">
@@ -104,11 +136,8 @@ export function PasswordProceed({
           disabled={buttonState !== "enabled"}
           state={buttonState}
           onClick={() => {
-            if (passwordValid) {
-              auth({ variables: { email, password } });
-              handleButtonState("loading");
-              confirmPasswordOnClick && confirmPasswordOnClick();
-            }
+            handleButtonState("loading");
+            validateUserInfo(email, password);
           }}
         />
       </div>

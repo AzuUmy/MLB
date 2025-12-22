@@ -32,7 +32,7 @@ export function PasswordProceed({
     onChange: onPasswordChange,
   } = useInputValidation();
 
-  const [auth, { data, loading }] = useLazyQuery<
+  const [auth, { data, loading, error }] = useLazyQuery<
     AuthQuery,
     AuthQueryVariables
   >(AuthQueryDocument);
@@ -60,7 +60,10 @@ export function PasswordProceed({
     email: string,
     password: string
   ): Promise<void> {
+    handleButtonState("loading");
+
     if (!email || !password) return;
+
     try {
       const result = await auth({
         variables: {
@@ -74,7 +77,6 @@ export function PasswordProceed({
         return confirmPasswordOnClick && confirmPasswordOnClick();
       }
     } catch (erro) {
-      console.log(erro);
       handleButtonState("disabled");
     }
   }
@@ -124,7 +126,15 @@ export function PasswordProceed({
           />
         </div>
 
-        <div></div>
+        <div>
+          {error?.message && !data?.Auth.accessToken && (
+            <div className="text-center">
+              <span className=" text-red-500 text-sm">
+                Could not log you in, please verify your password and try again
+              </span>
+            </div>
+          )}
+        </div>
 
         <Button
           text="Login"
@@ -133,7 +143,6 @@ export function PasswordProceed({
           disabled={buttonState !== "enabled"}
           state={buttonState}
           onClick={() => {
-            handleButtonState("loading");
             validateUserInfo(email, password);
           }}
         />

@@ -32,9 +32,10 @@ export function PasswordProceed({
     onChange: onPasswordChange,
   } = useInputValidation();
 
-  const [auth, { data, loading }] = useLazyQuery<AuthQuery, AuthQueryVariables>(
-    AuthQueryDocument
-  );
+  const [auth, { data, loading }] = useLazyQuery<
+    AuthQuery,
+    AuthQueryVariables
+  >(AuthQueryDocument);
 
   useEffect(() => {
     if (passwordValid && password.length > 0 && !resetState) {
@@ -59,27 +60,23 @@ export function PasswordProceed({
     email: string,
     password: string
   ): Promise<void> {
-    if (!email || !password) {
-      throw new Error("invalid email our password");
+    if (!email || !password) return;
+    try {
+      const result = await auth({
+        variables: {
+          email: email,
+          password: password,
+        },
+      });
+
+      if (result.data?.Auth.accessToken) {
+        handleButtonState("loading");
+        return confirmPasswordOnClick && confirmPasswordOnClick();
+      }
+    } catch (erro) {
+      console.log(erro);
+      handleButtonState("disabled");
     }
-
-    const result = await auth({
-      variables: {
-        email: email,
-        password: password,
-      },
-    });
-
-    if (result.data?.Auth.accessToken) {
-      handleButtonState("loading");
-      console.log("hey");
-      return confirmPasswordOnClick && confirmPasswordOnClick();
-    }
-
-    handleButtonState("disabled");
-    throw new Error(
-      "Error validating credetials, please try again with the rigth credentials"
-    );
   }
 
   return (

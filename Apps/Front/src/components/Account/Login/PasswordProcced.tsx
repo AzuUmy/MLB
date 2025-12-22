@@ -74,7 +74,10 @@ export function PasswordProceed({
 
       if (result.data?.Auth.accessToken) {
         handleButtonState("loading");
-        return confirmPasswordOnClick && confirmPasswordOnClick();
+
+        setTimeout(() => {
+          return confirmPasswordOnClick && confirmPasswordOnClick();
+        }, 50);
       }
     } catch (erro) {
       handleButtonState("disabled");

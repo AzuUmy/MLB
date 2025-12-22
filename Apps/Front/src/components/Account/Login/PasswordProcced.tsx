@@ -80,14 +80,16 @@ export function PasswordProceed({
         }, 50);
       }
     } catch (erro) {
-      handleButtonState("disabled");
+      setTimeout(() => {
+        handleButtonState("disabled");
+      }, 200);
     }
   }
 
   return (
     <div className="w-screen">
       <div className="relative">
-        <div className="absolute -top-96 left-5 mt-5">
+        <div className="fixed top-[3%] left-5">
           <Button
             text="Back"
             backgroundColor="#000000"

@@ -27,6 +27,9 @@ export class AuthApp {
   ): Promise<Token | string> {
     const userAuth = await this.authService.GetUserAuth(email, password);
 
+
+    //const teste = this.firebaseAuth.;
+
     if (!userAuth) {
       throw new UnauthorizedException('User not found');
     }
@@ -40,3 +43,4 @@ export class AuthApp {
     return { accessToken };
   }
 }
+ 

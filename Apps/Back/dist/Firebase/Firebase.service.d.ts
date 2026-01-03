@@ -4,7 +4,6 @@ export declare class FirebaseAdminService implements OnModuleInit {
     onModuleInit(): void;
     verifyToken(idToken: string): Promise<import("firebase-admin/auth").DecodedIdToken>;
     createUser(email: string, password: string): Promise<import("firebase-admin/auth").UserRecord>;
+    loginWithEmailAndPassword(email: string, password: string): Promise<any>;
     getUser(uid: string): Promise<import("firebase-admin/auth").UserRecord>;
-    setDocument(collection: string, doc: string, data: any): Promise<FirebaseFirestore.WriteResult>;
-    getDocument(collection: string, doc: string): Promise<FirebaseFirestore.DocumentData | undefined>;
 }

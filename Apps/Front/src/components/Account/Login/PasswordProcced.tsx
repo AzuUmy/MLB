@@ -79,7 +79,6 @@ export function PasswordProceed({
       };
 
       if (userInfo.accessToken) {
-        handleButtonState("loading");
         try {
           await auth({
             variables: {

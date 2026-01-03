@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ScheduleGamesApp } from 'src/app/scheduleGames.app';
 import { Logger } from '@nestjs/common';
 import { toTimestamp } from 'src/helper/date';
-import { apiUrl, format, locale, token } from 'src/services/Api/api';
+import { apiUrl, format, locale, token } from 'src/Security/env.credentials';
 import { ScheduleGames, Games } from '@my-mlb/shared';
 @Injectable()
 export class MlbScheduleGamesServiceApi {

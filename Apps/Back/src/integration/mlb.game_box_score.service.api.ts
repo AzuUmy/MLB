@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
-import { apiUrl, format, locale, token } from 'src/services/Api/api';
+import { apiUrl, format, locale, token } from 'src/Security/env.credentials';
 import { Game as boxScoreGames, BoxScore, Games } from '@my-mlb/shared';
 import { ScheduleService } from 'src/Graphql/ScheduleGames/schedule.service';
 import { GamesBoxScoreApp } from 'src/app/gamesBoxScore.app';

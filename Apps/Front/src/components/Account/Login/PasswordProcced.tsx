@@ -11,6 +11,7 @@ import type {
   AuthQueryVariables,
 } from "../../../api/graphql/generated/graphql";
 
+
 type PasswordProceedProps = {
   backOnClick?: () => void;
   confirmPasswordOnClick?: () => void;

@@ -6,7 +6,7 @@ import {
   firebaseClientEmail,
   firebasePrivateKey,
   firebaseProjectId,
-} from 'src/services/Api/api';
+} from 'src/Security/env.credentials';
 
 Logger.log('[Firebase] Initializing Firebase Admin...');
 

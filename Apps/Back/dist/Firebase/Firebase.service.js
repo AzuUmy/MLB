@@ -10,7 +10,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FirebaseAdminService = void 0;
 const common_1 = require("@nestjs/common");
 const Firebase_admin_config_1 = require("./Firebase.admin.config");
-const Firebase_config_1 = require("./Firebase.config");
 let FirebaseAdminService = FirebaseAdminService_1 = class FirebaseAdminService {
     logger = new common_1.Logger(FirebaseAdminService_1.name);
     onModuleInit() {
@@ -21,9 +20,6 @@ let FirebaseAdminService = FirebaseAdminService_1 = class FirebaseAdminService {
     }
     async createUser(email, password) {
         return Firebase_admin_config_1.adminAuth.createUser({ email, password });
-    }
-    async loginWithEmailAndPassword(email, password) {
-        return signInWithEmailAndPassword(Firebase_config_1.auth, email, password);
     }
     async getUser(uid) {
         return Firebase_admin_config_1.adminAuth.getUser(uid);

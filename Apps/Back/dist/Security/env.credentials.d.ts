@@ -3,8 +3,6 @@ export declare const token: string | undefined;
 export declare const locale: string | undefined;
 export declare const format: string | undefined;
 export declare const firebaseAppId: string | undefined;
-export declare const firebaseApiKey: string | undefined;
-export declare const firebaseAuthDomain: string | undefined;
 export declare const firebaseProjectId: string | undefined;
 export declare const firebaseStorageBucket: string | undefined;
 export declare const firebaseClientEmail: string | undefined;

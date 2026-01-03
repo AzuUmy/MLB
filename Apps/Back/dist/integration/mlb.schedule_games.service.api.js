@@ -14,7 +14,7 @@ const common_1 = require("@nestjs/common");
 const scheduleGames_app_1 = require("../app/scheduleGames.app");
 const common_2 = require("@nestjs/common");
 const date_1 = require("../helper/date");
-const api_1 = require("../services/Api/api");
+const env_credentials_1 = require("../Security/env.credentials");
 let MlbScheduleGamesServiceApi = class MlbScheduleGamesServiceApi {
     scheduleGamesApp;
     constructor(scheduleGamesApp) {
@@ -22,7 +22,7 @@ let MlbScheduleGamesServiceApi = class MlbScheduleGamesServiceApi {
     }
     async getScheduleGamesFromApi(year, month, day) {
         try {
-            const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${year}/${month}/${day}/schedule.${api_1.format}?api_key=${api_1.token}`);
+            const response = await fetch(`${env_credentials_1.apiUrl}/${env_credentials_1.locale}/games/${year}/${month}/${day}/schedule.${env_credentials_1.format}?api_key=${env_credentials_1.token}`);
             const data = (await response.json());
             return data;
         }

@@ -5,7 +5,7 @@ import {
   firebaseAppId,
   firebaseAuthDomain,
   firebaseProjectId,
-} from "../Security/env.credentials";
+} from "../../Security/env.credentials";
 
 const firebaseConfig = {
   apiKey: firebaseApiKey,

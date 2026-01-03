@@ -6,11 +6,12 @@ import { useButtonState } from "../../../Hooks/buttonState";
 import BaseballPlayer from "../../../Img/baseball-player.jpg";
 import { useLazyQuery } from "@apollo/client/react";
 import { AuthQueryDocument } from "../../../api/graphql/queries/authQuery";
+import { auth as firebaseAuth } from "../../../firebase/Firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import type {
   AuthQuery,
   AuthQueryVariables,
 } from "../../../api/graphql/generated/graphql";
-
 
 type PasswordProceedProps = {
   backOnClick?: () => void;
@@ -66,16 +67,22 @@ export function PasswordProceed({
     if (!email || !password) return;
 
     try {
-      const result = await auth({
-        variables: {
-          email: email,
-          password: password,
-        },
-      });
+      const result = await signInWithEmailAndPassword(
+        firebaseAuth,
+        email,
+        password
+      );
 
-      if (result.data?.Auth.accessToken) {
+      const userInfo = {
+        accessToken: await result.user.getIdTokenResult(),
+        refreshToken: result.user.refreshToken,
+        email: result.user.email,
+        lastLoginAt: result.user.metadata.lastSignInTime,
+        createdAt: result.user.metadata.creationTime,
+      };
+
+      if (userInfo.accessToken) {
         handleButtonState("loading");
-
         setTimeout(() => {
           return confirmPasswordOnClick && confirmPasswordOnClick();
         }, 50);
@@ -132,15 +139,7 @@ export function PasswordProceed({
           />
         </div>
 
-        <div>
-          {error?.message && !data?.Auth.accessToken && (
-            <div className="text-center">
-              <span className=" text-red-500 text-sm">
-                Could not log you in, please verify your password and try again
-              </span>
-            </div>
-          )}
-        </div>
+        <div>{/* error comes here, need to creat error handlers */}</div>
 
         <Button
           text="Login"

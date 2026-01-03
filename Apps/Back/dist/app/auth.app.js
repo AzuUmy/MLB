@@ -29,7 +29,6 @@ let AuthApp = class AuthApp {
     }
     async userAuthentication(email, password) {
         const userAuth = await this.authService.GetUserAuth(email, password);
-        //const teste = this.firebaseAuth.;
         if (!userAuth) {
             throw new common_1.UnauthorizedException('User not found');
         }

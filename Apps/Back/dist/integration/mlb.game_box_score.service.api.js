@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MlbBoxScoreGamesServiceApi = void 0;
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
-const api_1 = require("../services/Api/api");
+const env_credentials_1 = require("../Security/env.credentials");
 const schedule_service_1 = require("../Graphql/ScheduleGames/schedule.service");
 const gamesBoxScore_app_1 = require("../app/gamesBoxScore.app");
 let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
@@ -29,7 +29,7 @@ let MlbBoxScoreGamesServiceApi = class MlbBoxScoreGamesServiceApi {
                 : games;
             const gameBoxScore = [];
             await Promise.all(scheduleGames.map(async (games) => {
-                const response = await fetch(`${api_1.apiUrl}/${api_1.locale}/games/${games.id}/boxscore.${api_1.format}?api_key=${api_1.token}`);
+                const response = await fetch(`${env_credentials_1.apiUrl}/${env_credentials_1.locale}/games/${games.id}/boxscore.${env_credentials_1.format}?api_key=${env_credentials_1.token}`);
                 const data = (await response.json());
                 if (!data || !data.game) {
                     common_2.Logger.error(`Game ${games.id} returned invalid payload: ${JSON.stringify(data)}`);

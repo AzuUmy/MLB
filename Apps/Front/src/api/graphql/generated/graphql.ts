@@ -125,11 +125,6 @@ export type MoundVisits = {
   home: Metting;
 };
 
-export type Password = {
-  __typename?: 'Password';
-  password?: Maybe<Scalars['String']['output']>;
-};
-
 export type Pitcher = {
   __typename?: 'Pitcher';
   era?: Maybe<Scalars['Float']['output']>;
@@ -163,7 +158,7 @@ export type Query = {
 
 export type QueryAuthArgs = {
   email: Scalars['String']['input'];
-  password: Scalars['String']['input'];
+  lastLoginAt: Scalars['String']['input'];
 };
 
 
@@ -325,7 +320,7 @@ export type Wind = {
 
 export type AuthQueryVariables = Exact<{
   email: Scalars['String']['input'];
-  password: Scalars['String']['input'];
+  lastLoginAt: Scalars['String']['input'];
 }>;
 
 

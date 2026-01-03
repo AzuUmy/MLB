@@ -34,10 +34,9 @@ export function PasswordProceed({
     onChange: onPasswordChange,
   } = useInputValidation();
 
-  const [auth, { data, loading, error }] = useLazyQuery<
-    AuthQuery,
-    AuthQueryVariables
-  >(AuthQueryDocument);
+  const [auth, { data, loading }] = useLazyQuery<AuthQuery, AuthQueryVariables>(
+    AuthQueryDocument
+  );
 
   useEffect(() => {
     if (passwordValid && password.length > 0 && !resetState) {
@@ -74,18 +73,32 @@ export function PasswordProceed({
       );
 
       const userInfo = {
-        accessToken: await result.user.getIdTokenResult(),
+        accessToken: (await result.user.getIdTokenResult()).token,
         email: result.user.email,
         lastLoginAt: result.user.metadata.lastSignInTime,
       };
 
-      console.log("User Info:", userInfo);
-
       if (userInfo.accessToken) {
         handleButtonState("loading");
-        setTimeout(() => {
-          return confirmPasswordOnClick && confirmPasswordOnClick();
-        }, 50);
+        try {
+          await auth({
+            variables: {
+              email: userInfo.email!,
+              lastLoginAt: userInfo.lastLoginAt!,
+            },
+            context: {
+              headers: {
+                Authorization: `Bearer ${userInfo.accessToken}`,
+              },
+            },
+          });
+
+          setTimeout(() => {
+            return confirmPasswordOnClick && confirmPasswordOnClick();
+          }, 50);
+        } catch (error) {
+          throw new Error("GraphQL Auth query failed");
+        }
       }
     } catch (erro) {
       setTimeout(() => {

@@ -18,10 +18,6 @@ export class FirebaseAdminService implements OnModuleInit {
     return adminAuth.createUser({ email, password });
   }
 
-  async loginWithEmailAndPassword(email: string, password: string) {
-    return  signInWithEmailAndPassword(auth, email, password);
-  }
-
   async getUser(uid: string) {
     return adminAuth.getUser(uid);
   }

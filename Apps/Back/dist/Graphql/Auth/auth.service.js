@@ -33,25 +33,6 @@ let AuthService = class AuthService {
         }
         return userEmail;
     }
-    async GetUserAuth(email, password) {
-        let userAuth = {};
-        try {
-            userAuth = this.prisma.credentials.findUnique({
-                where: {
-                    email_password: {
-                        email,
-                        password,
-                    },
-                },
-            });
-            common_1.Logger.log('Successfully fetched auth info from database');
-        }
-        catch (error) {
-            common_1.Logger.log('Error fetching auth data from database');
-            return {};
-        }
-        return userAuth;
-    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

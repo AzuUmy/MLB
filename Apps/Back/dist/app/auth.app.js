@@ -13,6 +13,7 @@ exports.AuthApp = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const auth_service_1 = require("../Graphql/Auth/auth.service");
+const Firebase_admin_config_1 = require("../Firebase/Firebase.admin.config");
 let AuthApp = class AuthApp {
     authService;
     jwtService;
@@ -27,14 +28,17 @@ let AuthApp = class AuthApp {
         }
         return userEmail;
     }
-    async userAuthentication(email, password) {
-        const userAuth = await this.authService.GetUserAuth(email, password);
-        if (!userAuth) {
-            throw new common_1.UnauthorizedException('User not found');
-        }
+    async userAuthentication(token, email, lastLoginAt) {
         const payload = {
-            email: userAuth.email,
+            token: token,
+            email: email,
         };
+        const validateToken = await Firebase_admin_config_1.adminAuth.verifyIdToken(token).catch(() => {
+            throw new common_1.UnauthorizedException('Invalid token');
+        });
+        if (!validateToken) {
+            throw new common_1.UnauthorizedException('Error validating token');
+        }
         const accessToken = await this.jwtService.signAsync(payload);
         return { accessToken };
     }

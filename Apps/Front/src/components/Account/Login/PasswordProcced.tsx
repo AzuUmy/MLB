@@ -75,11 +75,11 @@ export function PasswordProceed({
 
       const userInfo = {
         accessToken: await result.user.getIdTokenResult(),
-        refreshToken: result.user.refreshToken,
         email: result.user.email,
         lastLoginAt: result.user.metadata.lastSignInTime,
-        createdAt: result.user.metadata.creationTime,
       };
+
+      console.log("User Info:", userInfo);
 
       if (userInfo.accessToken) {
         handleButtonState("loading");
@@ -139,7 +139,7 @@ export function PasswordProceed({
           />
         </div>
 
-        <div>{/* error comes here, need to creat error handlers */}</div>
+        <div>{/* error comes here, need to create error handlers */}</div>
 
         <Button
           text="Login"

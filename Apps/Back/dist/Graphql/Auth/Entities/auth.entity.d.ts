@@ -1,12 +1,10 @@
 export declare class Email {
     email?: string;
 }
-export declare class Password {
-    password?: string;
-}
 export declare class Auth {
-    email?: Email;
-    password?: Password;
+    token: string;
+    email: string;
+    lastLoginAt: string;
 }
 export declare class Token {
     accessToken: string;

@@ -21,8 +21,8 @@ let AuthResolver = class AuthResolver {
     constructor(authApp) {
         this.authApp = authApp;
     }
-    async Auth(email, password) {
-        return this.authApp.userAuthentication(email, password);
+    async Auth(token, email, lastLoginAt) {
+        return this.authApp.userAuthentication(token, email, lastLoginAt);
     }
     async EmailCheck(email) {
         return this.authApp.userEmail(email);
@@ -31,10 +31,11 @@ let AuthResolver = class AuthResolver {
 exports.AuthResolver = AuthResolver;
 __decorate([
     (0, graphql_1.Query)(() => auth_entity_1.Token),
-    __param(0, (0, graphql_1.Args)('email', { type: () => String })),
-    __param(1, (0, graphql_1.Args)('password', { type: () => String })),
+    __param(0, (0, graphql_1.Args)('token', { type: () => String })),
+    __param(1, (0, graphql_1.Args)('email', { type: () => String })),
+    __param(2, (0, graphql_1.Args)('lastLoginAt', { type: () => String })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "Auth", null);
 __decorate([

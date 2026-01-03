@@ -8,10 +8,11 @@ export class AuthResolver {
 
   @Query(() => Token)
   async Auth(
+    @Args('token', { type: () => String }) token: string,
     @Args('email', { type: () => String }) email: string,
-    @Args('password', { type: () => String }) password: string,
+    @Args('lastLoginAt', { type: () => String }) lastLoginAt: string,
   ) {
-    return this.authApp.userAuthentication(email, password);
+    return this.authApp.userAuthentication(token, email, lastLoginAt);
   }
 
   @Query(() => Email)

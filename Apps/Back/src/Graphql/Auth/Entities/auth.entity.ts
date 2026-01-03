@@ -7,18 +7,13 @@ export class Email {
 }
 
 @ObjectType()
-export class Password {
-  @Field({ nullable: true })
-  password?: string;
-}
-
-@ObjectType()
 export class Auth {
-  @Field(() => Email, { nullable: true })
-  email?: Email;
-
-  @Field(() => Password, { nullable: true })
-  password?: Password;
+  @Field(() => String, { nullable: false })
+  token!: string;
+  @Field(() => String, { nullable: false })
+  email!: string;
+  @Field(() => String, { nullable: false })
+  lastLoginAt!: string;
 }
 
 @ObjectType()

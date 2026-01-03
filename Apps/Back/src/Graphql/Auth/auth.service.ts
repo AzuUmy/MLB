@@ -21,25 +21,4 @@ export class AuthService {
     }
     return userEmail;
   }
-
-  async GetUserAuth(email: string, password: string): Promise<Auth> {
-    let userAuth = {};
-
-    try {
-      userAuth = this.prisma.credentials.findUnique({
-        where: {
-          email_password: {
-            email,
-            password,
-          },
-        },
-      });
-      Logger.log('Successfully fetched auth info from database');
-    } catch (error) {
-      Logger.log('Error fetching auth data from database');
-      return {};
-    }
-
-    return userAuth;
-  }
 }

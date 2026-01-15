@@ -6,6 +6,9 @@ export declare class Auth {
     email: string;
     lastLoginAt: string;
 }
+export declare class AuthValidation {
+    isvalid: boolean;
+}
 export declare class Token {
     accessToken: string;
 }

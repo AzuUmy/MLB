@@ -2,7 +2,11 @@ import { Email } from '@my-mlb/shared';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from 'src/Graphql/Auth/auth.service';
-import { Token } from 'src/Graphql/Auth/Entities/auth.entity';
+import {
+  Auth,
+  AuthValidation,
+  Token,
+} from 'src/Graphql/Auth/Entities/auth.entity';
 import { adminAuth } from 'src/Firebase/Firebase.admin.config';
 @Injectable()
 export class AuthApp {
@@ -21,26 +25,19 @@ export class AuthApp {
     return userEmail;
   }
 
-  async userAuthentication(
-    token: string,
-    email: string,
-    lastLoginAt: string,
-  ): Promise<Token | string> {
-    const payload = {
-      token: token,
-      email: email,
-    };
+  async userAuthentication(token: string): Promise<AuthValidation> {
+    let authenticationResult = false;
 
     const validateToken = await adminAuth.verifyIdToken(token).catch(() => {
+      authenticationResult = false;
       throw new UnauthorizedException('Invalid token');
     });
 
     if (!validateToken) {
+      authenticationResult = false;
       throw new UnauthorizedException('Error validating token');
     }
 
-    const accessToken = await this.jwtService.signAsync(payload);
-
-    return { accessToken };
+    return { isvalid: (authenticationResult = true) };
   }
 }

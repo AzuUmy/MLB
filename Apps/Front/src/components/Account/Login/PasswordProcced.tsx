@@ -11,6 +11,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import type {
   AuthQuery,
   AuthQueryVariables,
+  AuthValidation,
 } from "../../../api/graphql/generated/graphql";
 
 type PasswordProceedProps = {
@@ -74,27 +75,17 @@ export function PasswordProceed({
 
       const userInfo = {
         accessToken: (await result.user.getIdTokenResult()).token,
-        email: result.user.email,
-        lastLoginAt: result.user.metadata.lastSignInTime,
       };
 
       if (userInfo.accessToken) {
         try {
           await auth({
-            variables: {
-              email: userInfo.email!,
-              lastLoginAt: userInfo.lastLoginAt!,
-            },
             context: {
               headers: {
                 Authorization: `Bearer ${userInfo.accessToken}`,
               },
             },
           });
-
-          setTimeout(() => {
-            return confirmPasswordOnClick && confirmPasswordOnClick();
-          }, 50);
         } catch (error) {
           throw new Error("GraphQL Auth query failed");
         }
@@ -105,6 +96,15 @@ export function PasswordProceed({
       }, 200);
     }
   }
+
+  useEffect(() => {
+    if (data?.Auth.isvalid) {
+      console.log("aaaa", data.Auth.isvalid);
+      return confirmPasswordOnClick && confirmPasswordOnClick();
+    } else {
+      handleButtonState("disabled");
+    }
+  }, [data]);
 
   return (
     <div className="w-screen">

@@ -14,6 +14,11 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type AuthValidation = {
+  __typename?: 'AuthValidation';
+  isvalid: Scalars['Boolean']['output'];
+};
+
 export type Broadcast = {
   __typename?: 'Broadcast';
   channel?: Maybe<Scalars['String']['output']>;
@@ -147,18 +152,12 @@ export type Pitching = {
 
 export type Query = {
   __typename?: 'Query';
-  Auth: Token;
+  Auth: AuthValidation;
   EmailCheck: Email;
   Teams: Array<Teams>;
   gamesBoxScore: Game;
   hello: Scalars['String']['output'];
   scheduleGames: Array<ScheduleGamesSeries>;
-};
-
-
-export type QueryAuthArgs = {
-  email: Scalars['String']['input'];
-  lastLoginAt: Scalars['String']['input'];
 };
 
 
@@ -272,11 +271,6 @@ export type TimeZones = {
   venue: Scalars['String']['output'];
 };
 
-export type Token = {
-  __typename?: 'Token';
-  accessToken: Scalars['String']['output'];
-};
-
 export type Venue = {
   __typename?: 'Venue';
   address: Scalars['String']['output'];
@@ -318,13 +312,10 @@ export type Wind = {
   speed_mph: Scalars['Float']['output'];
 };
 
-export type AuthQueryVariables = Exact<{
-  email: Scalars['String']['input'];
-  lastLoginAt: Scalars['String']['input'];
-}>;
+export type AuthQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AuthQuery = { __typename?: 'Query', Auth: { __typename?: 'Token', accessToken: string } };
+export type AuthQuery = { __typename?: 'Query', Auth: { __typename?: 'AuthValidation', isvalid: boolean } };
 
 export type EmailCheckQueryVariables = Exact<{
   email: Scalars['String']['input'];

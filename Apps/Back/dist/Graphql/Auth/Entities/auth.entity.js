@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Token = exports.Auth = exports.Email = void 0;
+exports.Token = exports.AuthValidation = exports.Auth = exports.Email = void 0;
 const graphql_1 = require("@nestjs/graphql");
 let Email = class Email {
     email;
@@ -43,6 +43,17 @@ __decorate([
 exports.Auth = Auth = __decorate([
     (0, graphql_1.ObjectType)()
 ], Auth);
+let AuthValidation = class AuthValidation {
+    isvalid;
+};
+exports.AuthValidation = AuthValidation;
+__decorate([
+    (0, graphql_1.Field)(() => Boolean, { nullable: false }),
+    __metadata("design:type", Boolean)
+], AuthValidation.prototype, "isvalid", void 0);
+exports.AuthValidation = AuthValidation = __decorate([
+    (0, graphql_1.ObjectType)()
+], AuthValidation);
 let Token = class Token {
     accessToken;
 };

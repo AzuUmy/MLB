@@ -17,6 +17,12 @@ export class Auth {
 }
 
 @ObjectType()
+export class AuthValidation {
+  @Field(() => Boolean, { nullable: false })
+  isvalid!: boolean;
+}
+
+@ObjectType()
 export class Token {
   @Field()
   accessToken!: string;

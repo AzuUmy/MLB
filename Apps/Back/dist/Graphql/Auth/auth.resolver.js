@@ -22,13 +22,13 @@ let AuthResolver = class AuthResolver {
     constructor(authApp) {
         this.authApp = authApp;
     }
-    async Auth(ctx, email, lastLoginAt) {
+    async Auth(ctx) {
         const authHeader = ctx.req.headers.authorization;
         if (!authHeader?.startsWith('Bearer ')) {
             throw new common_1.UnauthorizedException('Missing Authorization header');
         }
         const token = authHeader.replace('Bearer ', '');
-        return this.authApp.userAuthentication(token, email, lastLoginAt);
+        return this.authApp.userAuthentication(token);
     }
     async EmailCheck(email) {
         return this.authApp.userEmail(email);
@@ -36,12 +36,10 @@ let AuthResolver = class AuthResolver {
 };
 exports.AuthResolver = AuthResolver;
 __decorate([
-    (0, graphql_1.Query)(() => auth_entity_1.Token),
+    (0, graphql_1.Query)(() => auth_entity_1.AuthValidation),
     __param(0, (0, graphql_1.Context)()),
-    __param(1, (0, graphql_1.Args)('email', { type: () => String })),
-    __param(2, (0, graphql_1.Args)('lastLoginAt', { type: () => String })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "Auth", null);
 __decorate([

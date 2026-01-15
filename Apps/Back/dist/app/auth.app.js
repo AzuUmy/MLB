@@ -28,19 +28,17 @@ let AuthApp = class AuthApp {
         }
         return userEmail;
     }
-    async userAuthentication(token, email, lastLoginAt) {
-        const payload = {
-            token: token,
-            email: email,
-        };
+    async userAuthentication(token) {
+        let authenticationResult = false;
         const validateToken = await Firebase_admin_config_1.adminAuth.verifyIdToken(token).catch(() => {
+            authenticationResult = false;
             throw new common_1.UnauthorizedException('Invalid token');
         });
         if (!validateToken) {
+            authenticationResult = false;
             throw new common_1.UnauthorizedException('Error validating token');
         }
-        const accessToken = await this.jwtService.signAsync(payload);
-        return { accessToken };
+        return { isvalid: (authenticationResult = true) };
     }
 };
 exports.AuthApp = AuthApp;

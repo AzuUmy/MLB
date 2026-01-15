@@ -1,4 +1,4 @@
-import { Token } from './Entities/auth.entity';
+import { AuthValidation } from './Entities/auth.entity';
 import { AuthApp } from 'src/app/auth.app';
 import { Request } from 'express';
 export declare class AuthResolver {
@@ -6,6 +6,6 @@ export declare class AuthResolver {
     constructor(authApp: AuthApp);
     Auth(ctx: {
         req: Request;
-    }, email: string, lastLoginAt: string): Promise<string | Token>;
+    }): Promise<AuthValidation>;
     EmailCheck(email: string): Promise<import("@my-mlb/shared").Email>;
 }

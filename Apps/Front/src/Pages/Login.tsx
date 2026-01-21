@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoginComponenet } from "../components/Account/Login/LoginComponent";
 import { Context as LoginNumberConfirmation } from "../Modals/Context";
-import { LoginCode } from "../components/Account/Login/LoginCode";
+import { LoginCode } from "../Modals/LoginCodeModal";
 
 export function Login() {
   const [triggerContex, setTriggerContex] = useState<boolean>(false);
   const handleCloseContext = () => setTriggerContex(false);
-
   const openContext = () => setTriggerContex(true);
   return (
     <div>

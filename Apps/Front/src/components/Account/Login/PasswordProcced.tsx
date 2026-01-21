@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { use, useEffect, useState } from "react";
 import { Button } from "../../../Shared/Button";
 import { Input } from "../../../Shared/Input";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
@@ -11,7 +11,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import type {
   AuthQuery,
   AuthQueryVariables,
-  AuthValidation,
 } from "../../../api/graphql/generated/graphql";
 
 type PasswordProceedProps = {
@@ -28,7 +27,7 @@ export function PasswordProceed({
   resetState,
 }: PasswordProceedProps) {
   const { buttonState, handleButtonState } = useButtonState();
-
+  const [authConsumed, setAuthConsumed] = useState(false);
   const {
     value: password,
     isValid: passwordValid,
@@ -36,7 +35,8 @@ export function PasswordProceed({
   } = useInputValidation();
 
   const [auth, { data, loading }] = useLazyQuery<AuthQuery, AuthQueryVariables>(
-    AuthQueryDocument
+    AuthQueryDocument,
+    { fetchPolicy: "no-cache" }
   );
 
   useEffect(() => {
@@ -63,7 +63,6 @@ export function PasswordProceed({
     password: string
   ): Promise<void> {
     handleButtonState("loading");
-
     if (!email || !password) return;
 
     try {
@@ -86,6 +85,8 @@ export function PasswordProceed({
               },
             },
           });
+
+          setAuthConsumed(true);
         } catch (error) {
           throw new Error("GraphQL Auth query failed");
         }
@@ -98,13 +99,18 @@ export function PasswordProceed({
   }
 
   useEffect(() => {
-    if (data?.Auth.isvalid) {
-      console.log("aaaa", data.Auth.isvalid);
+    if (data?.Auth.isvalid && authConsumed) {
+      setAuthConsumed(true);
       return confirmPasswordOnClick && confirmPasswordOnClick();
-    } else {
-      handleButtonState("disabled");
     }
-  }, [data]);
+  }, [data?.Auth.isvalid, authConsumed]);
+
+  useEffect(() => {
+    if (resetState) {
+      setAuthConsumed(false);
+      return;
+    }
+  }, [resetState, authConsumed]);
 
   return (
     <div className="w-screen">

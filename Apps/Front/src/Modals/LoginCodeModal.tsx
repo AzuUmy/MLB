@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../../../Shared/Button";
-import { useButtonState } from "../../../Hooks/buttonState";
+import { Button } from "../Shared/Button";
+import { useButtonState } from "../Hooks/buttonState";
 
 export function LoginCode() {
   const inputsRef = useRef<Array<HTMLInputElement | null>>([]);

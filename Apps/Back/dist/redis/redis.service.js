@@ -14,7 +14,7 @@ exports.RedisService = void 0;
 const common_1 = require("@nestjs/common");
 const redis_1 = require("redis");
 const config_1 = require("@nestjs/config");
-const env_credentials_1 = require("../../Security/env.credentials");
+const env_credentials_1 = require("../Security/env.credentials");
 let RedisService = RedisService_1 = class RedisService {
     configService;
     logger = new common_1.Logger(RedisService_1.name);

@@ -19,5 +19,5 @@ exports.sendPulseGrantType = process.env.grant_type;
 exports.sendPulseClientId = process.env.client_id;
 exports.sendPulseClientSecret = process.env.client_secret;
 exports.sendpulseUrl = process.env.sendPulseUrl;
-exports.redisHost = process.env.REDIS_HOST;
+exports.redisHost = process.env.REDIS_URL;
 //# sourceMappingURL=env.credentials.js.map

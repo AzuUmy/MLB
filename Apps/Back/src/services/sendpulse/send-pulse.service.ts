@@ -1,3 +1,4 @@
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import axios from 'axios';
 import {
   sendPulseGrantType,
@@ -6,7 +7,14 @@ import {
   sendpulseUrl,
 } from 'src/Security/env.credentials';
 
-export class sendPulseService {
+@Injectable()
+export class sendPulseService implements OnModuleInit {
+  constructor() {}
+
+  async onModuleInit() {
+    await this.getSendPulseToken();
+  }
+
   async getSendPulseToken() {
     const { data } = await axios.post(`${sendpulseUrl}`, {
       grant_type: sendPulseGrantType,

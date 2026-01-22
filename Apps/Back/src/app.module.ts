@@ -9,7 +9,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModules } from './Graphql/graphql.modules';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { RedisModule } from './app/redis/redis.modules';
+import { RedisModule } from './redis/redis.modules';
 import { mongoConfig } from './config/mongo.config';
 import { CronModule } from './cron/cron.module';
 import { PrismaModule } from './prisma/prisma.module';

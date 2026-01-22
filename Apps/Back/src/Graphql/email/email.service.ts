@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { sendPulseService } from 'src/services/send-pulse-service';
+import { sendPulseService } from 'src/services/sendpulse/send-pulse.service';
 
 @Injectable()
 export class EmailService {

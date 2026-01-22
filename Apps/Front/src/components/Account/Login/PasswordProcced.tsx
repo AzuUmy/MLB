@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../../Shared/Button";
 import { Input } from "../../../Shared/Input";
 import { useInputValidation } from "../../../Hooks/userInputValidate";
@@ -36,7 +36,7 @@ export function PasswordProceed({
 
   const [auth, { data, loading }] = useLazyQuery<AuthQuery, AuthQueryVariables>(
     AuthQueryDocument,
-    { fetchPolicy: "no-cache" }
+    { fetchPolicy: "no-cache" },
   );
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function PasswordProceed({
 
   async function validateUserInfo(
     email: string,
-    password: string
+    password: string,
   ): Promise<void> {
     handleButtonState("loading");
     if (!email || !password) return;
@@ -69,7 +69,7 @@ export function PasswordProceed({
       const result = await signInWithEmailAndPassword(
         firebaseAuth,
         email,
-        password
+        password,
       );
 
       const userInfo = {

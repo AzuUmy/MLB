@@ -18,6 +18,7 @@ const apollo_1 = require("@nestjs/apollo");
 const graphql_modules_1 = require("./Graphql/graphql.modules");
 const config_1 = require("@nestjs/config");
 const mongoose_1 = require("@nestjs/mongoose");
+const redis_modules_1 = require("./app/redis/redis.modules");
 const mongo_config_1 = require("./config/mongo.config");
 const cron_module_1 = require("./cron/cron.module");
 const prisma_module_1 = require("./prisma/prisma.module");
@@ -46,6 +47,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             cron_module_1.CronModule,
             Firebase_modules_1.FirebaseAdminModule,
+            redis_modules_1.RedisModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, app_resolver_1.AppResolver],

@@ -7,3 +7,8 @@ export declare const firebaseProjectId: string | undefined;
 export declare const firebaseStorageBucket: string | undefined;
 export declare const firebaseClientEmail: string | undefined;
 export declare const firebasePrivateKey: string | undefined;
+export declare const sendPulseGrantType: string | undefined;
+export declare const sendPulseClientId: string | undefined;
+export declare const sendPulseClientSecret: string | undefined;
+export declare const sendpulseUrl: string | undefined;
+export declare const redisHost: string | undefined;

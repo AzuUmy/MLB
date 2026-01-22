@@ -25,18 +25,21 @@ let RedisService = RedisService_1 = class RedisService {
             url: this.configService.get(String(env_credentials_1.redisHost)),
         });
         this.client.on('error', (err) => {
-            this.logger.error('Redis Client Error', err);
+            common_1.Logger.error('Redis Client Error', err);
+            this.logger.error(`Redis Client Error: ${err.message}`);
         });
     }
     async onModuleInit() {
         if (this.client.isOpen) {
             await this.client.connect();
+            common_1.Logger.log('Connected to Redis');
             this.logger.log('Connected to Redis');
         }
     }
     async onModuleDestroy() {
         if (this.client.isOpen) {
             await this.client.quit();
+            common_1.Logger.log('Disconnected from Redis');
             this.logger.log('Disconnected from Redis');
         }
     }

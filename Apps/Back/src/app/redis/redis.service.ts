@@ -19,13 +19,15 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
     });
 
     this.client.on('error', (err) => {
-      this.logger.error('Redis Client Error', err);
+      Logger.error('Redis Client Error', err);
+      this.logger.error(`Redis Client Error: ${err.message}`);
     });
   }
 
   async onModuleInit() {
     if (this.client.isOpen) {
       await this.client.connect();
+      Logger.log('Connected to Redis');
       this.logger.log('Connected to Redis');
     }
   }
@@ -33,6 +35,7 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
   async onModuleDestroy() {
     if (this.client.isOpen) {
       await this.client.quit();
+      Logger.log('Disconnected from Redis');
       this.logger.log('Disconnected from Redis');
     }
   }

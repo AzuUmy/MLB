@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import axios from 'axios';
 import { RedisClientType } from 'redis';
 import { RedisService } from 'src/redis/redis.service';
@@ -15,10 +15,12 @@ export class sendPulseService implements OnModuleInit {
 
   async onModuleInit() {
     const redis = this.redisService.getClient();
-    await this.getSendPulseToken();
+    Logger.log('SendPulse Service Initialized');
+    await this.getSendPulseToken(redis);
   }
 
   async getSendPulseToken(redis?: RedisClientType) {
+    Logger.log('Getting SendPulse Token');
     const { data } = await axios.post(`${sendpulseUrl}`, {
       grant_type: sendPulseGrantType,
       client_id: sendPulseClientId,
@@ -29,8 +31,15 @@ export class sendPulseService implements OnModuleInit {
       throw new Error('Failed to retrieve access token');
     }
 
-  await redis?.set('sendPulseToken', data.access_token, {
-      EX: data.expires_in - 60,
-    });
+    if (redis === undefined) {
+      throw new Error('Redis client is undefined');
+    }
+
+    await this.insertSendPulseToken(data.access_token, redis);
+  }
+
+  async insertSendPulseToken(token: string, redis: RedisClientType) {
+    Logger.log('Inserting SendPulse Token into Redis');
+    redis.set('sendPulseToken', token);
   }
 }

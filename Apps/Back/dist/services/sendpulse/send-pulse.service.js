@@ -24,9 +24,11 @@ let sendPulseService = class sendPulseService {
     }
     async onModuleInit() {
         const redis = this.redisService.getClient();
-        await this.getSendPulseToken();
+        common_1.Logger.log('SendPulse Service Initialized');
+        await this.getSendPulseToken(redis);
     }
     async getSendPulseToken(redis) {
+        common_1.Logger.log('Getting SendPulse Token');
         const { data } = await axios_1.default.post(`${env_credentials_1.sendpulseUrl}`, {
             grant_type: env_credentials_1.sendPulseGrantType,
             client_id: env_credentials_1.sendPulseClientId,
@@ -35,9 +37,14 @@ let sendPulseService = class sendPulseService {
         if (!data.access_token) {
             throw new Error('Failed to retrieve access token');
         }
-        await redis?.set('sendPulseToken', data.access_token, {
-            EX: data.expires_in - 60,
-        });
+        if (redis === undefined) {
+            throw new Error('Redis client is undefined');
+        }
+        await this.insertSendPulseToken(data.access_token, redis);
+    }
+    async insertSendPulseToken(token, redis) {
+        common_1.Logger.log('Inserting SendPulse Token into Redis');
+        redis.set('sendPulseToken', token);
     }
 };
 exports.sendPulseService = sendPulseService;

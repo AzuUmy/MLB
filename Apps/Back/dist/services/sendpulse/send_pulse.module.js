@@ -9,13 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SendPulseModule = void 0;
 const common_1 = require("@nestjs/common");
 const send_pulse_service_1 = require("./send-pulse.service");
+const redis_service_1 = require("../../redis/redis.service");
 let SendPulseModule = class SendPulseModule {
 };
 exports.SendPulseModule = SendPulseModule;
 exports.SendPulseModule = SendPulseModule = __decorate([
     (0, common_1.Global)(),
     (0, common_1.Module)({
-        providers: [send_pulse_service_1.sendPulseService],
+        providers: [send_pulse_service_1.sendPulseService, redis_service_1.RedisService],
         exports: [send_pulse_service_1.sendPulseService],
     })
 ], SendPulseModule);

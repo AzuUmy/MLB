@@ -6,4 +6,5 @@ export declare class sendPulseService implements OnModuleInit {
     constructor(redisService: RedisService);
     onModuleInit(): Promise<void>;
     getSendPulseToken(redis?: RedisClientType): Promise<void>;
+    insertSendPulseToken(token: string, redis: RedisClientType): Promise<void>;
 }

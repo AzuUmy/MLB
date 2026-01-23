@@ -14,7 +14,6 @@ exports.RedisService = void 0;
 const common_1 = require("@nestjs/common");
 const redis_1 = require("redis");
 const config_1 = require("@nestjs/config");
-const env_credentials_1 = require("../Security/env.credentials");
 let RedisService = RedisService_1 = class RedisService {
     configService;
     logger = new common_1.Logger(RedisService_1.name);
@@ -22,7 +21,10 @@ let RedisService = RedisService_1 = class RedisService {
     constructor(configService) {
         this.configService = configService;
         this.client = (0, redis_1.createClient)({
-            url: this.configService.get(String(env_credentials_1.redisHost)),
+            url: this.configService.get('REDIS_URL'),
+            socket: {
+                connectTimeout: 5000,
+            },
         });
         this.client.on('error', (err) => {
             common_1.Logger.error('Redis Client Error', err);
@@ -30,10 +32,15 @@ let RedisService = RedisService_1 = class RedisService {
         });
     }
     async onModuleInit() {
-        if (this.client.isOpen) {
-            await this.client.connect();
-            common_1.Logger.log('Connected to Redis');
+        try {
+            this.logger.log('Connecting to Redis...');
+            if (!this.client.isOpen) {
+                await this.client.connect();
+            }
             this.logger.log('Connected to Redis');
+        }
+        catch (err) {
+            this.logger.error('Failed to connect to Redis', err);
         }
     }
     async onModuleDestroy() {

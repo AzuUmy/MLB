@@ -15,24 +15,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendPulseService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = __importDefault(require("axios"));
+const redis_service_1 = require("../../redis/redis.service");
 const env_credentials_1 = require("../../Security/env.credentials");
 let sendPulseService = class sendPulseService {
-    constructor() { }
+    redisService;
+    constructor(redisService) {
+        this.redisService = redisService;
+    }
     async onModuleInit() {
+        const redis = this.redisService.getClient();
         await this.getSendPulseToken();
     }
-    async getSendPulseToken() {
+    async getSendPulseToken(redis) {
         const { data } = await axios_1.default.post(`${env_credentials_1.sendpulseUrl}`, {
             grant_type: env_credentials_1.sendPulseGrantType,
             client_id: env_credentials_1.sendPulseClientId,
             client_secret: env_credentials_1.sendPulseClientSecret,
         });
-        return data.access_token;
+        if (!data.access_token) {
+            throw new Error('Failed to retrieve access token');
+        }
+        await redis?.set('sendPulseToken', data.access_token, {
+            EX: data.expires_in - 60,
+        });
     }
 };
 exports.sendPulseService = sendPulseService;
 exports.sendPulseService = sendPulseService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [redis_service_1.RedisService])
 ], sendPulseService);
 //# sourceMappingURL=send-pulse.service.js.map

@@ -14,6 +14,7 @@ import { mongoConfig } from './config/mongo.config';
 import { CronModule } from './cron/cron.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { FirebaseAdminModule } from './Firebase/Firebase.modules';
+import { SendPulseModule } from './services/sendpulse/send_pulse.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -34,7 +35,8 @@ import { FirebaseAdminModule } from './Firebase/Firebase.modules';
     }),
     CronModule,
     FirebaseAdminModule,
-    RedisModule
+    RedisModule,
+    SendPulseModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],

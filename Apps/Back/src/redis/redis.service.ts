@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 import { createClient, RedisClientType } from 'redis';
 import { ConfigService } from '@nestjs/config';
-import { redisHost } from 'src/Security/env.credentials';
 
 @Injectable()
 export class RedisService implements OnModuleInit, OnModuleDestroy {
@@ -15,7 +14,10 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
 
   constructor(private configService: ConfigService) {
     this.client = createClient({
-      url: this.configService.get<string>(String(redisHost)),
+      url: this.configService.get<string>('REDIS_URL'),
+      socket: {
+        connectTimeout: 5000,
+      },
     });
 
     this.client.on('error', (err) => {
@@ -25,13 +27,18 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
   }
 
   async onModuleInit() {
-    if (this.client.isOpen) {
-      await this.client.connect();
-      Logger.log('Connected to Redis');
+    try {
+      this.logger.log('Connecting to Redis...');
+
+      if (!this.client.isOpen) {
+        await this.client.connect();
+      }
+
       this.logger.log('Connected to Redis');
+    } catch (err) {
+      this.logger.error('Failed to connect to Redis', err);
     }
   }
-
   async onModuleDestroy() {
     if (this.client.isOpen) {
       await this.client.quit();

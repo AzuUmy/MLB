@@ -11,4 +11,3 @@ export declare const sendPulseGrantType: string | undefined;
 export declare const sendPulseClientId: string | undefined;
 export declare const sendPulseClientSecret: string | undefined;
 export declare const sendpulseUrl: string | undefined;
-export declare const redisHost: string | undefined;

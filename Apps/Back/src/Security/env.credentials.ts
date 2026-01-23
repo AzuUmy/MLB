@@ -17,4 +17,3 @@ export const sendPulseGrantType = process.env.grant_type;
 export const sendPulseClientId = process.env.client_id;
 export const sendPulseClientSecret = process.env.client_secret;
 export const sendpulseUrl = process.env.sendPulseUrl;
-export const redisHost = process.env.REDIS_URL;

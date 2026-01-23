@@ -1,5 +1,5 @@
-import { Global, Module } from "@nestjs/common";
-import { sendPulseService } from "./send-pulse.service";
+import { Global, Module } from '@nestjs/common';
+import { sendPulseService } from './send-pulse.service';
 
 @Global()
 @Module({

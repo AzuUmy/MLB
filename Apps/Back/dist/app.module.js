@@ -23,6 +23,7 @@ const mongo_config_1 = require("./config/mongo.config");
 const cron_module_1 = require("./cron/cron.module");
 const prisma_module_1 = require("./prisma/prisma.module");
 const Firebase_modules_1 = require("./Firebase/Firebase.modules");
+const send_pulse_module_1 = require("./services/sendpulse/send_pulse.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -47,7 +48,8 @@ exports.AppModule = AppModule = __decorate([
             }),
             cron_module_1.CronModule,
             Firebase_modules_1.FirebaseAdminModule,
-            redis_modules_1.RedisModule
+            redis_modules_1.RedisModule,
+            send_pulse_module_1.SendPulseModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, app_resolver_1.AppResolver],

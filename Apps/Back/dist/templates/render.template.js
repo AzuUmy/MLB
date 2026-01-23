@@ -7,10 +7,8 @@ exports.renderTemplate = renderTemplate;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const handlebars_1 = __importDefault(require("handlebars"));
-const TEMPLATE_ROOT = process.env.TEMPLATE_PATH ||
-    path_1.default.join(process.cwd(), 'templates');
 function renderTemplate(templateName, data) {
-    const filePath = path_1.default.join(TEMPLATE_ROOT, `${templateName}.hbs`);
+    const filePath = path_1.default.join(__dirname, `${templateName}.hbs`);
     if (!fs_1.default.existsSync(filePath)) {
         throw new Error(`Email template not found: ${filePath}`);
     }

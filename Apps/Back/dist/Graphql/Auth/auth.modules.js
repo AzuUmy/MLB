@@ -12,6 +12,7 @@ const auth_service_1 = require("./auth.service");
 const auth_resolver_1 = require("./auth.resolver");
 const auth_app_1 = require("../../app/auth.app");
 const jwt_1 = require("@nestjs/jwt");
+const email_modules_1 = require("../Email/email.modules");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -22,6 +23,7 @@ exports.AuthModule = AuthModule = __decorate([
                 secret: process.env.JWT_SECRET || 'super-secret-key',
                 signOptions: { expiresIn: '1h' },
             }),
+            email_modules_1.emailModule
         ],
         providers: [auth_service_1.AuthService, auth_resolver_1.AuthResolver, auth_app_1.AuthApp],
         exports: [auth_service_1.AuthService],

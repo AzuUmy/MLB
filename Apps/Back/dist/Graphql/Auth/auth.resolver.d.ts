@@ -1,4 +1,4 @@
-import { AuthValidation } from './Entities/auth.entity';
+import { ActionResponse, AuthValidation } from './Entities/auth.entity';
 import { AuthApp } from 'src/app/auth.app';
 import { Request } from 'express';
 export declare class AuthResolver {
@@ -8,4 +8,5 @@ export declare class AuthResolver {
         req: Request;
     }): Promise<AuthValidation>;
     EmailCheck(email: string): Promise<import("@my-mlb/shared").Email>;
+    generateCode(to: string): Promise<ActionResponse>;
 }

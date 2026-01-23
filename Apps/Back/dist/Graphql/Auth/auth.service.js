@@ -33,6 +33,10 @@ let AuthService = class AuthService {
         }
         return userEmail;
     }
+    async generateUserCode() {
+        const code = Math.floor(100000 + Math.random() * 900000);
+        return code;
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

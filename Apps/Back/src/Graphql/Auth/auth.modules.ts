@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { AuthResolver } from './auth.resolver';
 import { AuthApp } from 'src/app/auth.app';
 import { JwtModule } from '@nestjs/jwt';
+import { emailModule } from '../Email/email.modules';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
       secret: process.env.JWT_SECRET || 'super-secret-key',
       signOptions: { expiresIn: '1h' },
     }),
+    emailModule
   ],
   providers: [AuthService, AuthResolver, AuthApp],
   exports: [AuthService],

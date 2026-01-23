@@ -1,6 +1,7 @@
 import { Auth, Email } from '@my-mlb/shared';
 import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { EmailService } from '../Email/email.service';
 
 @Injectable()
 export class AuthService {
@@ -20,5 +21,10 @@ export class AuthService {
       return {};
     }
     return userEmail;
+  }
+
+  async generateUserCode(): Promise<number> {
+    const code = Math.floor(100000 + Math.random() * 900000);
+    return code;
   }
 }

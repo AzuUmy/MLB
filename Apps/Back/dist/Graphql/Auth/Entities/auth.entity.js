@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Token = exports.AuthValidation = exports.Auth = exports.Email = void 0;
+exports.ActionResponse = exports.Token = exports.AuthValidation = exports.Auth = exports.Email = void 0;
 const graphql_1 = require("@nestjs/graphql");
 let Email = class Email {
     email;
@@ -65,4 +65,20 @@ __decorate([
 exports.Token = Token = __decorate([
     (0, graphql_1.ObjectType)()
 ], Token);
+let ActionResponse = class ActionResponse {
+    success;
+    message;
+};
+exports.ActionResponse = ActionResponse;
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Boolean)
+], ActionResponse.prototype, "success", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], ActionResponse.prototype, "message", void 0);
+exports.ActionResponse = ActionResponse = __decorate([
+    (0, graphql_1.ObjectType)()
+], ActionResponse);
 //# sourceMappingURL=auth.entity.js.map

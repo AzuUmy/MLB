@@ -33,6 +33,9 @@ let AuthResolver = class AuthResolver {
     async EmailCheck(email) {
         return this.authApp.userEmail(email);
     }
+    async generateCode(to) {
+        return this.authApp.generateUserCode(to);
+    }
 };
 exports.AuthResolver = AuthResolver;
 __decorate([
@@ -49,6 +52,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], AuthResolver.prototype, "EmailCheck", null);
+__decorate([
+    (0, graphql_1.Query)(() => auth_entity_1.ActionResponse),
+    __param(0, (0, graphql_1.Args)('to', { type: () => String })),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AuthResolver.prototype, "generateCode", null);
 exports.AuthResolver = AuthResolver = __decorate([
     (0, graphql_1.Resolver)(),
     __metadata("design:paramtypes", [auth_app_1.AuthApp])

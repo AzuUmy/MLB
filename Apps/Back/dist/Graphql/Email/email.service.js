@@ -12,15 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmailService = void 0;
 const common_1 = require("@nestjs/common");
 const send_pulse_service_1 = require("../../services/sendpulse/send-pulse.service");
+const render_template_1 = require("../../templates/render.template");
 let EmailService = class EmailService {
     sendPulseService;
     constructor(sendPulseService) {
         this.sendPulseService = sendPulseService;
     }
-    async generateSendPulseToken() {
-        this.sendPulseService.getSendPulseToken();
-    }
-    async getSendPulseToken() {
+    async sendCodeEmail(to, code) {
+        const html = (0, render_template_1.renderTemplate)('code_email.template', {
+            code,
+            loginUrl: 'https://yourdomain.com/login',
+        });
+        return this.sendPulseService.sendEmail(to, 'Your Login Code', html, `Your login code is: ${code}`);
     }
 };
 exports.EmailService = EmailService;

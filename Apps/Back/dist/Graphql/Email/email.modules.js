@@ -6,16 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CodeValidationService = void 0;
+exports.emailModule = void 0;
 const common_1 = require("@nestjs/common");
-let CodeValidationService = class CodeValidationService {
-    generateRandomCode() {
-        const code = Math.floor(100000 + Math.random() * 900000);
-        return Promise.resolve(code);
-    }
+const email_service_1 = require("./email.service");
+let emailModule = class emailModule {
 };
-exports.CodeValidationService = CodeValidationService;
-exports.CodeValidationService = CodeValidationService = __decorate([
-    (0, common_1.Injectable)()
-], CodeValidationService);
-//# sourceMappingURL=codeGenerate.app.js.map
+exports.emailModule = emailModule;
+exports.emailModule = emailModule = __decorate([
+    (0, common_1.Module)({
+        imports: [],
+        providers: [email_service_1.EmailService],
+        exports: [email_service_1.EmailService],
+    })
+], emailModule);
+//# sourceMappingURL=email.modules.js.map

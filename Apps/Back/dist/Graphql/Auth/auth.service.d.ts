@@ -4,4 +4,5 @@ export declare class AuthService {
     private readonly prisma;
     constructor(prisma: PrismaService);
     GetUserEmail(email: string): Promise<Email>;
+    generateUserCode(): Promise<number>;
 }

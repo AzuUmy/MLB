@@ -14,11 +14,14 @@ const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const auth_service_1 = require("../Graphql/Auth/auth.service");
 const Firebase_admin_config_1 = require("../Firebase/Firebase.admin.config");
+const email_service_1 = require("../Graphql/Email/email.service");
 let AuthApp = class AuthApp {
     authService;
+    emailService;
     jwtService;
-    constructor(authService, jwtService) {
+    constructor(authService, emailService, jwtService) {
         this.authService = authService;
+        this.emailService = emailService;
         this.jwtService = jwtService;
     }
     async userEmail(email) {
@@ -40,11 +43,20 @@ let AuthApp = class AuthApp {
         }
         return { isvalid: (authenticationResult = true) };
     }
+    async generateUserCode(to) {
+        const userCode = await this.authService.generateUserCode();
+        await this.emailService.sendCodeEmail(to, userCode);
+        return {
+            success: true,
+            message: 'Verification code sent successfully',
+        };
+    }
 };
 exports.AuthApp = AuthApp;
 exports.AuthApp = AuthApp = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService,
+        email_service_1.EmailService,
         jwt_1.JwtService])
 ], AuthApp);
 //# sourceMappingURL=auth.app.js.map

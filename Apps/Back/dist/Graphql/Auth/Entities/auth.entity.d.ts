@@ -12,3 +12,7 @@ export declare class AuthValidation {
 export declare class Token {
     accessToken: string;
 }
+export declare class ActionResponse {
+    success: boolean;
+    message: string;
+}

@@ -27,3 +27,12 @@ export class Token {
   @Field()
   accessToken!: string;
 }
+
+@ObjectType()
+export class ActionResponse {
+  @Field()
+  success!: boolean;
+
+  @Field()
+  message!: string;
+}

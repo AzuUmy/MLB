@@ -1,5 +1,5 @@
 import { UnauthorizedException } from '@nestjs/common';
-import { Auth, AuthValidation, Email, Token } from './Entities/auth.entity';
+import { ActionResponse, AuthValidation, Email } from './Entities/auth.entity';
 import { Args, Context, Query, Resolver } from '@nestjs/graphql';
 import { AuthApp } from 'src/app/auth.app';
 import { Request } from 'express';
@@ -24,5 +24,10 @@ export class AuthResolver {
   @Query(() => Email)
   async EmailCheck(@Args('email', { type: () => String }) email: string) {
     return this.authApp.userEmail(email);
+  }
+
+  @Query(() => ActionResponse)
+  async generateCode(@Args('to', { type: () => String }) to: string) {
+    return this.authApp.generateUserCode(to);
   }
 }

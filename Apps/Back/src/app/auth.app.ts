@@ -3,15 +3,18 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from 'src/Graphql/Auth/auth.service';
 import {
+  ActionResponse,
   Auth,
   AuthValidation,
   Token,
 } from 'src/Graphql/Auth/Entities/auth.entity';
 import { adminAuth } from 'src/Firebase/Firebase.admin.config';
+import { EmailService } from 'src/Graphql/Email/email.service';
 @Injectable()
 export class AuthApp {
   constructor(
     private readonly authService: AuthService,
+    private readonly emailService: EmailService,
     private readonly jwtService: JwtService,
   ) {}
 
@@ -39,5 +42,14 @@ export class AuthApp {
     }
 
     return { isvalid: (authenticationResult = true) };
+  }
+
+  async generateUserCode(to: string): Promise<ActionResponse> {
+    const userCode = await this.authService.generateUserCode();
+    await this.emailService.sendCodeEmail(to, userCode);
+    return {
+      success: true,
+      message: 'Verification code sent successfully',
+    };
   }
 }

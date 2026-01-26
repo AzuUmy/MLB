@@ -83,7 +83,7 @@ export class sendPulseService implements OnModuleInit {
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk2ZjMyMDNmYmRiZmE2NTFlOGE2OTJkNzY2NjIzNzMxOTk3NmZhYmZlZjljMzY2ZjVlNjhjNzQwMWFmMzA4MDE4YjUwODAzMTA3YjJjNTc0In0.eyJhdWQiOiJjZDVhNGU0OTZlMDQ5ODcwZWZjYjE2Yjk0OGQ2MzJlOCIsImp0aSI6Ijk2ZjMyMDNmYmRiZmE2NTFlOGE2OTJkNzY2NjIzNzMxOTk3NmZhYmZlZjljMzY2ZjVlNjhjNzQwMWFmMzA4MDE4YjUwODAzMTA3YjJjNTc0IiwiaWF0IjoxNzY5MTk5MTYxLCJuYmYiOjE3NjkxOTkxNjEsImV4cCI6MTc2OTIwMjc2MSwic3ViIjoiIiwic2NvcGVzIjpbXSwidXNlciI6eyJpZCI6OTMzMDA0MiwiZ3JvdXBfaWQiOm51bGwsInBhcmVudF9pZCI6bnVsbCwiY29udGV4dCI6eyJhY2NsaW0iOiIwIn0sImFyZWEiOiJyZXN0IiwiYXBwX2lkIjpudWxsfX0.ZaPWeyc0tVtdlOEQSR6Vy3zdofLwyne6gsNk4wYfryLssPcWa_DwE2wDpUCc-R6FudzaJY-W4HHfyWazcKgSy7nVyBIqMpCS3xfvf9HLHKRy3FzuuK-lIe8XdQerfB5Epf7nItkZrwN8kNJIAfs3Ke5a_pLUPA5pv4aH54glOT1eXw0iWBXzkuy3bXFRRPcPvbgRIxUA52L5kwiSwOLZkGMJyrs3tC6dReBvERyV1F2lESBzpETY1SEdC6jlvPJjbCliYU2exs4btlkFRvbi2F3woOufWkAHRzRGzPGiBM-pYe0cwn9rQsxDlsUO_V8agktCEMBxW_ej5mc9XYQqYQ`,
+            Authorization: `Bearer `,
           },
         },
       );

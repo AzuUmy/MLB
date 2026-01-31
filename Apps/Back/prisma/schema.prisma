@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model Teams {
@@ -17,8 +16,5 @@ model Teams {
 model Credentials {
   id       String @id
   email    String
-  password String
-
-  @@unique([email,password])
   @@unique([email])
 }

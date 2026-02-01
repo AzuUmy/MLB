@@ -21,7 +21,7 @@ export class sendPulseService implements OnModuleInit {
 
   async getSendPulseToken(redis?: RedisClientType) {
     Logger.log('Getting SendPulse Token');
-    const { data } = await axios.post(`${sendpulseUrl}`, {
+    const { data } = await axios.post(`${sendpulseUrl}/oauth/access_token`, {
       grant_type: sendPulseGrantType,
       client_id: sendPulseClientId,
       client_secret: sendPulseClientSecret,
@@ -68,7 +68,7 @@ export class sendPulseService implements OnModuleInit {
   ): Promise<string> {
     try {
       await axios.post(
-        'https://api.sendpulse.com/smtp/emails',
+        `${sendpulseUrl}/smtp/emails`,
         {
           email: {
             subject: `${subject}`,

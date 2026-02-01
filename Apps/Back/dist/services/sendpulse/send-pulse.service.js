@@ -29,7 +29,7 @@ let sendPulseService = class sendPulseService {
     }
     async getSendPulseToken(redis) {
         common_1.Logger.log('Getting SendPulse Token');
-        const { data } = await axios_1.default.post(`${env_credentials_1.sendpulseUrl}`, {
+        const { data } = await axios_1.default.post(`${env_credentials_1.sendpulseUrl}/oauth/access_token`, {
             grant_type: env_credentials_1.sendPulseGrantType,
             client_id: env_credentials_1.sendPulseClientId,
             client_secret: env_credentials_1.sendPulseClientSecret,
@@ -62,7 +62,7 @@ let sendPulseService = class sendPulseService {
     }
     async sendEmail(to, subject, html, text) {
         try {
-            await axios_1.default.post('https://api.sendpulse.com/smtp/emails', {
+            await axios_1.default.post(`${env_credentials_1.sendpulseUrl}/smtp/emails`, {
                 email: {
                     subject: `${subject}`,
                     html,

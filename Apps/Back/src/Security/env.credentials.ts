@@ -2,19 +2,18 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const apiUrl = process.env.BASE_URL;
-export const token = process.env.token;
-export const locale = process.env.locale;
-export const format = process.env.format;
-export const firebaseAppId = process.env.firebaseAppId;
-export const firebaseProjectId = process.env.firebase_project_id;
-export const firebaseStorageBucket = process.env.firebase_storage_bucket;
-export const firebaseClientEmail = process.env.firebae_client_email;
-export const firebasePrivateKey = process.env.firebase_pirvate_key?.replace(
+export const token = process.env.TOKEN;
+export const locale = process.env.LOCALE;
+export const format = process.env.FORMAT;
+export const firebaseAppId = process.env.FIREBASE_APP_ID;
+export const firebaseProjectId = process.env.FIREBASE_PROJECT_ID;
+export const firebaseStorageBucket = process.env.FIREBASE_STORAGE_BUCKET;
+export const firebaseClientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+export const firebasePrivateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(
   /\\n/g,
   '\n',
 );
-export const sendPulseGrantType = process.env.grant_type;
-export const sendPulseClientId = process.env.client_id;
-export const sendPulseClientSecret = process.env.client_secret;
-export const sendpulseUrl = process.env.sendPulseUrl;
-export const DATABASE_URL = process.env.DATABASE_URL;
+export const sendPulseGrantType = process.env.GRANT_TYPE;
+export const sendPulseClientId = process.env.CLIENT_ID;
+export const sendPulseClientSecret = process.env.CLIENT_SECRET;
+export const sendpulseUrl = process.env.SEND_PULSE_URL;
